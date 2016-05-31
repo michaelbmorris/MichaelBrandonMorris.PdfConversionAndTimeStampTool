@@ -1,119 +1,190 @@
-﻿using iTextSharp.text.exceptions;
-using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.draw;
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static PdfScriptTool.PdfScriptToolConstants;
+﻿using static PdfScriptTool.PdfScriptToolConstants;
 
 namespace PdfScriptTool
 {
-    internal partial class PdfScriptTool : Form, IProgress<ProgressReport>
+    internal partial class PdfScriptTool : System.Windows.Forms.Form,
+        System.IProgress<ProgressReport>
     {
         #region Folders
 
-        private static string RootPath = Path.Combine(
-            Environment.GetFolderPath(
-                Environment.SpecialFolder.MyDocuments),
+        #region RootFolder
+
+        private static string RootPath = System.IO.Path.Combine(
+            System.Environment.GetFolderPath(
+                System.Environment.SpecialFolder.MyDocuments),
             RootFolderName);
 
-        private static string ConfigurationPath = Path.Combine(
+        #endregion
+
+        private static string ConfigurationPath = System.IO.Path.Combine(
             RootPath,
             ConfigurationFolderName);
 
-        private static string OutputRootPath = Path.Combine(
+        private static string OutputRootPath = System.IO.Path.Combine(
             RootPath,
             OutputFolderName);
 
-        private static string ProcessingPath = Path.Combine(
+        private static string ProcessingPath = System.IO.Path.Combine(
             RootPath,
             ProcessingFolderName);
-
-        private static string TimeStampScriptPath = Path.Combine(
-            ConfigurationPath,
-            TimeStampScriptFileName);
-
+        
         #endregion Folders
 
         internal PdfScriptTool()
         {
             InitializeComponent();
             InitializeOpenFileDialog();
-            Directory.CreateDirectory(RootPath);
-            Directory.CreateDirectory(OutputRootPath);
-            Directory.CreateDirectory(ConfigurationPath);
-            Directory.CreateDirectory(ProcessingPath);
-        }
-
-        private static string TimeStampScript
-        {
-            get
-            {
-                var timeStampScript = string.Empty;
-                if (File.Exists(TimeStampScriptPath))
-                {
-                    using (var reader = new StreamReader(TimeStampScriptPath))
-                    {
-                        timeStampScript = reader.ReadToEnd();
-                    }
-                }
-                else
-                {
-                    timeStampScript = DefaultTimeStampScript;
-                }
-                return timeStampScript;
-            }
+            System.IO.Directory.CreateDirectory(RootPath);
+            System.IO.Directory.CreateDirectory(OutputRootPath);
+            System.IO.Directory.CreateDirectory(ConfigurationPath);
+            System.IO.Directory.CreateDirectory(ProcessingPath);
         }
 
         public void Report(ProgressReport progressReport)
         {
             if (InvokeRequired)
             {
-                Invoke((Action)(() => Report(progressReport)));
+                Invoke((System.Action)(() => Report(progressReport)));
             }
             else
             {
                 progressBar.Value = progressReport.Percent;
-                progressLabel.Text = progressReport.CurrentCount
+                progressBar.Text = progressReport.CurrentCount
                     + ProgressLabelDivider + progressReport.Total;
-            }
-        }
-
-        private async Task PerformTask(Task task)
-        {
-            if(documentsView.CheckedItems.Count > 0)
-            {
-                try
-                {
-                    await task;
-                }
-                catch(Exception e)
-                {
-                    MessageBox.Show("Exception: " + e.Message);
-                }
-                progressBar.Value = 0;
-                progressLabel.Text = string.Empty;
-                Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("Please select at least one document.");
             }
         }
 
         private static string GetOutputPath(string inputPath)
         {
-            return Path.Combine(OutputRootPath, Path.GetFileName(inputPath));
+            return System.IO.Path.Combine(
+                OutputRootPath,
+                System.IO.Path.GetFileName(inputPath));
         }
 
-        // TODO
+        private async System.Threading.Tasks.Task AddScriptToMultiplePdfs(
+            Script script)
+        {
+            await System.Threading.Tasks.Task.Run(() =>
+            {
+                for (int i = 0; i < documentsView.CheckedItems.Count; i++)
+                {
+                    var currentDocument
+                        = documentsView.CheckedItems[i].ToString();
+                    if (!string.Equals(
+                        System.IO.Path.GetExtension(currentDocument),
+                        ".pdf",
+                        System.StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        currentDocument = ConvertToPdf(currentDocument);
+                    }
+                    AddScriptToSinglePdf(currentDocument, script);
+                    Report(new ProgressReport
+                    {
+                        Total = documentsView.CheckedItems.Count,
+                        CurrentCount = i + 1
+                    });
+                }
+            });
+            System.Windows.Forms.MessageBox.Show(
+                "Files saved with time-stamp on print script in "
+                + OutputRootPath);
+        }
+
+        private void AddScriptToSinglePdf(string filename, Script script)
+        {
+            try
+            {
+                using (var pdfReader
+                    = new iTextSharp.text.pdf.PdfReader(filename))
+                {
+                    using (var pdfStamper
+                        = new iTextSharp.text.pdf.PdfStamper(
+                            pdfReader,
+                            new System.IO.FileStream(
+                                GetOutputPath(filename),
+                                System.IO.FileMode.Create)))
+                    {
+                        var parentField
+                            = iTextSharp.text.pdf.PdfFormField.CreateTextField(
+                                pdfStamper.Writer,
+                                false,
+                                false,
+                                0);
+                        if(script.Field == null)
+                            System.Windows.Forms.MessageBox.Show("problem");
+                        parentField.FieldName = script.Field.Title;
+                        for (var pageNumber = PdfFirstPageNumber;
+                            pageNumber <= pdfReader.NumberOfPages;
+                            pageNumber++)
+                        {
+                            var pdfContentByte = pdfStamper.GetOverContent(
+                                pageNumber);
+                            var textField = new iTextSharp.text.pdf.TextField(
+                                    pdfStamper.Writer,
+                                    new iTextSharp.text.Rectangle(
+                                        script.Field.TopLeftX,
+                                        script.Field.TopLeftY,
+                                        script.Field.BottomRightX,
+                                        script.Field.BottomRightY),
+                                    null);
+                            var childField = textField.GetTextField();
+                            parentField.AddKid(childField);
+                            childField.PlaceInPage = pageNumber;
+                        }
+                        pdfStamper.AddAnnotation(parentField, 1);
+                        var pdfAction
+                            = iTextSharp.text.pdf.PdfAction.JavaScript(
+                                script.Text,
+                                pdfStamper.Writer);
+                        iTextSharp.text.pdf.PdfName actionType = null;
+                        switch (script.Timing)
+                        {
+                            case ScriptTiming.DidPrint:
+                                actionType
+                                    = iTextSharp.text.pdf.PdfWriter.DID_PRINT;
+                                break;
+
+                            case ScriptTiming.DidSave:
+                                actionType
+                                    = iTextSharp.text.pdf.PdfWriter.DID_SAVE;
+                                break;
+
+                            case ScriptTiming.WillPrint:
+                                actionType
+                                    = iTextSharp.text.pdf.PdfWriter.WILL_PRINT;
+                                break;
+
+                            case ScriptTiming.WillSave:
+                                actionType
+                                    = iTextSharp.text.pdf.PdfWriter.WILL_SAVE;
+                                break;
+                        }
+                        pdfStamper.Writer.SetAdditionalAction(
+                            actionType,
+                            pdfAction);
+                    }
+                }
+            }
+            catch (iTextSharp.text.exceptions.InvalidPdfException e)
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    e.Message + " " + filename);
+            }
+        }
+
         private string ConvertToPdf(string filename)
         {
-            string pdfPath = Path.Combine(
+            var pdfPath = System.IO.Path.Combine(
                 ProcessingPath,
-                Path.GetFileNameWithoutExtension(filename) + ".pdf");
+                System.IO.Path.GetFileNameWithoutExtension(filename) + ".pdf");
+            var wordApplication
+                = new Microsoft.Office.Interop.Word.Application();
+            var wordDocument
+                = wordApplication.Documents.Open(filename);
+            wordDocument.ExportAsFixedFormat(
+                pdfPath,
+                Microsoft.Office.Interop.Word.WdExportFormat
+                .wdExportFormatPDF);
             return pdfPath;
         }
 
@@ -124,10 +195,35 @@ namespace PdfScriptTool
             openFileDialog.Title = OpenFileDialogTitle;
         }
 
-        private void selectDocuments_Click(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task PerformTask(
+            System.Func<System.Threading.Tasks.Task> function)
+        {
+            if (documentsView.CheckedItems.Count > 0)
+            {
+                Enabled = false;
+                try
+                {
+                    await function();
+                }
+                catch (System.Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show(
+                        "Exception: " + e.Message);
+                }
+                progressBar.Value = 0;
+                progressBar.Text = string.Empty;
+                Enabled = true;
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    "Please select at least one document.");
+            }
+        }
+        private void selectDocuments_Click(object sender, System.EventArgs e)
         {
             var dialogResult = openFileDialog.ShowDialog();
-            if (dialogResult == DialogResult.OK)
+            if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 foreach (var file in openFileDialog.FileNames)
                 {
@@ -136,91 +232,17 @@ namespace PdfScriptTool
             }
         }
 
-        private async void timeStampDocuments_Click(object sender, EventArgs e)
+        private async void timeStampDefaultDay_Click(object sender,
+            System.EventArgs e)
         {
-            await PerformTask(TimeStampPdfs());
+            await PerformTask(() => AddScriptToMultiplePdfs(
+                Script.TimeStampOnPrintDefaultDay));
         }
-
-        private Task TimeStampPdfs() => Task.Run(() =>
+        private async void timeStampDefaultMonth_Click(
+            object sender, System.EventArgs e)
         {
-            for (int i = 0; i < documentsView.CheckedItems.Count; i++)
-            {
-                if (!string.Equals(
-                    Path.GetExtension(
-                        documentsView.CheckedItems[i].ToString()),
-                    ".pdf",
-                    StringComparison.InvariantCultureIgnoreCase))
-                {
-                    documentsView.CheckedItems[i] = ConvertToPdf(
-                        documentsView.CheckedItems[i].ToString());
-                }
-                TimeStampPdf(documentsView.CheckedItems[i].ToString());
-                Report(new ProgressReport
-                {
-                    Total = documentsView.CheckedItems.Count,
-                    CurrentCount = i + 1
-                });
-            }
-        }).ContinueWith(t =>
-        {
-            MessageBox.Show("Timestamped all files.");
-        },
-            CancellationToken.None,
-            TaskContinuationOptions.OnlyOnRanToCompletion,
-            TaskScheduler.FromCurrentSynchronizationContext()
-        );
-
-        private void TimeStampPdf(string filename)
-        {
-            try
-            {
-                using (var pdfReader = new PdfReader(filename))
-                {
-                    using (var pdfStamper = new PdfStamper(
-                            pdfReader,
-                            new FileStream(
-                                GetOutputPath(filename),
-                                FileMode.Create)))
-                    {
-                        var parentField = PdfFormField.CreateTextField(
-                                pdfStamper.Writer,
-                                false,
-                                false,
-                                0);
-                        parentField.FieldName = TimeStampFieldName;
-                        var lineSeparator = new LineSeparator();
-                        for (var pageNumber = PdfFirstPageNumber;
-                            pageNumber <= pdfReader.NumberOfPages;
-                            pageNumber++)
-                        {
-                            var pdfContentByte = pdfStamper.GetOverContent(
-                                pageNumber);
-                            var textField = new TextField(
-                                    pdfStamper.Writer,
-                                    new iTextSharp.text.Rectangle(
-                                        TimeStampFieldTopLeftXCoordinate,
-                                        TimeStampFieldTopLeftYCoordinate,
-                                        TimeStampFieldBottomRightXCoordinate,
-                                        TimeStampFieldBottomRightYCoordinate),
-                                    null);
-                            var childField = textField.GetTextField();
-                            parentField.AddKid(childField);
-                            childField.PlaceInPage = pageNumber;
-                        }
-                        pdfStamper.AddAnnotation(parentField, 1);
-                        var pdfAction = PdfAction.JavaScript(
-                                TimeStampScript,
-                                pdfStamper.Writer);
-                        pdfStamper.Writer.SetAdditionalAction(
-                            PdfWriter.WILL_PRINT,
-                            pdfAction);
-                    }
-                }
-            }
-            catch (InvalidPdfException e)
-            {
-                MessageBox.Show(e.Message + " " + filename);
-            }
+            await PerformTask(() => AddScriptToMultiplePdfs(
+                Script.TimeStampOnPrintDefaultMonth));
         }
     }
 }

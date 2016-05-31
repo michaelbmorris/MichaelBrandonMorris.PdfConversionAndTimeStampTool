@@ -22,20 +22,16 @@
         internal const string OutputFolderName = "Output";
         internal const string ConfigurationFolderName = "Configuration";
         internal const string ProcessingFolderName = "Processing";
-        internal const string TimeStampScriptFileName = "TimeStampScript.txt";
 
         internal const string OpenFileDialogFilter
-            = "Documents (*.pdf)|*.pdf";
+            = "Documents (*.doc;*.docx;*.pdf)|*.doc;*.docx;*.pdf";
 
         internal const string OpenFileDialogTitle = "Select documents...";
         internal const bool OpenFileDialogAllowMultiple = true;
         internal const bool DocumentsViewFileIsChecked = true;
         internal const string TimeStampFieldName = "Timestamp";
         internal const int PdfFirstPageNumber = 1;
-        internal const int TimeStampFieldTopLeftXCoordinate = 36;
-        internal const int TimeStampFieldTopLeftYCoordinate = 792;
-        internal const int TimeStampFieldBottomRightXCoordinate = 576;
-        internal const int TimeStampFieldBottomRightYCoordinate = 756;
+
         internal const int TimeStampFieldUnderlineLeftXCoordinate = 36;
         internal const int TimeStampFieldUnderlineRightXCoordinate = 576;
         internal const int TimeStampFieldUnderlineYCoordinate = 768;
