@@ -1,10 +1,27 @@
-﻿using static PdfScriptTool.PdfScriptToolConstants;
+﻿using static PdfScriptTool.Properties.Resources;
 
 namespace PdfScriptTool
 {
     internal partial class PdfScriptTool : System.Windows.Forms.Form,
         System.IProgress<ProgressReport>
     {
+        #region Constants
+
+        #region Booleans
+
+        private const bool OpenFileDialogAllowMultiple = true;
+        private const bool FileViewFileIsChecked = true;
+
+        #endregion Booleans
+
+        #region Integers
+
+        private const int PdfFirstPageNumber = 1;
+
+        #endregion Integers
+
+        #endregion Constants
+
         #region Folders
 
         #region RootFolder
@@ -14,11 +31,7 @@ namespace PdfScriptTool
                 System.Environment.SpecialFolder.MyDocuments),
             RootFolderName);
 
-        #endregion
-
-        private static string ConfigurationPath = System.IO.Path.Combine(
-            RootPath,
-            ConfigurationFolderName);
+        #endregion RootFolder
 
         private static string OutputRootPath = System.IO.Path.Combine(
             RootPath,
@@ -27,7 +40,7 @@ namespace PdfScriptTool
         private static string ProcessingPath = System.IO.Path.Combine(
             RootPath,
             ProcessingFolderName);
-        
+
         #endregion Folders
 
         internal PdfScriptTool()
@@ -36,7 +49,6 @@ namespace PdfScriptTool
             InitializeOpenFileDialog();
             System.IO.Directory.CreateDirectory(RootPath);
             System.IO.Directory.CreateDirectory(OutputRootPath);
-            System.IO.Directory.CreateDirectory(ConfigurationPath);
             System.IO.Directory.CreateDirectory(ProcessingPath);
         }
 
@@ -49,8 +61,6 @@ namespace PdfScriptTool
             else
             {
                 progressBar.Value = progressReport.Percent;
-                progressBar.Text = progressReport.CurrentCount
-                    + ProgressLabelDivider + progressReport.Total;
             }
         }
 
@@ -61,54 +71,59 @@ namespace PdfScriptTool
                 System.IO.Path.GetFileName(inputPath));
         }
 
-        private async System.Threading.Tasks.Task AddScriptToMultiplePdfs(
+        private async System.Threading.Tasks.Task ProcessPdfs(
             Script script)
         {
             await System.Threading.Tasks.Task.Run(() =>
             {
-                for (int i = 0; i < documentsView.CheckedItems.Count; i++)
+                for (int i = 0; i < fileView.CheckedItems.Count; i++)
                 {
-                    var currentDocument
-                        = documentsView.CheckedItems[i].ToString();
-                    if (!string.Equals(
-                        System.IO.Path.GetExtension(currentDocument),
-                        ".pdf",
-                        System.StringComparison.InvariantCultureIgnoreCase))
+                    var currentFile = fileView.CheckedItems[i].ToString();
+                    if (!IsPdf(currentFile))
                     {
                         try
                         {
-                            currentDocument = ConvertToPdf(currentDocument);
+                            currentFile = ConvertToPdf(currentFile);
                         }
-                        catch (System.Runtime.InteropServices.COMException e)
+                        catch (System.Runtime.InteropServices.COMException)
                         {
-                            ShowException("File " + currentDocument + " could not be converted to PDF.");
+                            ShowMessage(FileFailedToConvertToPdfErrorMessage
+                                + Space + currentFile);
                             continue;
                         }
                     }
-                    AddScriptToSinglePdf(currentDocument, script);
+                    if (script != null)
+                    {
+                        AddScriptToPdf(currentFile, script);
+                    }
                     Report(new ProgressReport
                     {
-                        Total = documentsView.CheckedItems.Count,
+                        Total = fileView.CheckedItems.Count,
                         CurrentCount = i + 1
                     });
                 }
             });
-            System.Windows.Forms.MessageBox.Show(
-                "Files saved with time-stamp on print script in "
-                + OutputRootPath);
+            ShowMessage(FilesSavedInMessage + Space + OutputRootPath);
+        }
+
+        private bool IsPdf(string filename)
+        {
+            return string.Equals(System.IO.Path.GetExtension(filename),
+                PdfFileExtension,
+                System.StringComparison.InvariantCultureIgnoreCase);
         }
 
         private void ShowException(System.Exception e)
         {
-            ShowException(e.Message);
+            ShowMessage(e.Message);
         }
 
-        private void ShowException(string message)
+        private void ShowMessage(string message)
         {
             System.Windows.Forms.MessageBox.Show(message);
         }
 
-        private void AddScriptToSinglePdf(string filename, Script script)
+        private void AddScriptToPdf(string filename, Script script)
         {
             try
             {
@@ -183,8 +198,7 @@ namespace PdfScriptTool
             }
             catch (iTextSharp.text.exceptions.InvalidPdfException e)
             {
-                System.Windows.Forms.MessageBox.Show(
-                    e.Message + " " + filename);
+                ShowMessage(e.Message + Space + filename);
             }
         }
 
@@ -192,7 +206,8 @@ namespace PdfScriptTool
         {
             var pdfPath = System.IO.Path.Combine(
                 ProcessingPath,
-                System.IO.Path.GetFileNameWithoutExtension(filename) + ".pdf");
+                System.IO.Path.GetFileNameWithoutExtension(filename)
+                + PdfFileExtension);
             var wordApplication
                 = new Microsoft.Office.Interop.Word.Application();
             var wordDocument
@@ -216,7 +231,7 @@ namespace PdfScriptTool
         private async System.Threading.Tasks.Task PerformTask(
             System.Func<System.Threading.Tasks.Task> function)
         {
-            if (documentsView.CheckedItems.Count > 0)
+            if (fileView.CheckedItems.Count > 0)
             {
                 Enabled = false;
                 try
@@ -225,19 +240,17 @@ namespace PdfScriptTool
                 }
                 catch (System.Exception e)
                 {
-                    System.Windows.Forms.MessageBox.Show(
-                        "Exception: " + e.Message);
+                    ShowException(e);
                 }
                 progressBar.Value = 0;
-                progressBar.Text = string.Empty;
                 Enabled = true;
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show(
-                    "Please select at least one document.");
+                ShowMessage(NoFilesSelectedErrorMessage);
             }
         }
+
         private void selectDocuments_Click(object sender, System.EventArgs e)
         {
             var dialogResult = openFileDialog.ShowDialog();
@@ -245,7 +258,7 @@ namespace PdfScriptTool
             {
                 foreach (var file in openFileDialog.FileNames)
                 {
-                    documentsView.Items.Add(file, DocumentsViewFileIsChecked);
+                    fileView.Items.Add(file, FileViewFileIsChecked);
                 }
             }
         }
@@ -253,14 +266,20 @@ namespace PdfScriptTool
         private async void timeStampDefaultDay_Click(object sender,
             System.EventArgs e)
         {
-            await PerformTask(() => AddScriptToMultiplePdfs(
+            await PerformTask(() => ProcessPdfs(
                 Script.TimeStampOnPrintDefaultDay));
         }
+
         private async void timeStampDefaultMonth_Click(
             object sender, System.EventArgs e)
         {
-            await PerformTask(() => AddScriptToMultiplePdfs(
+            await PerformTask(() => ProcessPdfs(
                 Script.TimeStampOnPrintDefaultMonth));
+        }
+
+        private async void convertOnly_Click(object sender, System.EventArgs e)
+        {
+            await PerformTask(() => ProcessPdfs(null));
         }
     }
 }

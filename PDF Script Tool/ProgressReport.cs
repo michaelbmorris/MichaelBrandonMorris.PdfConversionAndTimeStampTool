@@ -1,12 +1,11 @@
-﻿using static PdfScriptTool.PdfScriptToolConstants;
-
-namespace PdfScriptTool
+﻿namespace PdfScriptTool
 {
     internal class ProgressReport
     {
-        public int CurrentCount { get; set; }
+        private const int PercentMultiplier = 100;
+        internal int CurrentCount { get; set; }
 
-        public int Percent
+        internal int Percent
         {
             get
             {
@@ -14,6 +13,6 @@ namespace PdfScriptTool
             }
         }
 
-        public int Total { get; set; }
+        internal int Total { get; set; }
     }
 }

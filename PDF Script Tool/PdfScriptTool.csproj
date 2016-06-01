@@ -80,9 +80,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvancedProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Field.cs" />
     <Compile Include="PdfScriptTool.cs">
       <SubType>Form</SubType>
@@ -90,7 +87,6 @@
     <Compile Include="PdfScriptTool.Designer.cs">
       <DependentUpon>PdfScriptTool.cs</DependentUpon>
     </Compile>
-    <Compile Include="PdfScriptToolConstants.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

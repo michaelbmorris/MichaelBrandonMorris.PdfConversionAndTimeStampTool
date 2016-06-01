@@ -61,6 +61,96 @@ namespace PdfScriptTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File failed to convert to PDF.
+        /// </summary>
+        internal static string FileFailedToConvertToPdfErrorMessage {
+            get {
+                return ResourceManager.GetString("FileFailedToConvertToPdfErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files have been saved in.
+        /// </summary>
+        internal static string FilesSavedInMessage {
+            get {
+                return ResourceManager.GetString("FilesSavedInMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select at least one file..
+        /// </summary>
+        internal static string NoFilesSelectedErrorMessage {
+            get {
+                return ResourceManager.GetString("NoFilesSelectedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Documents (*.doc;*.docx;*.pdf)|*.doc;*.docx;*.pdf.
+        /// </summary>
+        internal static string OpenFileDialogFilter {
+            get {
+                return ResourceManager.GetString("OpenFileDialogFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select files....
+        /// </summary>
+        internal static string OpenFileDialogTitle {
+            get {
+                return ResourceManager.GetString("OpenFileDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        internal static string OutputFolderName {
+            get {
+                return ResourceManager.GetString("OutputFolderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .pdf.
+        /// </summary>
+        internal static string PdfFileExtension {
+            get {
+                return ResourceManager.GetString("PdfFileExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Processing.
+        /// </summary>
+        internal static string ProcessingFolderName {
+            get {
+                return ResourceManager.GetString("ProcessingFolderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PDFScriptTool.
+        /// </summary>
+        internal static string RootFolderName {
+            get {
+                return ResourceManager.GetString("RootFolderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  .
+        /// </summary>
+        internal static string Space {
+            get {
+                return ResourceManager.GetString("Space", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to var f = this.getField(&apos;Timestamp&apos;);
         ///f.alignment = &apos;left&apos;;
         ///f.multiline = false;

@@ -30,14 +30,14 @@
         {
             this.selectDocuments = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.documentsView = new System.Windows.Forms.CheckedListBox();
+            this.fileView = new System.Windows.Forms.CheckedListBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.openCustomScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.convertOnly = new System.Windows.Forms.Button();
             this.addScript = new System.Windows.Forms.Button();
             this.selectTiming = new System.Windows.Forms.ComboBox();
             this.scriptSelector = new System.Windows.Forms.ComboBox();
+            this.convertOnly = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.timeStampDefaultDay = new System.Windows.Forms.Button();
             this.timeStampDefaultMonth = new System.Windows.Forms.Button();
@@ -57,13 +57,13 @@
             this.selectDocuments.UseVisualStyleBackColor = true;
             this.selectDocuments.Click += new System.EventHandler(this.selectDocuments_Click);
             // 
-            // documentsView
+            // fileView
             // 
-            this.documentsView.FormattingEnabled = true;
-            this.documentsView.Location = new System.Drawing.Point(8, 72);
-            this.documentsView.Name = "documentsView";
-            this.documentsView.Size = new System.Drawing.Size(768, 304);
-            this.documentsView.TabIndex = 3;
+            this.fileView.FormattingEnabled = true;
+            this.fileView.Location = new System.Drawing.Point(8, 72);
+            this.fileView.Name = "fileView";
+            this.fileView.Size = new System.Drawing.Size(768, 304);
+            this.fileView.TabIndex = 3;
             // 
             // progressBar
             // 
@@ -71,11 +71,9 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(768, 23);
             this.progressBar.TabIndex = 4;
-            this.progressBar.Text = null;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.convertOnly);
             this.tabPage2.Controls.Add(this.addScript);
             this.tabPage2.Controls.Add(this.selectTiming);
             this.tabPage2.Controls.Add(this.scriptSelector);
@@ -86,15 +84,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Advanced";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // convertOnly
-            // 
-            this.convertOnly.Location = new System.Drawing.Point(384, 8);
-            this.convertOnly.Name = "convertOnly";
-            this.convertOnly.Size = new System.Drawing.Size(128, 23);
-            this.convertOnly.TabIndex = 10;
-            this.convertOnly.Text = "Convert to PDF Only";
-            this.convertOnly.UseVisualStyleBackColor = true;
             // 
             // addScript
             // 
@@ -123,8 +112,19 @@
             this.scriptSelector.TabIndex = 6;
             this.scriptSelector.Text = "Select a script...";
             // 
+            // convertOnly
+            // 
+            this.convertOnly.Location = new System.Drawing.Point(280, 8);
+            this.convertOnly.Name = "convertOnly";
+            this.convertOnly.Size = new System.Drawing.Size(128, 23);
+            this.convertOnly.TabIndex = 10;
+            this.convertOnly.Text = "Convert to PDF Only";
+            this.convertOnly.UseVisualStyleBackColor = true;
+            this.convertOnly.Click += new System.EventHandler(this.convertOnly_Click);
+            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.convertOnly);
             this.tabPage1.Controls.Add(this.timeStampDefaultDay);
             this.tabPage1.Controls.Add(this.timeStampDefaultMonth);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -173,7 +173,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.selectDocuments);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.documentsView);
+            this.Controls.Add(this.fileView);
             this.Name = "PdfScriptTool";
             this.Text = "PDF Script Tool";
             this.tabPage2.ResumeLayout(false);
@@ -187,7 +187,7 @@
 
         private System.Windows.Forms.Button selectDocuments;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.CheckedListBox documentsView;
+        private System.Windows.Forms.CheckedListBox fileView;
         private System.Windows.Forms.OpenFileDialog openCustomScriptDialog;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button convertOnly;

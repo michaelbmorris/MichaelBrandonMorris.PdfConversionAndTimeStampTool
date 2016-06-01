@@ -117,6 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FileFailedToConvertToPdfErrorMessage" xml:space="preserve">
+    <value>File failed to convert to PDF</value>
+  </data>
+  <data name="FilesSavedInMessage" xml:space="preserve">
+    <value>Files have been saved in</value>
+  </data>
+  <data name="NoFilesSelectedErrorMessage" xml:space="preserve">
+    <value>Please select at least one file.</value>
+  </data>
+  <data name="OpenFileDialogFilter" xml:space="preserve">
+    <value>Documents (*.doc;*.docx;*.pdf)|*.doc;*.docx;*.pdf</value>
+  </data>
+  <data name="OpenFileDialogTitle" xml:space="preserve">
+    <value>Select files...</value>
+  </data>
+  <data name="OutputFolderName" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="PdfFileExtension" xml:space="preserve">
+    <value>.pdf</value>
+    <comment>The file extension for PDFs, including the dot.</comment>
+  </data>
+  <data name="ProcessingFolderName" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="RootFolderName" xml:space="preserve">
+    <value>PDFScriptTool</value>
+  </data>
+  <data name="Space" xml:space="preserve">
+    <value> </value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TimeStampOnPrintDefaultDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TimeStampOnPrintDefaultDay.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
