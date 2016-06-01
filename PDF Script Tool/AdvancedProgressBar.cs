@@ -35,9 +35,12 @@
                     (int)System.Math.Round(
                         ((float)Value / Maximum) * rectangle.Width),
                     rectangle.Height);
-                System.Windows.Forms.ProgressBarRenderer.DrawHorizontalChunks(
+                if(System.Windows.Forms.Application.RenderWithVisualStyles)
+                {
+                    System.Windows.Forms.ProgressBarRenderer.DrawHorizontalChunks(
                     graphics,
                     clip);
+                }
             }
             string text = DisplayStyle ==
                 AdvancedProgressBarDisplayText.Percent ?

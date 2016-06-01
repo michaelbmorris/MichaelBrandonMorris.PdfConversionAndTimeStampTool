@@ -75,7 +75,15 @@ namespace PdfScriptTool
                         ".pdf",
                         System.StringComparison.InvariantCultureIgnoreCase))
                     {
-                        currentDocument = ConvertToPdf(currentDocument);
+                        try
+                        {
+                            currentDocument = ConvertToPdf(currentDocument);
+                        }
+                        catch (System.Runtime.InteropServices.COMException e)
+                        {
+                            ShowException("File " + currentDocument + " could not be converted to PDF.");
+                            continue;
+                        }
                     }
                     AddScriptToSinglePdf(currentDocument, script);
                     Report(new ProgressReport
@@ -88,6 +96,16 @@ namespace PdfScriptTool
             System.Windows.Forms.MessageBox.Show(
                 "Files saved with time-stamp on print script in "
                 + OutputRootPath);
+        }
+
+        private void ShowException(System.Exception e)
+        {
+            ShowException(e.Message);
+        }
+
+        private void ShowException(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message);
         }
 
         private void AddScriptToSinglePdf(string filename, Script script)
@@ -110,8 +128,6 @@ namespace PdfScriptTool
                                 false,
                                 false,
                                 0);
-                        if(script.Field == null)
-                            System.Windows.Forms.MessageBox.Show("problem");
                         parentField.FieldName = script.Field.Title;
                         for (var pageNumber = PdfFirstPageNumber;
                             pageNumber <= pdfReader.NumberOfPages;
@@ -185,6 +201,8 @@ namespace PdfScriptTool
                 pdfPath,
                 Microsoft.Office.Interop.Word.WdExportFormat
                 .wdExportFormatPDF);
+            wordDocument.Close(false);
+            wordApplication.Quit();
             return pdfPath;
         }
 

@@ -31,7 +31,7 @@
             this.selectDocuments = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.documentsView = new System.Windows.Forms.CheckedListBox();
-            this.progressBar = new AdvancedProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.openCustomScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.convertOnly = new System.Windows.Forms.Button();
@@ -67,7 +67,6 @@
             // 
             // progressBar
             // 
-            this.progressBar.DisplayStyle = AdvancedProgressBarDisplayText.Percent;
             this.progressBar.Location = new System.Drawing.Point(8, 384);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(768, 23);
@@ -199,7 +198,7 @@
         private System.Windows.Forms.Button timeStampDefaultDay;
         private System.Windows.Forms.Button timeStampDefaultMonth;
         private System.Windows.Forms.TabControl tabControl1;
-        private AdvancedProgressBar progressBar;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
