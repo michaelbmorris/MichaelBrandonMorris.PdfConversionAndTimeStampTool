@@ -1,7 +1,13 @@
-﻿using PdfScriptTool.Properties;
+﻿//-----------------------------------------------------------------------------------------------------------
+// <copyright file="Script.cs" company="Michael Brandon Morris">
+//     Copyright © Michael Brandon Morris 2016
+// </copyright>
+//-----------------------------------------------------------------------------------------------------------
 
 namespace PdfScriptTool
 {
+    using static Properties.Resources;
+
     internal enum ScriptTiming
     {
         WillPrint,
@@ -12,25 +18,21 @@ namespace PdfScriptTool
 
     internal class Script
     {
-        public string Text { get; set; }
-        public ScriptTiming Timing { get; set; }
-        public Field Field { get; set; }
+        public string ScriptText { get; set; }
+        public ScriptTiming ScriptTiming { get; set; }
 
-        internal Script(string scriptText, ScriptTiming timing, Field field)
+        internal Script(string scriptText, ScriptTiming scriptTiming)
         {
-            Text = scriptText;
-            Timing = timing;
-            Field = field;
+            ScriptText = scriptText;
+            ScriptTiming = scriptTiming;
         }
 
-        public static readonly Script TimeStampOnPrintDefaultDay = new Script(
-            Resources.TimeStampOnPrintDefaultDay,
-            ScriptTiming.WillPrint,
-            Field.DefaultField);
+        public static readonly Script TimeStampOnPrintDefaultDayScript = new Script(
+            TimeStampOnPrintDefaultDay,
+            ScriptTiming.WillPrint);
 
-        public static readonly Script TimeStampOnPrintDefaultMonth = new Script(
-            Resources.TimeStampOnPrintDefaultMonth,
-            ScriptTiming.WillPrint,
-            Field.DefaultField);
+        public static readonly Script TimeStampOnPrintDefaultMonthScript = new Script(
+            TimeStampOnPrintDefaultMonth,
+            ScriptTiming.WillPrint);
     }
 }

@@ -1,16 +1,20 @@
-﻿using System;
-using System.Windows.Forms;
+﻿//-----------------------------------------------------------------------------------------------------------
+// <copyright file="Script.cs" company="Michael Brandon Morris">
+//     Copyright © Michael Brandon Morris 2016
+// </copyright>
+//-----------------------------------------------------------------------------------------------------------
 
 namespace PdfScriptTool
 {
     internal static class Program
     {
-        [STAThread]
+        [System.STAThread]
         private static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PdfScriptTool());
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application
+                .SetCompatibleTextRenderingDefault(false);
+            System.Windows.Forms.Application.Run(new PdfScriptTool());
         }
     }
 }

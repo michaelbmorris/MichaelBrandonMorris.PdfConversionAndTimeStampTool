@@ -1,4 +1,10 @@
-﻿namespace PdfScriptTool
+﻿//-----------------------------------------------------------------------------------------------------------
+// <copyright file="Script.cs" company="Michael Brandon Morris">
+//     Copyright © Michael Brandon Morris 2016
+// </copyright>
+//-----------------------------------------------------------------------------------------------------------
+
+namespace PdfScriptTool
 {
     internal class ProgressReport
     {

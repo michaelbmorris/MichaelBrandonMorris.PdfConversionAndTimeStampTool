@@ -1,5 +1,13 @@
-﻿namespace PdfScriptTool
+﻿//-----------------------------------------------------------------------------------------------------------
+// <copyright file="Script.cs" company="Michael Brandon Morris">
+//     Copyright © Michael Brandon Morris 2016
+// </copyright>
+//-----------------------------------------------------------------------------------------------------------
+
+namespace PdfScriptTool
 {
+    using static Properties.Resources;
+
     internal class Field
     {
         private const int XMax = 612;
@@ -11,7 +19,7 @@
         private const int DefaultBottomRightX = 576;
         private const int DefaultBottomRightY = 756;
 
-        public int TopLeftX
+        internal int TopLeftX
         {
             get
             {
@@ -19,7 +27,7 @@
             }
         }
 
-        public int TopLeftY
+        internal int TopLeftY
         {
             get
             {
@@ -27,7 +35,7 @@
             }
         }
 
-        public int BottomRightX
+        internal int BottomRightX
         {
             get
             {
@@ -35,7 +43,7 @@
             }
         }
 
-        public int BottomRightY
+        internal int BottomRightY
         {
             get
             {
@@ -43,11 +51,13 @@
             }
         }
 
-        public string Title { get; set; }
+        internal string Title { get; set; }
+
+        internal Pages Pages { get; set; }
 
         private int[] coordinates;
 
-        public Field(string title, int topLeftX, int topLeftY, int bottomRightX, int bottomRightY)
+        internal Field(string title, int topLeftX, int topLeftY, int bottomRightX, int bottomRightY, Pages pages)
         {
             Title = title;
             coordinates = new int[4];
@@ -55,14 +65,25 @@
             coordinates[1] = topLeftY;
             coordinates[2] = bottomRightX;
             coordinates[3] = bottomRightY;
+            Pages = pages;
         }
 
-        public static readonly Field DefaultField
+        internal static readonly Field DefaultTimeStampField
             = new Field(
-                "Timestamp",
+                DefaultTimestampFieldTitle,
                 DefaultTopLeftX,
                 DefaultTopLeftY,
                 DefaultBottomRightX,
-                DefaultBottomRightY);
+                DefaultBottomRightY,
+                Pages.All);
+    }
+
+    internal enum Pages
+    {
+        All,
+        Odd,
+        Even,
+        First,
+        Last
     }
 }

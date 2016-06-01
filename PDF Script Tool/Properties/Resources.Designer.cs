@@ -61,6 +61,15 @@ namespace PdfScriptTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Timestamp.
+        /// </summary>
+        internal static string DefaultTimestampFieldTitle {
+            get {
+                return ResourceManager.GetString("DefaultTimestampFieldTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File failed to convert to PDF.
         /// </summary>
         internal static string FileFailedToConvertToPdfErrorMessage {
@@ -138,15 +147,6 @@ namespace PdfScriptTool.Properties {
         internal static string RootFolderName {
             get {
                 return ResourceManager.GetString("RootFolderName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  .
-        /// </summary>
-        internal static string Space {
-            get {
-                return ResourceManager.GetString("Space", resourceCulture);
             }
         }
         
