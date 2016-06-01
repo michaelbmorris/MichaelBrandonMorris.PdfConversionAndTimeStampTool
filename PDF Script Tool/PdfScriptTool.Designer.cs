@@ -43,6 +43,7 @@ namespace PdfScriptTool
             this.timeStampDefaultDay = new System.Windows.Forms.Button();
             this.timeStampDefaultMonth = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.addField = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -75,6 +76,7 @@ namespace PdfScriptTool
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.addField);
             this.tabPage2.Controls.Add(this.addScript);
             this.tabPage2.Controls.Add(this.selectTiming);
             this.tabPage2.Controls.Add(this.scriptSelector);
@@ -88,7 +90,8 @@ namespace PdfScriptTool
             // 
             // addScript
             // 
-            this.addScript.Location = new System.Drawing.Point(248, 8);
+            this.addScript.Enabled = false;
+            this.addScript.Location = new System.Drawing.Point(376, 8);
             this.addScript.Name = "addScript";
             this.addScript.Size = new System.Drawing.Size(128, 23);
             this.addScript.TabIndex = 1;
@@ -97,8 +100,9 @@ namespace PdfScriptTool
             // 
             // selectTiming
             // 
+            this.selectTiming.Enabled = false;
             this.selectTiming.FormattingEnabled = true;
-            this.selectTiming.Location = new System.Drawing.Point(128, 8);
+            this.selectTiming.Location = new System.Drawing.Point(256, 8);
             this.selectTiming.Name = "selectTiming";
             this.selectTiming.Size = new System.Drawing.Size(112, 21);
             this.selectTiming.TabIndex = 7;
@@ -106,8 +110,9 @@ namespace PdfScriptTool
             // 
             // scriptSelector
             // 
+            this.scriptSelector.Enabled = false;
             this.scriptSelector.FormattingEnabled = true;
-            this.scriptSelector.Location = new System.Drawing.Point(8, 8);
+            this.scriptSelector.Location = new System.Drawing.Point(136, 8);
             this.scriptSelector.Name = "scriptSelector";
             this.scriptSelector.Size = new System.Drawing.Size(112, 21);
             this.scriptSelector.TabIndex = 6;
@@ -166,6 +171,16 @@ namespace PdfScriptTool
             this.tabControl1.Size = new System.Drawing.Size(632, 64);
             this.tabControl1.TabIndex = 12;
             // 
+            // addField
+            // 
+            this.addField.Enabled = false;
+            this.addField.Location = new System.Drawing.Point(8, 8);
+            this.addField.Name = "addField";
+            this.addField.Size = new System.Drawing.Size(116, 23);
+            this.addField.TabIndex = 8;
+            this.addField.Text = "Add Field";
+            this.addField.UseVisualStyleBackColor = true;
+            // 
             // PdfScriptTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,6 +215,7 @@ namespace PdfScriptTool
         private System.Windows.Forms.Button timeStampDefaultMonth;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button addField;
     }
 }
 
