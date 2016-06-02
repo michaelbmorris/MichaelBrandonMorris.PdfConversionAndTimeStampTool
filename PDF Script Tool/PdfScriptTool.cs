@@ -6,325 +6,180 @@
 
 namespace PdfScriptTool
 {
-    using static Field;
-    using static Properties.Resources;
-    using static Script;
+    using System.Linq;
 
+    /// <summary>
+    /// The main application window.
+    /// </summary>
     internal partial class PdfScriptTool : System.Windows.Forms.Form,
         System.IProgress<ProgressReport>
     {
-        #region Constants
-
-        #region Booleans
-
+        /// <summary>
+        /// Whether or not files in the file view should be automatically
+        /// checked (selected).
+        /// </summary>
         private const bool FileViewFileIsChecked = true;
+
+        /// <summary>
+        /// Whether or not the open file dialog should allow selection of
+        /// multiple files.
+        /// </summary>
         private const bool OpenFileDialogAllowMultiple = true;
 
-        #endregion Booleans
+        /// <summary>
+        /// The PDF Processor that does the back end work.
+        /// </summary>
+        private PdfProcessor pdfProcessor;
 
-        #region Integers
-
-        private const int EveryOtherPage = 2;
-        private const int EveryPage = 1;
-        private const int FirstPageNumber = 1;
-        private const int SecondPageNumber = 2;
-
-        #endregion Integers
-
-        #endregion Constants
-
-        #region Folders
-
-        #region RootFolder
-
-        private static string RootPath = System.IO.Path.Combine(
-            System.Environment.GetFolderPath(
-                System.Environment.SpecialFolder.MyDocuments),
-            RootFolderName);
-
-        #endregion RootFolder
-
-        private static string OutputRootPath = System.IO.Path.Combine(
-            RootPath,
-            OutputFolderName);
-
-        private static string ProcessingPath = System.IO.Path.Combine(
-            RootPath,
-            ProcessingFolderName);
-
-        #endregion Folders
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PdfScriptTool"/>
+        /// class.
+        /// </summary>
         internal PdfScriptTool()
         {
-            InitializeComponent();
-            InitializeOpenFileDialog();
-            System.IO.Directory.CreateDirectory(RootPath);
-            System.IO.Directory.CreateDirectory(OutputRootPath);
-            System.IO.Directory.CreateDirectory(ProcessingPath);
+            this.InitializeComponent();
+            this.InitializeOpenFileDialog();
+            this.pdfProcessor = new PdfProcessor();
         }
 
+        /// <summary>
+        /// Reports the progress of the current task.
+        /// </summary>
+        /// <param name="progressReport">The progress report containing a
+        /// current count, total count, and percent.</param>
         public void Report(ProgressReport progressReport)
         {
-            if (InvokeRequired)
+            if (this.InvokeRequired)
             {
-                Invoke((System.Action)(() => Report(progressReport)));
+                this.Invoke((System.Action)(() =>
+                this.Report(progressReport)));
             }
             else
             {
-                progressBar.Value = progressReport.Percent;
+                this.progressBar.Value = progressReport.Percent;
             }
         }
 
-        private static string GetOutputPath(string inputPath)
+        /// <summary>
+        /// Performs a specified task in the backend.
+        /// </summary>
+        /// <param name="function">The task to perform.</param>
+        /// <returns>The completed task.</returns>
+        internal async System.Threading.Tasks.Task PerformTask(
+            System.Func<System.Threading.Tasks.Task> function)
         {
-            return System.IO.Path.Combine(
-                OutputRootPath,
-                System.IO.Path.GetFileName(inputPath));
+            if (fileView.CheckedItems.Count > 0)
+            {
+                this.Enabled = false;
+                try
+                {
+                    this.pdfProcessor.Files =
+                        this.fileView.CheckedItems.OfType<string>().ToList();
+                    await function();
+                }
+                catch (System.Exception e)
+                {
+                    this.ShowException(e);
+                }
+
+                this.ShowMessage(Properties.Resources.FilesSavedInMessage
+                    + PdfProcessor.OutputRootPath);
+                this.progressBar.Value = 0;
+                this.Enabled = true;
+            }
+            else
+            {
+                this.ShowMessage(Properties.Resources.NoFilesSelectedErrorMessage);
+            }
         }
 
-        #region UI Listeners
-
-        private async void convertOnly_Click(object sender, System.EventArgs e)
+        /// <summary>
+        /// Listener for the "Convert to PDF Only" button.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void ConvertOnly_Click(object sender, System.EventArgs e)
         {
-            await PerformTask(() => ProcessPdfs(null));
+            await this.PerformTask(() =>
+            this.pdfProcessor.ProcessPdfs(this));
         }
 
-        private void selectDocuments_Click(object sender, System.EventArgs e)
+        /// <summary>
+        /// Sets attributes for the open file dialog.
+        /// </summary>
+        private void InitializeOpenFileDialog()
         {
-            var dialogResult = openFileDialog.ShowDialog();
+            this.openFileDialog.Filter =
+                Properties.Resources.OpenFileDialogFilter;
+            this.openFileDialog.Multiselect =
+                OpenFileDialogAllowMultiple;
+            this.openFileDialog.Title =
+                Properties.Resources.OpenFileDialogTitle;
+        }
+
+        /// <summary>
+        /// Listener for the "Select Files" button.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private void SelectFiles_Click(object sender, System.EventArgs e)
+        {
+            var dialogResult = this.openFileDialog.ShowDialog();
             if (dialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                foreach (var file in openFileDialog.FileNames)
+                foreach (var file in this.openFileDialog.FileNames)
                 {
-                    fileView.Items.Add(file, FileViewFileIsChecked);
+                    this.fileView.Items.Add(file, FileViewFileIsChecked);
                 }
             }
         }
 
-        private async void timeStampDefaultDay_Click(object sender,
-            System.EventArgs e)
-        {
-            await PerformTask(() => ProcessPdfs(DefaultTimeStampField,
-                TimeStampOnPrintDefaultDayScript));
-        }
-
-        private async void timeStampDefaultMonth_Click(
-            object sender, System.EventArgs e)
-        {
-            await PerformTask(() => ProcessPdfs(DefaultTimeStampField,
-                TimeStampOnPrintDefaultMonthScript));
-        }
-
-        #endregion UI Listeners
-
-        #region Helpers
-
-        private void InitializeOpenFileDialog()
-        {
-            openFileDialog.Filter = OpenFileDialogFilter;
-            openFileDialog.Multiselect = OpenFileDialogAllowMultiple;
-            openFileDialog.Title = OpenFileDialogTitle;
-        }
-
-        private bool IsPdf(string filename)
-        {
-            return string.Equals(System.IO.Path.GetExtension(filename),
-                PdfFileExtension,
-                System.StringComparison.InvariantCultureIgnoreCase);
-        }
-
+        /// <summary>
+        /// Shows an exception in a message box.
+        /// </summary>
+        /// <param name="e">The exception to show.</param>
         private void ShowException(System.Exception e)
         {
-            ShowMessage(e.Message);
+            this.ShowMessage(e.Message);
         }
 
+        /// <summary>
+        /// Shows a message in a message box.
+        /// </summary>
+        /// <param name="message">The message to show.</param>
         private void ShowMessage(string message)
         {
             System.Windows.Forms.MessageBox.Show(message);
         }
 
-        #endregion Helpers
-
-        private void AddFieldToPage(Field field, int pageNumber,
-            iTextSharp.text.pdf.PdfStamper pdfStamper,
-            iTextSharp.text.pdf.PdfFormField parentField)
+        /// <summary>
+        /// Listener for the "Timestamp 24 Hours" button.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void TimeStampDefaultDay_Click(
+            object sender, System.EventArgs e)
         {
-            var textField = new iTextSharp.text.pdf.TextField(
-                pdfStamper.Writer, new iTextSharp.text.Rectangle(
-                    field.TopLeftX, field.TopLeftY, field.BottomRightX,
-                    field.BottomRightY), null);
-
-            var childField = textField.GetTextField();
-
-            parentField.AddKid(childField);
-
-            childField.PlaceInPage = pageNumber;
+            await this.PerformTask(() =>
+            this.pdfProcessor.ProcessPdfs(
+                this,
+                Field.DefaultTimeStampField,
+                Script.TimeStampOnPrintDefaultDayScript));
         }
 
-        private void AddFieldToPdf(Field field,
-            iTextSharp.text.pdf.PdfStamper pdfStamper, int numberOfPages)
+        /// <summary>
+        /// Listener for the "Timestamp 30 Days" button.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void TimeStampDefaultMonth_Click(
+            object sender, System.EventArgs e)
         {
-            var parentField = iTextSharp.text.pdf.PdfFormField.CreateTextField(
-                pdfStamper.Writer, false, false, 0);
-
-            parentField.FieldName = field.Title;
-
-            int pageNumber = field.Pages == Pages.Last ?
-                numberOfPages : FirstPageNumber;
-
-            if (field.Pages == Pages.First || field.Pages == Pages.Last)
-            {
-                AddFieldToPage(field, pageNumber, pdfStamper, parentField);
-            }
-            else
-            {
-                int increment = field.Pages == Pages.All ?
-                    EveryPage : EveryOtherPage;
-                if (field.Pages == Pages.Even)
-                {
-                    pageNumber += 1;
-                }
-                for (; pageNumber <= numberOfPages; pageNumber += increment)
-                {
-                    AddFieldToPage(field, pageNumber, pdfStamper, parentField);
-                }
-            }
-
-            pdfStamper.AddAnnotation(parentField, FirstPageNumber);
-        }
-
-        private void AddScriptToPdf(Script script,
-            iTextSharp.text.pdf.PdfStamper pdfStamper)
-        {
-            var pdfAction = iTextSharp.text.pdf.PdfAction.JavaScript(
-                script.ScriptText, pdfStamper.Writer);
-
-            iTextSharp.text.pdf.PdfName actionType = null;
-
-            switch (script.ScriptTiming)
-            {
-                case ScriptTiming.DidPrint:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .DID_PRINT;
-                    break;
-
-                case ScriptTiming.DidSave:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .DID_SAVE;
-                    break;
-
-                case ScriptTiming.WillPrint:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .WILL_PRINT;
-                    break;
-
-                case ScriptTiming.WillSave:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .WILL_SAVE;
-                    break;
-            }
-            pdfStamper.Writer.SetAdditionalAction(
-                actionType, pdfAction);
-        }
-
-        private string ConvertToPdf(string filename)
-        {
-            var pdfPath = System.IO.Path.Combine(ProcessingPath,
-                System.IO.Path.GetFileNameWithoutExtension(filename)
-                + PdfFileExtension);
-
-            var wordApplication
-                = new Microsoft.Office.Interop.Word.Application();
-
-            var wordDocument = wordApplication.Documents.Open(filename);
-            wordDocument.ExportAsFixedFormat(pdfPath,
-                Microsoft.Office.Interop.Word.WdExportFormat
-                .wdExportFormatPDF);
-            wordDocument.Close(false);
-            wordApplication.Quit();
-            return pdfPath;
-        }
-
-        private async System.Threading.Tasks.Task PerformTask(
-            System.Func<System.Threading.Tasks.Task> function)
-        {
-            if (fileView.CheckedItems.Count > 0)
-            {
-                Enabled = false;
-                try
-                {
-                    await function();
-                }
-                catch (System.Exception e)
-                {
-                    ShowException(e);
-                }
-                progressBar.Value = 0;
-                Enabled = true;
-            }
-            else
-            {
-                ShowMessage(NoFilesSelectedErrorMessage);
-            }
-        }
-
-        private void ProcessPdf(string filename, Field field, Script script)
-        {
-            using (var pdfReader = new iTextSharp.text.pdf.PdfReader(filename))
-            {
-                using (var pdfStamper = new iTextSharp.text.pdf.PdfStamper(
-                    pdfReader, new System.IO.FileStream(GetOutputPath(
-                        filename), System.IO.FileMode.Create)))
-                {
-                    if (field != null)
-                    {
-                        AddFieldToPdf(field, pdfStamper, pdfReader.NumberOfPages);
-                    }
-                    if (script != null)
-                    {
-                        AddScriptToPdf(script, pdfStamper);
-                    }
-                }
-            }
-        }
-
-        private async System.Threading.Tasks.Task ProcessPdfs(Field field)
-        {
-            await ProcessPdfs(field, null);
-        }
-
-        private async System.Threading.Tasks.Task ProcessPdfs(
-            Field field,
-            Script script)
-        {
-            await System.Threading.Tasks.Task.Run(() =>
-            {
-                for (int i = 0; i < fileView.CheckedItems.Count; i++)
-                {
-                    var currentFile = fileView.CheckedItems[i].ToString();
-                    if (!IsPdf(currentFile))
-                    {
-                        try
-                        {
-                            currentFile = ConvertToPdf(currentFile);
-                        }
-                        catch (System.Runtime.InteropServices.COMException)
-                        {
-                            ShowMessage(FileFailedToConvertToPdfErrorMessage
-                                + DefaultTimestampFieldTitle + currentFile);
-                            continue;
-                        }
-                    }
-                    ProcessPdf(currentFile, field, script);
-                    Report(new ProgressReport
-                    {
-                        Total = fileView.CheckedItems.Count,
-                        CurrentCount = i + 1
-                    });
-                }
-            });
-            ShowMessage(FilesSavedInMessage + DefaultTimestampFieldTitle
-                + OutputRootPath);
+            await this.PerformTask(() =>
+            this.pdfProcessor.ProcessPdfs(
+                this,
+                Field.DefaultTimeStampField,
+                Script.TimeStampOnPrintDefaultMonthScript));
         }
     }
 }

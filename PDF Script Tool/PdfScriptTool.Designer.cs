@@ -29,35 +29,35 @@ namespace PdfScriptTool
         /// </summary>
         private void InitializeComponent()
         {
-            this.selectDocuments = new System.Windows.Forms.Button();
+            this.buttonSelectFiles = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.fileView = new System.Windows.Forms.CheckedListBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.openCustomScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.addField = new System.Windows.Forms.Button();
             this.addScript = new System.Windows.Forms.Button();
             this.selectTiming = new System.Windows.Forms.ComboBox();
             this.scriptSelector = new System.Windows.Forms.ComboBox();
             this.convertOnly = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.timeStampDefaultDay = new System.Windows.Forms.Button();
+            this.buttonTimeStampDefaultDay = new System.Windows.Forms.Button();
             this.timeStampDefaultMonth = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.addField = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // selectDocuments
+            // buttonSelectFiles
             // 
-            this.selectDocuments.Location = new System.Drawing.Point(8, 0);
-            this.selectDocuments.Name = "selectDocuments";
-            this.selectDocuments.Size = new System.Drawing.Size(128, 64);
-            this.selectDocuments.TabIndex = 0;
-            this.selectDocuments.Text = "Select Documents...";
-            this.selectDocuments.UseVisualStyleBackColor = true;
-            this.selectDocuments.Click += new System.EventHandler(this.selectDocuments_Click);
+            this.buttonSelectFiles.Location = new System.Drawing.Point(8, 0);
+            this.buttonSelectFiles.Name = "buttonSelectFiles";
+            this.buttonSelectFiles.Size = new System.Drawing.Size(128, 64);
+            this.buttonSelectFiles.TabIndex = 0;
+            this.buttonSelectFiles.Text = "Select Files";
+            this.buttonSelectFiles.UseVisualStyleBackColor = true;
+            this.buttonSelectFiles.Click += new System.EventHandler(this.SelectFiles_Click);
             // 
             // fileView
             // 
@@ -87,6 +87,16 @@ namespace PdfScriptTool
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Advanced";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // addField
+            // 
+            this.addField.Enabled = false;
+            this.addField.Location = new System.Drawing.Point(8, 8);
+            this.addField.Name = "addField";
+            this.addField.Size = new System.Drawing.Size(116, 23);
+            this.addField.TabIndex = 8;
+            this.addField.Text = "Add Field";
+            this.addField.UseVisualStyleBackColor = true;
             // 
             // addScript
             // 
@@ -126,12 +136,12 @@ namespace PdfScriptTool
             this.convertOnly.TabIndex = 10;
             this.convertOnly.Text = "Convert to PDF Only";
             this.convertOnly.UseVisualStyleBackColor = true;
-            this.convertOnly.Click += new System.EventHandler(this.convertOnly_Click);
+            this.convertOnly.Click += new System.EventHandler(this.ConvertOnly_Click);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.convertOnly);
-            this.tabPage1.Controls.Add(this.timeStampDefaultDay);
+            this.tabPage1.Controls.Add(this.buttonTimeStampDefaultDay);
             this.tabPage1.Controls.Add(this.timeStampDefaultMonth);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -141,15 +151,15 @@ namespace PdfScriptTool
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // timeStampDefaultDay
+            // buttonTimeStampDefaultDay
             // 
-            this.timeStampDefaultDay.Location = new System.Drawing.Point(8, 8);
-            this.timeStampDefaultDay.Name = "timeStampDefaultDay";
-            this.timeStampDefaultDay.Size = new System.Drawing.Size(128, 23);
-            this.timeStampDefaultDay.TabIndex = 8;
-            this.timeStampDefaultDay.Text = "Time Stamp 24 Hours";
-            this.timeStampDefaultDay.UseVisualStyleBackColor = true;
-            this.timeStampDefaultDay.Click += new System.EventHandler(this.timeStampDefaultDay_Click);
+            this.buttonTimeStampDefaultDay.Location = new System.Drawing.Point(8, 8);
+            this.buttonTimeStampDefaultDay.Name = "buttonTimeStampDefaultDay";
+            this.buttonTimeStampDefaultDay.Size = new System.Drawing.Size(128, 23);
+            this.buttonTimeStampDefaultDay.TabIndex = 8;
+            this.buttonTimeStampDefaultDay.Text = "Time Stamp 24 Hours";
+            this.buttonTimeStampDefaultDay.UseVisualStyleBackColor = true;
+            this.buttonTimeStampDefaultDay.Click += new System.EventHandler(this.TimeStampDefaultDay_Click);
             // 
             // timeStampDefaultMonth
             // 
@@ -159,7 +169,7 @@ namespace PdfScriptTool
             this.timeStampDefaultMonth.TabIndex = 10;
             this.timeStampDefaultMonth.Text = "Time Stamp 30 Days";
             this.timeStampDefaultMonth.UseVisualStyleBackColor = true;
-            this.timeStampDefaultMonth.Click += new System.EventHandler(this.timeStampDefaultMonth_Click);
+            this.timeStampDefaultMonth.Click += new System.EventHandler(this.TimeStampDefaultMonth_Click);
             // 
             // tabControl1
             // 
@@ -171,23 +181,13 @@ namespace PdfScriptTool
             this.tabControl1.Size = new System.Drawing.Size(632, 64);
             this.tabControl1.TabIndex = 12;
             // 
-            // addField
-            // 
-            this.addField.Enabled = false;
-            this.addField.Location = new System.Drawing.Point(8, 8);
-            this.addField.Name = "addField";
-            this.addField.Size = new System.Drawing.Size(116, 23);
-            this.addField.TabIndex = 8;
-            this.addField.Text = "Add Field";
-            this.addField.UseVisualStyleBackColor = true;
-            // 
             // PdfScriptTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 412);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.selectDocuments);
+            this.Controls.Add(this.buttonSelectFiles);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.fileView);
             this.Name = "PdfScriptTool";
@@ -201,7 +201,7 @@ namespace PdfScriptTool
 
         #endregion
 
-        private System.Windows.Forms.Button selectDocuments;
+        private System.Windows.Forms.Button buttonSelectFiles;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.CheckedListBox fileView;
         private System.Windows.Forms.OpenFileDialog openCustomScriptDialog;
@@ -211,7 +211,7 @@ namespace PdfScriptTool
         private System.Windows.Forms.ComboBox selectTiming;
         private System.Windows.Forms.ComboBox scriptSelector;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button timeStampDefaultDay;
+        private System.Windows.Forms.Button buttonTimeStampDefaultDay;
         private System.Windows.Forms.Button timeStampDefaultMonth;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ProgressBar progressBar;
