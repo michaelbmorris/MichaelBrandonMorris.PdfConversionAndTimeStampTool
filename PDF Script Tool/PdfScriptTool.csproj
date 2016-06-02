@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>P:\IT COOP 2016\PDFScriptTool\</PublishUrl>
+    <PublishUrl>P:\ITCOOP2016\PDFScriptTool\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,8 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\kng1fsmf01\public\IT COOP 2016\PDFScriptTool\</InstallUrl>
-    <ApplicationRevision>3</ApplicationRevision>
+    <InstallUrl>\\kng1fsmf01\public\ITCOOP2016\PDFScriptTool\</InstallUrl>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

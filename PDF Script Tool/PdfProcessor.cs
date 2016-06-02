@@ -106,7 +106,7 @@ namespace PdfScriptTool
         {
             await System.Threading.Tasks.Task.Run(() =>
             {
-                for (int i = 0; i < Files.Count; i++)
+                for (int i = 0; i < this.Files.Count; i++)
                 {
                     var currentFile = Files[i].ToString();
                     if (!IsPdf(currentFile))
@@ -117,6 +117,10 @@ namespace PdfScriptTool
                     if (field != null || script != null)
                     {
                         ProcessPdf(currentFile, field, script);
+                    }
+                    else
+                    {
+                        MovePdfToOutput(currentFile);
                     }
 
                     progress.Report(new ProgressReport
@@ -129,18 +133,6 @@ namespace PdfScriptTool
         }
 
         /// <summary>
-        /// Gets the output path for a specified input file.
-        /// </summary>
-        /// <param name="inputPath">The input file path.</param>
-        /// <returns>The output path for the file.</returns>
-        private static string GetOutputPath(string inputPath)
-        {
-            return System.IO.Path.Combine(
-                OutputRootPath,
-                System.IO.Path.GetFileName(inputPath));
-        }
-
-        /// <summary>
         /// Adds a field to a page of a PDF document.
         /// </summary>
         /// <param name="field">The field to add.</param>
@@ -149,7 +141,7 @@ namespace PdfScriptTool
         /// </param>
         /// <param name="pdfStamper">The PDF stamper for the document.</param>
         /// <param name="parentField">The parent field.</param>
-        private void AddFieldToPage(
+        private static void AddFieldToPage(
             Field field,
             int pageNumber,
             iTextSharp.text.pdf.PdfStamper pdfStamper,
@@ -179,7 +171,7 @@ namespace PdfScriptTool
         /// <param name="numberOfPages">
         /// The number of pages in the document.
         /// </param>
-        private void AddFieldToPdf(
+        private static void AddFieldToPdf(
             Field field,
             iTextSharp.text.pdf.PdfStamper pdfStamper,
             int numberOfPages)
@@ -194,7 +186,7 @@ namespace PdfScriptTool
 
             if (field.Pages == Pages.First || field.Pages == Pages.Last)
             {
-                this.AddFieldToPage(
+                AddFieldToPage(
                     field,
                     pageNumber,
                     pdfStamper,
@@ -211,7 +203,7 @@ namespace PdfScriptTool
 
                 for (; pageNumber <= numberOfPages; pageNumber += increment)
                 {
-                    this.AddFieldToPage(
+                    AddFieldToPage(
                         field,
                         pageNumber,
                         pdfStamper,
@@ -227,7 +219,7 @@ namespace PdfScriptTool
         /// </summary>
         /// <param name="script">The script to add.</param>
         /// <param name="pdfStamper">The PDF stamper for the document.</param>
-        private void AddScriptToPdf(
+        private static void AddScriptToPdf(
             Script script, iTextSharp.text.pdf.PdfStamper pdfStamper)
         {
             var pdfAction = iTextSharp.text.pdf.PdfAction.JavaScript(
@@ -267,7 +259,7 @@ namespace PdfScriptTool
         /// </summary>
         /// <param name="filename">The path of the file to convert.</param>
         /// <returns>The path of the converted PDF document.</returns>
-        private string ConvertToPdf(string filename)
+        private static string ConvertToPdf(string filename)
         {
             var outputFilename =
                 System.IO.Path.GetFileNameWithoutExtension(filename)
@@ -289,11 +281,23 @@ namespace PdfScriptTool
         }
 
         /// <summary>
+        /// Gets the output path for a specified input file.
+        /// </summary>
+        /// <param name="inputPath">The input file path.</param>
+        /// <returns>The output path for the file.</returns>
+        private static string GetOutputPath(string inputPath)
+        {
+            return System.IO.Path.Combine(
+                OutputRootPath,
+                System.IO.Path.GetFileName(inputPath));
+        }
+
+        /// <summary>
         /// Checks if a file is a PDF document.
         /// </summary>
         /// <param name="filename">The path of the file to check.</param>
         /// <returns>Whether or not the file is a PDF document.</returns>
-        private bool IsPdf(string filename)
+        private static bool IsPdf(string filename)
         {
             return string.Equals(
                 System.IO.Path.GetExtension(filename),
@@ -302,12 +306,21 @@ namespace PdfScriptTool
         }
 
         /// <summary>
+        /// Moves a PDF file to the output folder.
+        /// </summary>
+        /// <param name="filename">The PDF file to move.</param>
+        private static void MovePdfToOutput(string filename)
+        {
+            System.IO.File.Move(filename, GetOutputPath(filename));
+        }
+
+        /// <summary>
         /// Adds features to a PDF document.
         /// </summary>
         /// <param name="filename">The path of the PDF document.</param>
         /// <param name="field">The field to add.</param>
         /// <param name="script">The script to add.</param>
-        private void ProcessPdf(string filename, Field field, Script script)
+        private static void ProcessPdf(string filename, Field field, Script script)
         {
             using (var pdfReader = new iTextSharp.text.pdf.PdfReader(filename))
             {
@@ -319,7 +332,7 @@ namespace PdfScriptTool
                 {
                     if (field != null)
                     {
-                        this.AddFieldToPdf(
+                        AddFieldToPdf(
                             field,
                             pdfStamper,
                             pdfReader.NumberOfPages);
@@ -327,7 +340,7 @@ namespace PdfScriptTool
 
                     if (script != null)
                     {
-                        this.AddScriptToPdf(script, pdfStamper);
+                        AddScriptToPdf(script, pdfStamper);
                     }
                 }
             }
