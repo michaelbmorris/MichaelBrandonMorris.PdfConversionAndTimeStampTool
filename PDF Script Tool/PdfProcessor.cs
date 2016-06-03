@@ -6,6 +6,29 @@
 
 namespace PdfScriptTool
 {
+    using Application = Microsoft.Office.Interop.Word.Application;
+    using Directory = System.IO.Directory;
+    using Environment = System.Environment;
+    using File = System.IO.File;
+    using FileMode = System.IO.FileMode;
+    using FileStream = System.IO.FileStream;
+    using IProgress = System.IProgress<ProgressReport>;
+    using List = System.Collections.Generic.List<string>;
+    using Path = System.IO.Path;
+    using PdfAction = iTextSharp.text.pdf.PdfAction;
+    using PdfFormField = iTextSharp.text.pdf.PdfFormField;
+    using PdfName = iTextSharp.text.pdf.PdfName;
+    using PdfReader = iTextSharp.text.pdf.PdfReader;
+    using PdfStamper = iTextSharp.text.pdf.PdfStamper;
+    using PdfWriter = iTextSharp.text.pdf.PdfWriter;
+    using Rectangle = iTextSharp.text.Rectangle;
+    using Resources = Properties.Resources;
+    using SpecialFolder = System.Environment.SpecialFolder;
+    using StringComparison = System.StringComparison;
+    using Task = System.Threading.Tasks.Task;
+    using TextField = iTextSharp.text.pdf.TextField;
+    using WdExportFormat = Microsoft.Office.Interop.Word.WdExportFormat;
+
     /// <summary>
     /// The back end of the PDF Script Tool.
     /// </summary>
@@ -36,9 +59,9 @@ namespace PdfScriptTool
         /// </summary>
         internal PdfProcessor()
         {
-            System.IO.Directory.CreateDirectory(RootPath);
-            System.IO.Directory.CreateDirectory(OutputRootPath);
-            System.IO.Directory.CreateDirectory(ProcessingPath);
+            Directory.CreateDirectory(RootPath);
+            Directory.CreateDirectory(OutputRootPath);
+            Directory.CreateDirectory(ProcessingPath);
         }
 
         /// <summary>
@@ -49,8 +72,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return System.IO.Path.Combine(
-                    RootPath, Properties.Resources.OutputFolderName);
+                return Path.Combine(RootPath, Resources.OutputFolderName);
             }
         }
 
@@ -62,8 +84,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return System.IO.Path.Combine(
-                    RootPath, Properties.Resources.ProcessingFolderName);
+                return Path.Combine(RootPath, Resources.ProcessingFolderName);
             }
         }
 
@@ -75,20 +96,16 @@ namespace PdfScriptTool
         {
             get
             {
-                return System.IO.Path.Combine(
-                    System.Environment.GetFolderPath(
-                        System.Environment.SpecialFolder.MyDocuments),
-                    Properties.Resources.RootFolderName);
+                return Path.Combine(
+                    Environment.GetFolderPath(SpecialFolder.MyDocuments),
+                    Resources.RootFolderName);
             }
         }
 
         /// <summary>
         /// Gets or sets the list of files (paths) to be processed.
         /// </summary>
-        internal System.Collections.Generic.List<string> Files
-        {
-            get; set;
-        }
+        internal List Files { get; set; }
 
         /// <summary>
         /// Adds a field and a script to the currently selected files.
@@ -99,16 +116,14 @@ namespace PdfScriptTool
         /// <param name="field"> The field to be added to the files.</param>
         /// <param name="script">The script to be added to the files.</param>
         /// <returns>The completed task.</returns>
-        internal async System.Threading.Tasks.Task ProcessPdfs(
-            System.IProgress<ProgressReport> progress,
-            Field field = null,
-            Script script = null)
+        internal async Task ProcessPdfs(
+            IProgress progress, Field field = null, Script script = null)
         {
-            await System.Threading.Tasks.Task.Run(() =>
+            await Task.Run(() =>
             {
-                for (int i = 0; i < this.Files.Count; i++)
+                for (int i = 0; i < Files.Count; i++)
                 {
-                    var currentFile = Files[i].ToString();
+                    var currentFile = Files[i];
                     if (!IsPdf(currentFile))
                     {
                         currentFile = ConvertToPdf(currentFile);
@@ -144,22 +159,19 @@ namespace PdfScriptTool
         private static void AddFieldToPage(
             Field field,
             int pageNumber,
-            iTextSharp.text.pdf.PdfStamper pdfStamper,
-            iTextSharp.text.pdf.PdfFormField parentField)
+            PdfStamper pdfStamper,
+            PdfFormField parentField)
         {
-            var textField = new iTextSharp.text.pdf.TextField(
+            var textField = new TextField(
                 pdfStamper.Writer,
-                new iTextSharp.text.Rectangle(
+                new Rectangle(
                     field.TopLeftX,
                     field.TopLeftY,
                     field.BottomRightX,
                     field.BottomRightY),
                 null);
-
             var childField = textField.GetTextField();
-
             parentField.AddKid(childField);
-
             childField.PlaceInPage = pageNumber;
         }
 
@@ -172,18 +184,13 @@ namespace PdfScriptTool
         /// The number of pages in the document.
         /// </param>
         private static void AddFieldToPdf(
-            Field field,
-            iTextSharp.text.pdf.PdfStamper pdfStamper,
-            int numberOfPages)
+            Field field, PdfStamper pdfStamper, int numberOfPages)
         {
-            var parentField = iTextSharp.text.pdf.PdfFormField.CreateTextField(
+            var parentField = PdfFormField.CreateTextField(
                 pdfStamper.Writer, false, false, 0);
-
             parentField.FieldName = field.Title;
-
             int pageNumber = field.Pages == Pages.Last ?
                 numberOfPages : FirstPageNumber;
-
             if (field.Pages == Pages.First || field.Pages == Pages.Last)
             {
                 AddFieldToPage(
@@ -220,33 +227,27 @@ namespace PdfScriptTool
         /// <param name="script">The script to add.</param>
         /// <param name="pdfStamper">The PDF stamper for the document.</param>
         private static void AddScriptToPdf(
-            Script script, iTextSharp.text.pdf.PdfStamper pdfStamper)
+            Script script, PdfStamper pdfStamper)
         {
-            var pdfAction = iTextSharp.text.pdf.PdfAction.JavaScript(
+            var pdfAction = PdfAction.JavaScript(
                 script.ScriptText, pdfStamper.Writer);
-
-            iTextSharp.text.pdf.PdfName actionType = null;
-
+            PdfName actionType = null;
             switch (script.ScriptEvent)
             {
                 case ScriptEvent.DidPrint:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .DID_PRINT;
+                    actionType = PdfWriter.DID_PRINT;
                     break;
 
                 case ScriptEvent.DidSave:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .DID_SAVE;
+                    actionType = PdfWriter.DID_SAVE;
                     break;
 
                 case ScriptEvent.WillPrint:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .WILL_PRINT;
+                    actionType = PdfWriter.WILL_PRINT;
                     break;
 
                 case ScriptEvent.WillSave:
-                    actionType = iTextSharp.text.pdf.PdfWriter
-                            .WILL_SAVE;
+                    actionType = PdfWriter.WILL_SAVE;
                     break;
             }
 
@@ -261,20 +262,13 @@ namespace PdfScriptTool
         /// <returns>The path of the converted PDF document.</returns>
         private static string ConvertToPdf(string filename)
         {
-            var outputFilename =
-                System.IO.Path.GetFileNameWithoutExtension(filename)
-                + Properties.Resources.PdfFileExtension;
-            var outputPath = System.IO.Path.Combine(
-                ProcessingPath,
-                outputFilename);
-            var wordApplication
-                = new Microsoft.Office.Interop.Word.Application();
+            var outputFilename = Path.GetFileNameWithoutExtension(filename)
+                + Resources.PdfFileExtension;
+            var outputPath = Path.Combine(ProcessingPath, outputFilename);
+            var wordApplication = new Application();
             var wordDocument = wordApplication.Documents.Open(filename);
-            var exportFormat =
-                Microsoft.Office.Interop.Word.WdExportFormat.wdExportFormatPDF;
-            wordDocument.ExportAsFixedFormat(
-                outputPath,
-                exportFormat);
+            var exportFormat = WdExportFormat.wdExportFormatPDF;
+            wordDocument.ExportAsFixedFormat(outputPath, exportFormat);
             wordDocument.Close(false);
             wordApplication.Quit();
             return outputPath;
@@ -287,9 +281,7 @@ namespace PdfScriptTool
         /// <returns>The output path for the file.</returns>
         private static string GetOutputPath(string inputPath)
         {
-            return System.IO.Path.Combine(
-                OutputRootPath,
-                System.IO.Path.GetFileName(inputPath));
+            return Path.Combine(OutputRootPath, Path.GetFileName(inputPath));
         }
 
         /// <summary>
@@ -300,9 +292,9 @@ namespace PdfScriptTool
         private static bool IsPdf(string filename)
         {
             return string.Equals(
-                System.IO.Path.GetExtension(filename),
-                Properties.Resources.PdfFileExtension,
-                System.StringComparison.InvariantCultureIgnoreCase);
+                Path.GetExtension(filename),
+                Resources.PdfFileExtension,
+                StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>
@@ -311,7 +303,7 @@ namespace PdfScriptTool
         /// <param name="filename">The PDF file to move.</param>
         private static void MovePdfToOutput(string filename)
         {
-            System.IO.File.Move(filename, GetOutputPath(filename));
+            File.Move(filename, GetOutputPath(filename));
         }
 
         /// <summary>
@@ -320,15 +312,14 @@ namespace PdfScriptTool
         /// <param name="filename">The path of the PDF document.</param>
         /// <param name="field">The field to add.</param>
         /// <param name="script">The script to add.</param>
-        private static void ProcessPdf(string filename, Field field, Script script)
+        private static void ProcessPdf(
+            string filename, Field field, Script script)
         {
-            using (var pdfReader = new iTextSharp.text.pdf.PdfReader(filename))
+            using (var pdfReader = new PdfReader(filename))
             {
-                using (var pdfStamper = new iTextSharp.text.pdf.PdfStamper(
+                using (var pdfStamper = new PdfStamper(
                     pdfReader,
-                    new System.IO.FileStream(
-                        GetOutputPath(filename),
-                        System.IO.FileMode.Create)))
+                    new FileStream(GetOutputPath(filename), FileMode.Create)))
                 {
                     if (field != null)
                     {

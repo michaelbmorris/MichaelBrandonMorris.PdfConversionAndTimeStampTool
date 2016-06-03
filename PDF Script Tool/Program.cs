@@ -2,15 +2,15 @@
 
 namespace PdfScriptTool
 {
+    using Application = System.Windows.Forms.Application;
     internal static class Program
     {
         [System.STAThread]
         private static void Main()
         {
-            System.Windows.Forms.Application.EnableVisualStyles();
-            System.Windows.Forms.Application
-                .SetCompatibleTextRenderingDefault(false);
-            System.Windows.Forms.Application.Run(new PdfScriptTool());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new PdfScriptTool());
         }
     }
 }

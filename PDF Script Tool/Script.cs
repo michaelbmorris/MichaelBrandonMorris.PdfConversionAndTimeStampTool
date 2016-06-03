@@ -59,8 +59,8 @@ namespace PdfScriptTool
         /// the script.</param>
         internal Script(string scriptText, ScriptEvent scriptEvent)
         {
-            this.ScriptText = scriptText;
-            this.ScriptEvent = scriptEvent;
+            ScriptText = scriptText;
+            ScriptEvent = scriptEvent;
         }
 
         /// <summary>

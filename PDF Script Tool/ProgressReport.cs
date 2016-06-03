@@ -28,7 +28,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return PercentMultiplier * this.CurrentCount / this.Total;
+                return PercentMultiplier * CurrentCount / Total;
             }
         }
 

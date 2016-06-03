@@ -7,12 +7,21 @@
 namespace PdfScriptTool
 {
     using System.Linq;
+    using Action = System.Action;
+    using DialogResult = System.Windows.Forms.DialogResult;
+    using EventArgs = System.EventArgs;
+    using Exception = System.Exception;
+    using Form = System.Windows.Forms.Form;
+    using Func = System.Func<System.Threading.Tasks.Task>;
+    using IProgress = System.IProgress<ProgressReport>;
+    using MessageBox = System.Windows.Forms.MessageBox;
+    using Resources = Properties.Resources;
+    using Task = System.Threading.Tasks.Task;
 
     /// <summary>
     /// The main application window.
     /// </summary>
-    internal partial class PdfScriptTool : System.Windows.Forms.Form,
-        System.IProgress<ProgressReport>
+    internal partial class PdfScriptTool : Form, IProgress
     {
         /// <summary>
         /// Whether or not files in the file view should be automatically
@@ -37,9 +46,9 @@ namespace PdfScriptTool
         /// </summary>
         internal PdfScriptTool()
         {
-            this.InitializeComponent();
-            this.InitializeOpenFileDialog();
-            this.pdfProcessor = new PdfProcessor();
+            InitializeComponent();
+            InitializeOpenFileDialog();
+            pdfProcessor = new PdfProcessor();
         }
 
         /// <summary>
@@ -49,14 +58,13 @@ namespace PdfScriptTool
         /// current count, total count, and percent.</param>
         public void Report(ProgressReport progressReport)
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke((System.Action)(() =>
-                this.Report(progressReport)));
+                Invoke((Action)(() => Report(progressReport)));
             }
             else
             {
-                this.progressBar.Value = progressReport.Percent;
+                progressBar.Value = progressReport.Percent;
             }
         }
 
@@ -65,72 +73,30 @@ namespace PdfScriptTool
         /// </summary>
         /// <param name="function">The task to perform.</param>
         /// <returns>The completed task.</returns>
-        internal async System.Threading.Tasks.Task PerformTask(
-            System.Func<System.Threading.Tasks.Task> function)
+        internal async Task PerformTask(Func function)
         {
             if (fileView.CheckedItems.Count > 0)
             {
-                this.Enabled = false;
+                Enabled = false;
                 try
                 {
-                    this.pdfProcessor.Files =
-                        this.fileView.CheckedItems.OfType<string>().ToList();
+                    pdfProcessor.Files =
+                        fileView.CheckedItems.OfType<string>().ToList();
                     await function();
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
-                    this.ShowException(e);
+                    ShowException(e);
                 }
 
-                this.ShowMessage(Properties.Resources.FilesSavedInMessage
-                    + PdfProcessor.OutputRootPath);
-                this.progressBar.Value = 0;
-                this.Enabled = true;
+                ShowMessage(Resources.FilesSavedInMessage +
+                    PdfProcessor.OutputRootPath);
+                progressBar.Value = 0;
+                Enabled = true;
             }
             else
             {
-                this.ShowMessage(Properties.Resources.NoFilesSelectedErrorMessage);
-            }
-        }
-
-        /// <summary>
-        /// Listener for the "Convert to PDF Only" button.
-        /// </summary>
-        /// <param name="sender">The object that triggered the event.</param>
-        /// <param name="e">The event arguments.</param>
-        private async void ConvertOnly_Click(object sender, System.EventArgs e)
-        {
-            await this.PerformTask(() =>
-            this.pdfProcessor.ProcessPdfs(this));
-        }
-
-        /// <summary>
-        /// Sets attributes for the open file dialog.
-        /// </summary>
-        private void InitializeOpenFileDialog()
-        {
-            this.openFileDialog.Filter =
-                Properties.Resources.OpenFileDialogFilter;
-            this.openFileDialog.Multiselect =
-                OpenFileDialogAllowMultiple;
-            this.openFileDialog.Title =
-                Properties.Resources.OpenFileDialogTitle;
-        }
-
-        /// <summary>
-        /// Listener for the "Select Files" button.
-        /// </summary>
-        /// <param name="sender">The object that triggered the event.</param>
-        /// <param name="e">The event arguments.</param>
-        private void SelectFiles_Click(object sender, System.EventArgs e)
-        {
-            var dialogResult = this.openFileDialog.ShowDialog();
-            if (dialogResult == System.Windows.Forms.DialogResult.OK)
-            {
-                foreach (var file in this.openFileDialog.FileNames)
-                {
-                    this.fileView.Items.Add(file, FileViewFileIsChecked);
-                }
+                ShowMessage(Resources.NoFilesSelectedErrorMessage);
             }
         }
 
@@ -138,18 +104,57 @@ namespace PdfScriptTool
         /// Shows an exception in a message box.
         /// </summary>
         /// <param name="e">The exception to show.</param>
-        private void ShowException(System.Exception e)
+        private static void ShowException(Exception e)
         {
-            this.ShowMessage(e.Message);
+            ShowMessage(e.Message);
         }
 
         /// <summary>
         /// Shows a message in a message box.
         /// </summary>
         /// <param name="message">The message to show.</param>
-        private void ShowMessage(string message)
+        private static void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message);
+            MessageBox.Show(message);
+        }
+
+        /// <summary>
+        /// Listener for the "Convert to PDF Only" button.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void ConvertOnly_Click(object sender, EventArgs e)
+        {
+            await PerformTask(() => pdfProcessor.ProcessPdfs(this));
+        }
+
+        /// <summary>
+        /// Sets attributes for the open file dialog.
+        /// </summary>
+        private void InitializeOpenFileDialog()
+        {
+            openFileDialog.Filter = Resources.OpenFileDialogFilter;
+            openFileDialog.Multiselect = OpenFileDialogAllowMultiple;
+            openFileDialog.Title = Resources.OpenFileDialogTitle;
+        }
+
+        /// <summary>
+        /// Listener for the "Select Files" button. Shows the select files
+        /// dialog and adds all selected files to the files view, locking each
+        /// file to prevent editing until released.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event.</param>
+        /// <param name="e">The event arguments.</param>
+        private void SelectFiles_Click(object sender, EventArgs e)
+        {
+            var dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                foreach (var filename in openFileDialog.FileNames)
+                {
+                    fileView.Items.Add(filename, FileViewFileIsChecked);
+                }
+            }
         }
 
         /// <summary>
@@ -158,10 +163,9 @@ namespace PdfScriptTool
         /// <param name="sender">The object that triggered the event.</param>
         /// <param name="e">The event arguments.</param>
         private async void TimeStampDefaultDay_Click(
-            object sender, System.EventArgs e)
+            object sender, EventArgs e)
         {
-            await this.PerformTask(() =>
-            this.pdfProcessor.ProcessPdfs(
+            await PerformTask(() => pdfProcessor.ProcessPdfs(
                 this,
                 Field.DefaultTimeStampField,
                 Script.TimeStampOnPrintDefaultDayScript));
@@ -173,10 +177,9 @@ namespace PdfScriptTool
         /// <param name="sender">The object that triggered the event.</param>
         /// <param name="e">The event arguments.</param>
         private async void TimeStampDefaultMonth_Click(
-            object sender, System.EventArgs e)
+            object sender, EventArgs e)
         {
-            await this.PerformTask(() =>
-            this.pdfProcessor.ProcessPdfs(
+            await PerformTask(() => pdfProcessor.ProcessPdfs(
                 this,
                 Field.DefaultTimeStampField,
                 Script.TimeStampOnPrintDefaultMonthScript));

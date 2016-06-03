@@ -134,13 +134,13 @@ namespace PdfScriptTool
             int bottomRightY,
             Pages pages)
         {
-            this.Title = title;
-            this.coordinates = new int[4];
-            this.coordinates[0] = topLeftX;
-            this.coordinates[1] = topLeftY;
-            this.coordinates[2] = bottomRightX;
-            this.coordinates[3] = bottomRightY;
-            this.Pages = pages;
+            Title = title;
+            coordinates = new int[4];
+            coordinates[0] = topLeftX;
+            coordinates[1] = topLeftY;
+            coordinates[2] = bottomRightX;
+            coordinates[3] = bottomRightY;
+            Pages = pages;
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return this.coordinates[2];
+                return coordinates[2];
             }
         }
 
@@ -161,7 +161,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return this.coordinates[3];
+                return coordinates[3];
             }
         }
 
@@ -182,7 +182,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return this.coordinates[0];
+                return coordinates[0];
             }
         }
 
@@ -193,7 +193,7 @@ namespace PdfScriptTool
         {
             get
             {
-                return this.coordinates[1];
+                return coordinates[1];
             }
         }
     }
