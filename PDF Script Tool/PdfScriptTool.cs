@@ -14,8 +14,11 @@ namespace PdfScriptTool
     using Form = System.Windows.Forms.Form;
     using Func = System.Func<System.Threading.Tasks.Task>;
     using IProgress = System.IProgress<ProgressReport>;
+    using ListString = System.Collections.Generic.List<string>;
     using MessageBox = System.Windows.Forms.MessageBox;
+    using Path = System.IO.Path;
     using Resources = Properties.Resources;
+    using StringComparison = System.StringComparison;
     using Task = System.Threading.Tasks.Task;
 
     /// <summary>
@@ -90,7 +93,9 @@ namespace PdfScriptTool
                 }
 
                 ShowMessage(Resources.FilesSavedInMessage +
-                    PdfProcessor.OutputRootPath);
+                    PdfProcessor.OutputPath);
+                PdfProcessor.ClearProcessing();
+                fileView.Items.Clear();
                 progressBar.Value = 0;
                 Enabled = true;
             }
@@ -125,7 +130,42 @@ namespace PdfScriptTool
         /// <param name="e">The event arguments.</param>
         private async void ConvertOnly_Click(object sender, EventArgs e)
         {
-            await PerformTask(() => pdfProcessor.ProcessPdfs(this));
+            await PerformTask(() => pdfProcessor.ProcessFiles(this));
+        }
+
+        /// <summary>
+        /// Checks whether or not a file was already selected.
+        /// </summary>
+        /// <param name="filename">The file to check.</param>
+        /// <param name="selectedFilenames">The selected filenames.</param>
+        /// <param name="filenameWithoutExtensionReturn">
+        /// The filename without an extension, passed back if a duplicate was 
+        /// found.
+        /// </param>
+        /// <returns>Whether or not the file was already selected.</returns>
+        private bool FileIsAlreadySelected(
+                    string filename,
+                    ListString selectedFilenames,
+                    out string filenameWithoutExtensionReturn)
+        {
+            filenameWithoutExtensionReturn = null;
+            foreach (var selectedFilename in selectedFilenames)
+            {
+                var filenameWithoutExtension =
+                    Path.GetFileNameWithoutExtension(filename);
+                var selectedFilenameWithoutExtension =
+                    Path.GetFileNameWithoutExtension(selectedFilename);
+                if (string.Equals(
+                    filenameWithoutExtension,
+                    selectedFilenameWithoutExtension,
+                    StringComparison.InvariantCultureIgnoreCase))
+                {
+                    filenameWithoutExtensionReturn = filenameWithoutExtension;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -152,7 +192,22 @@ namespace PdfScriptTool
             {
                 foreach (var filename in openFileDialog.FileNames)
                 {
-                    fileView.Items.Add(filename, FileViewFileIsChecked);
+                    string filenameWithoutExtension;
+                    if (FileIsAlreadySelected(
+                        filename,
+                        fileView.CheckedItems.OfType<string>().ToList(),
+                        out filenameWithoutExtension))
+                    {
+                        ShowMessage("A file with the name \"" +
+                                filenameWithoutExtension +
+                                "\" is already selected.");
+                    }
+                    else
+                    {
+                        fileView.Items.Add(
+                            PdfProcessor.CopyFileToProcessing(filename),
+                            FileViewFileIsChecked);
+                    }
                 }
             }
         }
@@ -165,7 +220,7 @@ namespace PdfScriptTool
         private async void TimeStampDefaultDay_Click(
             object sender, EventArgs e)
         {
-            await PerformTask(() => pdfProcessor.ProcessPdfs(
+            await PerformTask(() => pdfProcessor.ProcessFiles(
                 this,
                 Field.DefaultTimeStampField,
                 Script.TimeStampOnPrintDefaultDayScript));
@@ -179,7 +234,7 @@ namespace PdfScriptTool
         private async void TimeStampDefaultMonth_Click(
             object sender, EventArgs e)
         {
-            await PerformTask(() => pdfProcessor.ProcessPdfs(
+            await PerformTask(() => pdfProcessor.ProcessFiles(
                 this,
                 Field.DefaultTimeStampField,
                 Script.TimeStampOnPrintDefaultMonthScript));

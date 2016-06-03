@@ -142,7 +142,7 @@ namespace PdfScriptTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PDFScriptTool.
+        ///   Looks up a localized string similar to PDF Conversion Tool.
         /// </summary>
         internal static string RootFolderName {
             get {

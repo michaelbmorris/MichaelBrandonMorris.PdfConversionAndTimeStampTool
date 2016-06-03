@@ -8,8 +8,10 @@ namespace PdfScriptTool
 {
     using Application = Microsoft.Office.Interop.Word.Application;
     using Directory = System.IO.Directory;
+    using DirectoryInfo = System.IO.DirectoryInfo;
     using Environment = System.Environment;
     using File = System.IO.File;
+    using FileInfo = System.IO.FileInfo;
     using FileMode = System.IO.FileMode;
     using FileStream = System.IO.FileStream;
     using IProgress = System.IProgress<ProgressReport>;
@@ -59,20 +61,22 @@ namespace PdfScriptTool
         /// </summary>
         internal PdfProcessor()
         {
-            Directory.CreateDirectory(RootPath);
-            Directory.CreateDirectory(OutputRootPath);
+            Directory.CreateDirectory(OutputPath);
             Directory.CreateDirectory(ProcessingPath);
+            ClearProcessing();
         }
 
         /// <summary>
-        /// Gets the folder output is stored in.
-        /// "Output" in the root folder.
+        /// Gets the output folder for the program.
+        /// RootFolderName in the user's "My Documents" folder.
         /// </summary>
-        internal static string OutputRootPath
+        internal static string OutputPath
         {
             get
             {
-                return Path.Combine(RootPath, Resources.OutputFolderName);
+                return Path.Combine(
+                    Environment.GetFolderPath(SpecialFolder.MyDocuments),
+                    Resources.RootFolderName);
             }
         }
 
@@ -84,20 +88,8 @@ namespace PdfScriptTool
         {
             get
             {
-                return Path.Combine(RootPath, Resources.ProcessingFolderName);
-            }
-        }
-
-        /// <summary>
-        /// Gets the root folder the program works in.
-        /// "PDF Script Tool" in the user's "My Documents" folder.
-        /// </summary>
-        internal static string RootPath
-        {
-            get
-            {
                 return Path.Combine(
-                    Environment.GetFolderPath(SpecialFolder.MyDocuments),
+                    Environment.GetFolderPath(SpecialFolder.ApplicationData),
                     Resources.RootFolderName);
             }
         }
@@ -108,6 +100,30 @@ namespace PdfScriptTool
         internal List Files { get; set; }
 
         /// <summary>
+        /// Deletes all files in the Processing folder.
+        /// </summary>
+        internal static void ClearProcessing()
+        {
+            var processingDirectory = new DirectoryInfo(ProcessingPath);
+            foreach (FileInfo file in processingDirectory.GetFiles())
+            {
+                file.Delete();
+            }
+        }
+
+        /// <summary>
+        /// Copies a file to the processing folder.
+        /// </summary>
+        /// <param name="filename">The file to move.</param>
+        /// <returns>The processing path for the copied file.</returns>
+        internal static string CopyFileToProcessing(string filename)
+        {
+            var processingPath = GetProcessingPath(filename);
+            File.Copy(filename, processingPath);
+            return processingPath;
+        }
+
+        /// <summary>
         /// Adds a field and a script to the currently selected files.
         /// </summary>
         /// <param name="progress">
@@ -116,7 +132,7 @@ namespace PdfScriptTool
         /// <param name="field"> The field to be added to the files.</param>
         /// <param name="script">The script to be added to the files.</param>
         /// <returns>The completed task.</returns>
-        internal async Task ProcessPdfs(
+        internal async Task ProcessFiles(
             IProgress progress, Field field = null, Script script = null)
         {
             await Task.Run(() =>
@@ -281,7 +297,17 @@ namespace PdfScriptTool
         /// <returns>The output path for the file.</returns>
         private static string GetOutputPath(string inputPath)
         {
-            return Path.Combine(OutputRootPath, Path.GetFileName(inputPath));
+            return Path.Combine(OutputPath, Path.GetFileName(inputPath));
+        }
+
+        /// <summary>
+        /// Gets the processing path for a specified input file.
+        /// </summary>
+        /// <param name="inputPath">The input file path.</param>
+        /// <returns>The processing path for the file.</returns>
+        private static string GetProcessingPath(string inputPath)
+        {
+            return Path.Combine(ProcessingPath, Path.GetFileName(inputPath));
         }
 
         /// <summary>
@@ -301,9 +327,12 @@ namespace PdfScriptTool
         /// Moves a PDF file to the output folder.
         /// </summary>
         /// <param name="filename">The PDF file to move.</param>
-        private static void MovePdfToOutput(string filename)
+        /// <returns>The output path for the moved file.</returns>
+        private static string MovePdfToOutput(string filename)
         {
-            File.Move(filename, GetOutputPath(filename));
+            var outputPath = GetOutputPath(filename);
+            File.Move(filename, outputPath);
+            return outputPath;
         }
 
         /// <summary>
