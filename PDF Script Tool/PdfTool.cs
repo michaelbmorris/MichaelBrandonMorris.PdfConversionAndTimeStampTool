@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfScriptTool
+namespace PdfTool
 {
     using System.Linq;
     using Action = System.Action;

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfScriptTool
+namespace PdfTool
 {
     /// <summary>
     /// Allows for reporting progress as both a percent and a count.

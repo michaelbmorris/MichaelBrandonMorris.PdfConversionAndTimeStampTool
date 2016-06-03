@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfScriptTool
+namespace PdfTool
 {
     using Application = Microsoft.Office.Interop.Word.Application;
     using Directory = System.IO.Directory;
