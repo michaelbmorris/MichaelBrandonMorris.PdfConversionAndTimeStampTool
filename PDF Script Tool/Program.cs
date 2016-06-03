@@ -10,7 +10,7 @@ namespace PdfScriptTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PdfScriptTool());
+            Application.Run(new PdfTool());
         }
     }
 }

@@ -85,18 +85,18 @@
     <Compile Include="PdfProcessor.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="PdfScriptTool.cs">
+    <Compile Include="PdfTool.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PdfScriptTool.Designer.cs">
-      <DependentUpon>PdfScriptTool.cs</DependentUpon>
+    <Compile Include="PdfTool.Designer.cs">
+      <DependentUpon>PdfTool.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Script.cs" />
-    <EmbeddedResource Include="PdfScriptTool.resx">
-      <DependentUpon>PdfScriptTool.cs</DependentUpon>
+    <EmbeddedResource Include="PdfTool.resx">
+      <DependentUpon>PdfTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

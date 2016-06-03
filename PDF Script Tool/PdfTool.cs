@@ -24,7 +24,7 @@ namespace PdfScriptTool
     /// <summary>
     /// The main application window.
     /// </summary>
-    internal partial class PdfScriptTool : Form, IProgress
+    internal partial class PdfTool : Form, IProgress
     {
         /// <summary>
         /// Whether or not files in the file view should be automatically
@@ -44,10 +44,10 @@ namespace PdfScriptTool
         private PdfProcessor pdfProcessor;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PdfScriptTool"/>
+        /// Initializes a new instance of the <see cref="PdfTool"/>
         /// class.
         /// </summary>
-        internal PdfScriptTool()
+        internal PdfTool()
         {
             InitializeComponent();
             InitializeOpenFileDialog();
