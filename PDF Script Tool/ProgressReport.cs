@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfTool
+namespace PdfConversionAndTimeStampTool
 {
     internal class ProgressReport
     {

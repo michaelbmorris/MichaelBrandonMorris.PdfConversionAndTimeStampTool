@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Michael Brandon Morris")]
-[assembly: AssemblyProduct("PDF Script Tool")]
+[assembly: AssemblyProduct("PDF Conversion & Time Stamp Tool")]
 [assembly: AssemblyCopyright("Copyright © Michael Brandon Morris 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

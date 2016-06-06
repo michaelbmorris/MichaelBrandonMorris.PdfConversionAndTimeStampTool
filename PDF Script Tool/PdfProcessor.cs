@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfTool
+namespace PdfConversionAndTimeStampTool
 {
     using Application = Microsoft.Office.Interop.Word.Application;
     using Directory = System.IO.Directory;

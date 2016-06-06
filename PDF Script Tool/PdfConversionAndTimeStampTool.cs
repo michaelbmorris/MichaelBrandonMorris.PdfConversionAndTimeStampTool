@@ -1,10 +1,10 @@
 ﻿//-----------------------------------------------------------------------------------------------------------
-// <copyright file="PdfTool.cs" company="Michael Brandon Morris">
+// <copyright file="PdfConversionAndTimeStampTool.cs" company="Michael Brandon Morris">
 //     Copyright © Michael Brandon Morris 2016
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfTool
+namespace PdfConversionAndTimeStampTool
 {
     using System.Linq;
     using Action = System.Action;
@@ -22,7 +22,7 @@ namespace PdfTool
     using StringComparison = System.StringComparison;
     using Task = System.Threading.Tasks.Task;
 
-    internal partial class PdfTool : Form, IProgress
+    internal partial class PdfConversionAndTimeStampTool : Form, IProgress
     {
         private const bool FileViewFileIsChecked = true;
 
@@ -30,7 +30,7 @@ namespace PdfTool
 
         private PdfProcessor pdfProcessor;
 
-        internal PdfTool()
+        internal PdfConversionAndTimeStampTool()
         {
             InitializeComponent();
             InitializeOpenFileDialog();

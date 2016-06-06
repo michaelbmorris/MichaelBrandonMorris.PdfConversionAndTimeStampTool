@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-namespace PdfTool
+namespace PdfConversionAndTimeStampTool
 {
     using static Properties.Resources;
 
