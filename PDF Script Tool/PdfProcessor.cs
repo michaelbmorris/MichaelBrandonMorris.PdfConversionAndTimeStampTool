@@ -4,32 +4,34 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
+using Application = Microsoft.Office.Interop.Word.Application;
+using Directory = System.IO.Directory;
+using DirectoryInfo = System.IO.DirectoryInfo;
+using Environment = System.Environment;
+using File = System.IO.File;
+using FileInfo = System.IO.FileInfo;
+using FileMode = System.IO.FileMode;
+using FileStream = System.IO.FileStream;
+using IProgressProgressReport = System.IProgress<PdfConversionAndTimeStampTool.ProgressReport>;
+using ListString = System.Collections.Generic.List<string>;
+using MsoAutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity;
+using Path = System.IO.Path;
+using PdfAction = iTextSharp.text.pdf.PdfAction;
+using PdfFormField = iTextSharp.text.pdf.PdfFormField;
+using PdfName = iTextSharp.text.pdf.PdfName;
+using PdfReader = iTextSharp.text.pdf.PdfReader;
+using PdfStamper = iTextSharp.text.pdf.PdfStamper;
+using PdfWriter = iTextSharp.text.pdf.PdfWriter;
+using Rectangle = iTextSharp.text.Rectangle;
+using Resources = PdfConversionAndTimeStampTool.Properties.Resources;
+using SpecialFolder = System.Environment.SpecialFolder;
+using StringComparison = System.StringComparison;
+using Task = System.Threading.Tasks.Task;
+using TextField = iTextSharp.text.pdf.TextField;
+using WdExportFormat = Microsoft.Office.Interop.Word.WdExportFormat;
+
 namespace PdfConversionAndTimeStampTool
 {
-    using Application = Microsoft.Office.Interop.Word.Application;
-    using Directory = System.IO.Directory;
-    using DirectoryInfo = System.IO.DirectoryInfo;
-    using Environment = System.Environment;
-    using File = System.IO.File;
-    using FileInfo = System.IO.FileInfo;
-    using FileMode = System.IO.FileMode;
-    using FileStream = System.IO.FileStream;
-    using IProgress = System.IProgress<ProgressReport>;
-    using List = System.Collections.Generic.List<string>;
-    using Path = System.IO.Path;
-    using PdfAction = iTextSharp.text.pdf.PdfAction;
-    using PdfFormField = iTextSharp.text.pdf.PdfFormField;
-    using PdfName = iTextSharp.text.pdf.PdfName;
-    using PdfReader = iTextSharp.text.pdf.PdfReader;
-    using PdfStamper = iTextSharp.text.pdf.PdfStamper;
-    using PdfWriter = iTextSharp.text.pdf.PdfWriter;
-    using Rectangle = iTextSharp.text.Rectangle;
-    using Resources = Properties.Resources;
-    using SpecialFolder = System.Environment.SpecialFolder;
-    using StringComparison = System.StringComparison;
-    using Task = System.Threading.Tasks.Task;
-    using TextField = iTextSharp.text.pdf.TextField;
-    using WdExportFormat = Microsoft.Office.Interop.Word.WdExportFormat;
 
     internal class PdfProcessor
     {
@@ -68,7 +70,7 @@ namespace PdfConversionAndTimeStampTool
             }
         }
 
-        internal List Files { get; set; }
+        internal ListString Files { get; set; }
 
         internal static void ClearProcessing()
         {
@@ -86,10 +88,12 @@ namespace PdfConversionAndTimeStampTool
             return processingPath;
         }
 
-        internal async Task ProcessFiles(
-            IProgress progress, Field field = null, Script script = null)
+        internal Task ProcessFiles(
+            IProgressProgressReport progress,
+            Field field = null,
+            Script script = null)
         {
-            await Task.Run(() =>
+            return Task.Run(() =>
             {
                 for (int i = 0; i < Files.Count; i++)
                 {
@@ -209,6 +213,8 @@ namespace PdfConversionAndTimeStampTool
                 + Resources.PdfFileExtension;
             var outputPath = Path.Combine(ProcessingPath, outputFilename);
             var wordApplication = new Application();
+            wordApplication.Application.AutomationSecurity =
+                MsoAutomationSecurity.msoAutomationSecurityForceDisable;
             var wordDocument = wordApplication.Documents.Open(filename);
             var exportFormat = WdExportFormat.wdExportFormatPDF;
             wordDocument.ExportAsFixedFormat(outputPath, exportFormat);

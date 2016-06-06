@@ -142,7 +142,7 @@ namespace PdfConversionAndTimeStampTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PDF Conversion Tool.
+        ///   Looks up a localized string similar to PDF Conversion And Time Stamp Tool.
         /// </summary>
         internal static string RootFolderName {
             get {
