@@ -31,34 +31,16 @@ namespace PdfTool
     using TextField = iTextSharp.text.pdf.TextField;
     using WdExportFormat = Microsoft.Office.Interop.Word.WdExportFormat;
 
-    /// <summary>
-    /// The back end of the PDF Script Tool.
-    /// </summary>
     internal class PdfProcessor
     {
-        /// <summary>
-        /// Increment of two to skip a page.
-        /// </summary>
         private const int EveryOtherPage = 2;
 
-        /// <summary>
-        /// Increment of one to get every page.
-        /// </summary>
         private const int EveryPage = 1;
 
-        /// <summary>
-        /// Page one should be the first page.
-        /// </summary>
         private const int FirstPageNumber = 1;
 
-        /// <summary>
-        /// Page two should be the first page.
-        /// </summary>
         private const int SecondPageNumber = 2;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PdfProcessor"/> class.
-        /// </summary>
         internal PdfProcessor()
         {
             Directory.CreateDirectory(OutputPath);
@@ -66,10 +48,6 @@ namespace PdfTool
             ClearProcessing();
         }
 
-        /// <summary>
-        /// Gets the output folder for the program.
-        /// RootFolderName in the user's "My Documents" folder.
-        /// </summary>
         internal static string OutputPath
         {
             get
@@ -80,10 +58,6 @@ namespace PdfTool
             }
         }
 
-        /// <summary>
-        /// Gets the folder processing files are stored in.
-        /// "Processing" in the root folder.
-        /// </summary>
         internal static string ProcessingPath
         {
             get
@@ -94,14 +68,8 @@ namespace PdfTool
             }
         }
 
-        /// <summary>
-        /// Gets or sets the list of files (paths) to be processed.
-        /// </summary>
         internal List Files { get; set; }
 
-        /// <summary>
-        /// Deletes all files in the Processing folder.
-        /// </summary>
         internal static void ClearProcessing()
         {
             var processingDirectory = new DirectoryInfo(ProcessingPath);
@@ -111,11 +79,6 @@ namespace PdfTool
             }
         }
 
-        /// <summary>
-        /// Copies a file to the processing folder.
-        /// </summary>
-        /// <param name="filename">The file to move.</param>
-        /// <returns>The processing path for the copied file.</returns>
         internal static string CopyFileToProcessing(string filename)
         {
             var processingPath = GetProcessingPath(filename);
@@ -123,15 +86,6 @@ namespace PdfTool
             return processingPath;
         }
 
-        /// <summary>
-        /// Adds a field and a script to the currently selected files.
-        /// </summary>
-        /// <param name="progress">
-        /// The object to which progress is reported.
-        /// </param>
-        /// <param name="field"> The field to be added to the files.</param>
-        /// <param name="script">The script to be added to the files.</param>
-        /// <returns>The completed task.</returns>
         internal async Task ProcessFiles(
             IProgress progress, Field field = null, Script script = null)
         {
@@ -163,15 +117,6 @@ namespace PdfTool
             });
         }
 
-        /// <summary>
-        /// Adds a field to a page of a PDF document.
-        /// </summary>
-        /// <param name="field">The field to add.</param>
-        /// <param name="pageNumber">
-        /// The page number on which the field will be added.
-        /// </param>
-        /// <param name="pdfStamper">The PDF stamper for the document.</param>
-        /// <param name="parentField">The parent field.</param>
         private static void AddFieldToPage(
             Field field,
             int pageNumber,
@@ -191,14 +136,6 @@ namespace PdfTool
             childField.PlaceInPage = pageNumber;
         }
 
-        /// <summary>
-        /// Adds a field to a PDF document.
-        /// </summary>
-        /// <param name="field">The field to add.</param>
-        /// <param name="pdfStamper">The PDF stamper for the document.</param>
-        /// <param name="numberOfPages">
-        /// The number of pages in the document.
-        /// </param>
         private static void AddFieldToPdf(
             Field field, PdfStamper pdfStamper, int numberOfPages)
         {
@@ -237,11 +174,6 @@ namespace PdfTool
             pdfStamper.AddAnnotation(parentField, FirstPageNumber);
         }
 
-        /// <summary>
-        /// Adds a script to a PDF document.
-        /// </summary>
-        /// <param name="script">The script to add.</param>
-        /// <param name="pdfStamper">The PDF stamper for the document.</param>
         private static void AddScriptToPdf(
             Script script, PdfStamper pdfStamper)
         {
@@ -271,11 +203,6 @@ namespace PdfTool
                 actionType, pdfAction);
         }
 
-        /// <summary>
-        /// Converts a file to a PDF document.
-        /// </summary>
-        /// <param name="filename">The path of the file to convert.</param>
-        /// <returns>The path of the converted PDF document.</returns>
         private static string ConvertToPdf(string filename)
         {
             var outputFilename = Path.GetFileNameWithoutExtension(filename)
@@ -290,31 +217,16 @@ namespace PdfTool
             return outputPath;
         }
 
-        /// <summary>
-        /// Gets the output path for a specified input file.
-        /// </summary>
-        /// <param name="inputPath">The input file path.</param>
-        /// <returns>The output path for the file.</returns>
         private static string GetOutputPath(string inputPath)
         {
             return Path.Combine(OutputPath, Path.GetFileName(inputPath));
         }
 
-        /// <summary>
-        /// Gets the processing path for a specified input file.
-        /// </summary>
-        /// <param name="inputPath">The input file path.</param>
-        /// <returns>The processing path for the file.</returns>
         private static string GetProcessingPath(string inputPath)
         {
             return Path.Combine(ProcessingPath, Path.GetFileName(inputPath));
         }
 
-        /// <summary>
-        /// Checks if a file is a PDF document.
-        /// </summary>
-        /// <param name="filename">The path of the file to check.</param>
-        /// <returns>Whether or not the file is a PDF document.</returns>
         private static bool IsPdf(string filename)
         {
             return string.Equals(
@@ -323,11 +235,6 @@ namespace PdfTool
                 StringComparison.InvariantCultureIgnoreCase);
         }
 
-        /// <summary>
-        /// Moves a PDF file to the output folder.
-        /// </summary>
-        /// <param name="filename">The PDF file to move.</param>
-        /// <returns>The output path for the moved file.</returns>
         private static string MovePdfToOutput(string filename)
         {
             var outputPath = GetOutputPath(filename);
@@ -335,12 +242,6 @@ namespace PdfTool
             return outputPath;
         }
 
-        /// <summary>
-        /// Adds features to a PDF document.
-        /// </summary>
-        /// <param name="filename">The path of the PDF document.</param>
-        /// <param name="field">The field to add.</param>
-        /// <param name="script">The script to add.</param>
         private static void ProcessPdf(
             string filename, Field field, Script script)
         {

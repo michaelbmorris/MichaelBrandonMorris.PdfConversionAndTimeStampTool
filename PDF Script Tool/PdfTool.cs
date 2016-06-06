@@ -21,32 +21,14 @@ namespace PdfTool
     using StringComparison = System.StringComparison;
     using Task = System.Threading.Tasks.Task;
 
-    /// <summary>
-    /// The main application window.
-    /// </summary>
     internal partial class PdfTool : Form, IProgress
     {
-        /// <summary>
-        /// Whether or not files in the file view should be automatically
-        /// checked (selected).
-        /// </summary>
         private const bool FileViewFileIsChecked = true;
 
-        /// <summary>
-        /// Whether or not the open file dialog should allow selection of
-        /// multiple files.
-        /// </summary>
         private const bool OpenFileDialogAllowMultiple = true;
 
-        /// <summary>
-        /// The PDF Processor that does the back end work.
-        /// </summary>
         private PdfProcessor pdfProcessor;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PdfTool"/>
-        /// class.
-        /// </summary>
         internal PdfTool()
         {
             InitializeComponent();
@@ -54,11 +36,6 @@ namespace PdfTool
             pdfProcessor = new PdfProcessor();
         }
 
-        /// <summary>
-        /// Reports the progress of the current task.
-        /// </summary>
-        /// <param name="progressReport">The progress report containing a
-        /// current count, total count, and percent.</param>
         public void Report(ProgressReport progressReport)
         {
             if (InvokeRequired)
@@ -71,11 +48,6 @@ namespace PdfTool
             }
         }
 
-        /// <summary>
-        /// Performs a specified task in the backend.
-        /// </summary>
-        /// <param name="function">The task to perform.</param>
-        /// <returns>The completed task.</returns>
         internal async Task PerformTask(Func function)
         {
             if (fileView.CheckedItems.Count > 0)
@@ -105,44 +77,21 @@ namespace PdfTool
             }
         }
 
-        /// <summary>
-        /// Shows an exception in a message box.
-        /// </summary>
-        /// <param name="e">The exception to show.</param>
         private static void ShowException(Exception e)
         {
             ShowMessage(e.Message);
         }
 
-        /// <summary>
-        /// Shows a message in a message box.
-        /// </summary>
-        /// <param name="message">The message to show.</param>
         private static void ShowMessage(string message)
         {
             MessageBox.Show(message);
         }
 
-        /// <summary>
-        /// Listener for the "Convert to PDF Only" button.
-        /// </summary>
-        /// <param name="sender">The object that triggered the event.</param>
-        /// <param name="e">The event arguments.</param>
         private async void ConvertOnly_Click(object sender, EventArgs e)
         {
             await PerformTask(() => pdfProcessor.ProcessFiles(this));
         }
 
-        /// <summary>
-        /// Checks whether or not a file was already selected.
-        /// </summary>
-        /// <param name="filename">The file to check.</param>
-        /// <param name="selectedFilenames">The selected filenames.</param>
-        /// <param name="filenameWithoutExtensionReturn">
-        /// The filename without an extension, passed back if a duplicate was 
-        /// found.
-        /// </param>
-        /// <returns>Whether or not the file was already selected.</returns>
         private bool FileIsAlreadySelected(
                     string filename,
                     ListString selectedFilenames,
@@ -168,9 +117,6 @@ namespace PdfTool
             return false;
         }
 
-        /// <summary>
-        /// Sets attributes for the open file dialog.
-        /// </summary>
         private void InitializeOpenFileDialog()
         {
             openFileDialog.Filter = Resources.OpenFileDialogFilter;
@@ -178,13 +124,6 @@ namespace PdfTool
             openFileDialog.Title = Resources.OpenFileDialogTitle;
         }
 
-        /// <summary>
-        /// Listener for the "Select Files" button. Shows the select files
-        /// dialog and adds all selected files to the files view, locking each
-        /// file to prevent editing until released.
-        /// </summary>
-        /// <param name="sender">The object that triggered the event.</param>
-        /// <param name="e">The event arguments.</param>
         private void SelectFiles_Click(object sender, EventArgs e)
         {
             var dialogResult = openFileDialog.ShowDialog();
@@ -212,11 +151,6 @@ namespace PdfTool
             }
         }
 
-        /// <summary>
-        /// Listener for the "Timestamp 24 Hours" button.
-        /// </summary>
-        /// <param name="sender">The object that triggered the event.</param>
-        /// <param name="e">The event arguments.</param>
         private async void TimeStampDefaultDay_Click(
             object sender, EventArgs e)
         {
@@ -226,11 +160,6 @@ namespace PdfTool
                 Script.TimeStampOnPrintDefaultDayScript));
         }
 
-        /// <summary>
-        /// Listener for the "Timestamp 30 Days" button.
-        /// </summary>
-        /// <param name="sender">The object that triggered the event.</param>
-        /// <param name="e">The event arguments.</param>
         private async void TimeStampDefaultMonth_Click(
             object sender, EventArgs e)
         {
