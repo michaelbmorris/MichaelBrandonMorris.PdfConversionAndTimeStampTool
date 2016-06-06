@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------------------------------------------
-// <copyright file="PdfScriptTool.cs" company="Michael Brandon Morris">
+// <copyright file="PdfTool.cs" company="Michael Brandon Morris">
 //     Copyright © Michael Brandon Morris 2016
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
@@ -49,36 +49,6 @@ namespace PdfTool
             }
         }
 
-        internal async Task PerformTask(Func function)
-        {
-            if (fileView.CheckedItems.Count > 0)
-            {
-                Enabled = false;
-                try
-                {
-                    pdfProcessor.Files =
-                        fileView.CheckedItems.OfType<string>().ToList();
-                    await function();
-                }
-                catch (Exception e)
-                {
-                    ShowException(e);
-                }
-
-                ShowMessage(Resources.FilesSavedInMessage +
-                    PdfProcessor.OutputPath);
-                Process.Start(PdfProcessor.OutputPath);
-                PdfProcessor.ClearProcessing();
-                fileView.Items.Clear();
-                progressBar.Value = 0;
-                Enabled = true;
-            }
-            else
-            {
-                ShowMessage(Resources.NoFilesSelectedErrorMessage);
-            }
-        }
-
         private static void ShowException(Exception e)
         {
             ShowMessage(e.Message);
@@ -96,24 +66,33 @@ namespace PdfTool
 
         private bool FileIsAlreadySelected(
                     string filename,
-                    ListString selectedFilenames,
-                    out string filenameWithoutExtensionReturn)
+                    ListString selectedFilenames)
         {
-            filenameWithoutExtensionReturn = null;
             foreach (var selectedFilename in selectedFilenames)
             {
-                var filenameWithoutExtension =
-                    Path.GetFileNameWithoutExtension(filename);
-                var selectedFilenameWithoutExtension =
-                    Path.GetFileNameWithoutExtension(selectedFilename);
-                if (string.Equals(
-                    filenameWithoutExtension,
-                    selectedFilenameWithoutExtension,
-                    StringComparison.InvariantCultureIgnoreCase))
+                if (FilenamesWithoutExtensionsAreEqual(
+                    filename, selectedFilename))
                 {
-                    filenameWithoutExtensionReturn = filenameWithoutExtension;
                     return true;
                 }
+            }
+
+            return false;
+        }
+
+        private bool FilenamesWithoutExtensionsAreEqual(
+            string filename1, string filename2)
+        {
+            var filename1WithoutExtension =
+                    Path.GetFileNameWithoutExtension(filename1);
+            var filename2WithoutExtension =
+                Path.GetFileNameWithoutExtension(filename2);
+            if (string.Equals(
+                filename1WithoutExtension,
+                filename2WithoutExtension,
+                StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
             }
 
             return false;
@@ -126,6 +105,41 @@ namespace PdfTool
             openFileDialog.Title = Resources.OpenFileDialogTitle;
         }
 
+        private async Task PerformTask(Func function)
+        {
+            Enabled = false;
+            try
+            {
+                pdfProcessor.Files =
+                    fileView.CheckedItems.OfType<string>().ToList();
+                await function();
+            }
+            catch (Exception e)
+            {
+                ShowException(e);
+            }
+
+            ShowMessage(Resources.FilesSavedInMessage +
+                PdfProcessor.OutputPath);
+            Process.Start(PdfProcessor.OutputPath);
+            PdfProcessor.ClearProcessing();
+            fileView.Items.Clear();
+            progressBar.Value = 0;
+            Enabled = true;
+        }
+
+        private async void PerformTaskIfFilesSelected(Func function)
+        {
+            if (fileView.CheckedItems.Count > 0)
+            {
+                await PerformTask(function);
+            }  
+            else
+            {
+                ShowMessage(Resources.NoFilesSelectedErrorMessage);
+            }   
+        }
+
         private void SelectFiles_Click(object sender, EventArgs e)
         {
             var dialogResult = openFileDialog.ShowDialog();
@@ -133,15 +147,13 @@ namespace PdfTool
             {
                 foreach (var filename in openFileDialog.FileNames)
                 {
-                    string filenameWithoutExtension;
                     if (FileIsAlreadySelected(
                         filename,
-                        fileView.CheckedItems.OfType<string>().ToList(),
-                        out filenameWithoutExtension))
+                        fileView.CheckedItems.OfType<string>().ToList()))
                     {
                         ShowMessage("A file with the name \"" +
-                                filenameWithoutExtension +
-                                "\" is already selected.");
+                            Path.GetFileNameWithoutExtension(filename) +
+                            "\" is already selected.");
                     }
                     else
                     {
