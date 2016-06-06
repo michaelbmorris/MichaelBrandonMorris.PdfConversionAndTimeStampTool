@@ -17,6 +17,7 @@ namespace PdfTool
     using ListString = System.Collections.Generic.List<string>;
     using MessageBox = System.Windows.Forms.MessageBox;
     using Path = System.IO.Path;
+    using Process = System.Diagnostics.Process;
     using Resources = Properties.Resources;
     using StringComparison = System.StringComparison;
     using Task = System.Threading.Tasks.Task;
@@ -66,6 +67,7 @@ namespace PdfTool
 
                 ShowMessage(Resources.FilesSavedInMessage +
                     PdfProcessor.OutputPath);
+                Process.Start(PdfProcessor.OutputPath);
                 PdfProcessor.ClearProcessing();
                 fileView.Items.Clear();
                 progressBar.Value = 0;
