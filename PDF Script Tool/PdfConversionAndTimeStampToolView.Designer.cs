@@ -30,35 +30,34 @@ namespace PdfConversionAndTimeStampTool
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PdfConversionAndTimeStampToolView));
-            this.buttonSelectFiles = new System.Windows.Forms.Button();
+            this.selectFilesButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.fileView = new System.Windows.Forms.CheckedListBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.openCustomScriptDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.addField = new System.Windows.Forms.Button();
-            this.addScript = new System.Windows.Forms.Button();
+            this.addCustomFieldButton = new System.Windows.Forms.Button();
+            this.addCustomScriptButton = new System.Windows.Forms.Button();
             this.selectTiming = new System.Windows.Forms.ComboBox();
             this.scriptSelector = new System.Windows.Forms.ComboBox();
-            this.convertOnly = new System.Windows.Forms.Button();
+            this.convertOnlyButton = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.buttonTimeStampDefaultDay = new System.Windows.Forms.Button();
-            this.timeStampDefaultMonth = new System.Windows.Forms.Button();
+            this.convertAndTimeStampDefaultDayButton = new System.Windows.Forms.Button();
+            this.convertAndTimeStampDefaultMonthButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonSelectFiles
+            // selectFilesButton
             // 
-            this.buttonSelectFiles.Location = new System.Drawing.Point(8, 0);
-            this.buttonSelectFiles.Name = "buttonSelectFiles";
-            this.buttonSelectFiles.Size = new System.Drawing.Size(128, 64);
-            this.buttonSelectFiles.TabIndex = 0;
-            this.buttonSelectFiles.Text = "Select Files";
-            this.buttonSelectFiles.UseVisualStyleBackColor = true;
-            this.buttonSelectFiles.Click += new System.EventHandler(this.SelectFiles_Click);
+            this.selectFilesButton.Location = new System.Drawing.Point(8, 0);
+            this.selectFilesButton.Name = "selectFilesButton";
+            this.selectFilesButton.Size = new System.Drawing.Size(128, 64);
+            this.selectFilesButton.TabIndex = 0;
+            this.selectFilesButton.Text = "Select Files";
+            this.selectFilesButton.UseVisualStyleBackColor = true;
             // 
             // fileView
             // 
@@ -77,8 +76,8 @@ namespace PdfConversionAndTimeStampTool
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.addField);
-            this.tabPage2.Controls.Add(this.addScript);
+            this.tabPage2.Controls.Add(this.addCustomFieldButton);
+            this.tabPage2.Controls.Add(this.addCustomScriptButton);
             this.tabPage2.Controls.Add(this.selectTiming);
             this.tabPage2.Controls.Add(this.scriptSelector);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -89,25 +88,25 @@ namespace PdfConversionAndTimeStampTool
             this.tabPage2.Text = "Advanced";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // addField
+            // addCustomFieldButton
             // 
-            this.addField.Enabled = false;
-            this.addField.Location = new System.Drawing.Point(8, 8);
-            this.addField.Name = "addField";
-            this.addField.Size = new System.Drawing.Size(116, 23);
-            this.addField.TabIndex = 8;
-            this.addField.Text = "Add Field";
-            this.addField.UseVisualStyleBackColor = true;
+            this.addCustomFieldButton.Enabled = false;
+            this.addCustomFieldButton.Location = new System.Drawing.Point(8, 8);
+            this.addCustomFieldButton.Name = "addCustomFieldButton";
+            this.addCustomFieldButton.Size = new System.Drawing.Size(116, 23);
+            this.addCustomFieldButton.TabIndex = 8;
+            this.addCustomFieldButton.Text = "Add Field";
+            this.addCustomFieldButton.UseVisualStyleBackColor = true;
             // 
-            // addScript
+            // addCustomScriptButton
             // 
-            this.addScript.Enabled = false;
-            this.addScript.Location = new System.Drawing.Point(376, 8);
-            this.addScript.Name = "addScript";
-            this.addScript.Size = new System.Drawing.Size(128, 23);
-            this.addScript.TabIndex = 1;
-            this.addScript.Text = "Add Script";
-            this.addScript.UseVisualStyleBackColor = true;
+            this.addCustomScriptButton.Enabled = false;
+            this.addCustomScriptButton.Location = new System.Drawing.Point(376, 8);
+            this.addCustomScriptButton.Name = "addCustomScriptButton";
+            this.addCustomScriptButton.Size = new System.Drawing.Size(128, 23);
+            this.addCustomScriptButton.TabIndex = 1;
+            this.addCustomScriptButton.Text = "Add Script";
+            this.addCustomScriptButton.UseVisualStyleBackColor = true;
             // 
             // selectTiming
             // 
@@ -129,21 +128,20 @@ namespace PdfConversionAndTimeStampTool
             this.scriptSelector.TabIndex = 6;
             this.scriptSelector.Text = "Select a script...";
             // 
-            // convertOnly
+            // convertOnlyButton
             // 
-            this.convertOnly.Location = new System.Drawing.Point(392, 8);
-            this.convertOnly.Name = "convertOnly";
-            this.convertOnly.Size = new System.Drawing.Size(80, 23);
-            this.convertOnly.TabIndex = 10;
-            this.convertOnly.Text = "Convert Only";
-            this.convertOnly.UseVisualStyleBackColor = true;
-            this.convertOnly.Click += new System.EventHandler(this.ConvertOnly_Click);
+            this.convertOnlyButton.Location = new System.Drawing.Point(392, 8);
+            this.convertOnlyButton.Name = "convertOnlyButton";
+            this.convertOnlyButton.Size = new System.Drawing.Size(80, 23);
+            this.convertOnlyButton.TabIndex = 10;
+            this.convertOnlyButton.Text = "Convert Only";
+            this.convertOnlyButton.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.convertOnly);
-            this.tabPage1.Controls.Add(this.buttonTimeStampDefaultDay);
-            this.tabPage1.Controls.Add(this.timeStampDefaultMonth);
+            this.tabPage1.Controls.Add(this.convertOnlyButton);
+            this.tabPage1.Controls.Add(this.convertAndTimeStampDefaultDayButton);
+            this.tabPage1.Controls.Add(this.convertAndTimeStampDefaultMonthButton);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -152,25 +150,23 @@ namespace PdfConversionAndTimeStampTool
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // buttonTimeStampDefaultDay
+            // convertAndTimeStampDefaultDayButton
             // 
-            this.buttonTimeStampDefaultDay.Location = new System.Drawing.Point(8, 8);
-            this.buttonTimeStampDefaultDay.Name = "buttonTimeStampDefaultDay";
-            this.buttonTimeStampDefaultDay.Size = new System.Drawing.Size(184, 23);
-            this.buttonTimeStampDefaultDay.TabIndex = 8;
-            this.buttonTimeStampDefaultDay.Text = "Convert and Time Stamp - 24 Hours";
-            this.buttonTimeStampDefaultDay.UseVisualStyleBackColor = true;
-            this.buttonTimeStampDefaultDay.Click += new System.EventHandler(this.TimeStampDefaultDay_Click);
+            this.convertAndTimeStampDefaultDayButton.Location = new System.Drawing.Point(8, 8);
+            this.convertAndTimeStampDefaultDayButton.Name = "convertAndTimeStampDefaultDayButton";
+            this.convertAndTimeStampDefaultDayButton.Size = new System.Drawing.Size(184, 23);
+            this.convertAndTimeStampDefaultDayButton.TabIndex = 8;
+            this.convertAndTimeStampDefaultDayButton.Text = "Convert and Time Stamp - 24 Hours";
+            this.convertAndTimeStampDefaultDayButton.UseVisualStyleBackColor = true;
             // 
-            // timeStampDefaultMonth
+            // convertAndTimeStampDefaultMonthButton
             // 
-            this.timeStampDefaultMonth.Location = new System.Drawing.Point(200, 8);
-            this.timeStampDefaultMonth.Name = "timeStampDefaultMonth";
-            this.timeStampDefaultMonth.Size = new System.Drawing.Size(184, 23);
-            this.timeStampDefaultMonth.TabIndex = 10;
-            this.timeStampDefaultMonth.Text = "Convert and Time Stamp - 30 Days";
-            this.timeStampDefaultMonth.UseVisualStyleBackColor = true;
-            this.timeStampDefaultMonth.Click += new System.EventHandler(this.TimeStampDefaultMonth_Click);
+            this.convertAndTimeStampDefaultMonthButton.Location = new System.Drawing.Point(200, 8);
+            this.convertAndTimeStampDefaultMonthButton.Name = "convertAndTimeStampDefaultMonthButton";
+            this.convertAndTimeStampDefaultMonthButton.Size = new System.Drawing.Size(184, 23);
+            this.convertAndTimeStampDefaultMonthButton.TabIndex = 10;
+            this.convertAndTimeStampDefaultMonthButton.Text = "Convert and Time Stamp - 30 Days";
+            this.convertAndTimeStampDefaultMonthButton.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -182,17 +178,17 @@ namespace PdfConversionAndTimeStampTool
             this.tabControl1.Size = new System.Drawing.Size(632, 64);
             this.tabControl1.TabIndex = 12;
             // 
-            // PdfConversionAndTimeStampTool
+            // PdfConversionAndTimeStampToolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 412);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.buttonSelectFiles);
+            this.Controls.Add(this.selectFilesButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.fileView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "PdfConversionAndTimeStampTool";
+            this.Name = "PdfConversionAndTimeStampToolView";
             this.Text = "PDF Conversion & Time Stamp Tool";
             this.tabPage2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -203,21 +199,21 @@ namespace PdfConversionAndTimeStampTool
 
         #endregion
 
-        private System.Windows.Forms.Button buttonSelectFiles;
+        private System.Windows.Forms.Button selectFilesButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.CheckedListBox fileView;
         private System.Windows.Forms.OpenFileDialog openCustomScriptDialog;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button convertOnly;
-        private System.Windows.Forms.Button addScript;
+        private System.Windows.Forms.Button convertOnlyButton;
+        private System.Windows.Forms.Button addCustomScriptButton;
         private System.Windows.Forms.ComboBox selectTiming;
         private System.Windows.Forms.ComboBox scriptSelector;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button buttonTimeStampDefaultDay;
-        private System.Windows.Forms.Button timeStampDefaultMonth;
+        private System.Windows.Forms.Button convertAndTimeStampDefaultDayButton;
+        private System.Windows.Forms.Button convertAndTimeStampDefaultMonthButton;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button addField;
+        private System.Windows.Forms.Button addCustomFieldButton;
     }
 }
 

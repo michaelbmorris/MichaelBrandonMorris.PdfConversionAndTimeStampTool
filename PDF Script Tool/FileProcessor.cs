@@ -1,39 +1,21 @@
 ﻿//-----------------------------------------------------------------------------------------------------------
-// <copyright file="PdfProcessor.cs" company="Michael Brandon Morris">
+// <copyright file="FileProcessor.cs" company="Michael Brandon Morris">
 //     Copyright © Michael Brandon Morris 2016
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-using Application = Microsoft.Office.Interop.Word.Application;
-using Directory = System.IO.Directory;
-using DirectoryInfo = System.IO.DirectoryInfo;
-using Environment = System.Environment;
-using File = System.IO.File;
-using FileInfo = System.IO.FileInfo;
-using FileMode = System.IO.FileMode;
-using FileStream = System.IO.FileStream;
-using IProgressProgressReport = System.IProgress<PdfConversionAndTimeStampTool.ProgressReport>;
-using ListString = System.Collections.Generic.List<string>;
-using MsoAutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity;
-using Path = System.IO.Path;
-using PdfAction = iTextSharp.text.pdf.PdfAction;
-using PdfFormField = iTextSharp.text.pdf.PdfFormField;
-using PdfName = iTextSharp.text.pdf.PdfName;
-using PdfReader = iTextSharp.text.pdf.PdfReader;
-using PdfStamper = iTextSharp.text.pdf.PdfStamper;
-using PdfWriter = iTextSharp.text.pdf.PdfWriter;
-using Rectangle = iTextSharp.text.Rectangle;
-using Resources = PdfConversionAndTimeStampTool.Properties.Resources;
-using SpecialFolder = System.Environment.SpecialFolder;
-using StringComparison = System.StringComparison;
-using Task = System.Threading.Tasks.Task;
-using TextField = iTextSharp.text.pdf.TextField;
-using WdExportFormat = Microsoft.Office.Interop.Word.WdExportFormat;
+using iTextSharp.text.pdf;
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Word;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using static PdfConversionAndTimeStampTool.Properties.Resources;
+using static System.Environment;
 
 namespace PdfConversionAndTimeStampTool
 {
-
-    internal class PdfProcessor
+    internal static class FileProcessor
     {
         private const int EveryOtherPage = 2;
 
@@ -43,20 +25,13 @@ namespace PdfConversionAndTimeStampTool
 
         private const int SecondPageNumber = 2;
 
-        internal PdfProcessor()
-        {
-            Directory.CreateDirectory(OutputPath);
-            Directory.CreateDirectory(ProcessingPath);
-            ClearProcessing();
-        }
-
         internal static string OutputPath
         {
             get
             {
                 return Path.Combine(
-                    Environment.GetFolderPath(SpecialFolder.MyDocuments),
-                    Resources.RootFolderName);
+                    GetFolderPath(SpecialFolder.MyDocuments),
+                    RootFolderName);
             }
         }
 
@@ -65,12 +40,10 @@ namespace PdfConversionAndTimeStampTool
             get
             {
                 return Path.Combine(
-                    Environment.GetFolderPath(SpecialFolder.ApplicationData),
-                    Resources.RootFolderName);
+                    GetFolderPath(SpecialFolder.ApplicationData),
+                    RootFolderName);
             }
         }
-
-        internal ListString Files { get; set; }
 
         internal static void ClearProcessing()
         {
@@ -88,37 +61,49 @@ namespace PdfConversionAndTimeStampTool
             return processingPath;
         }
 
-        internal Task ProcessFiles(
-            IProgressProgressReport progress,
+        internal static string PrepareFile(string fileName)
+        {
+            return CopyFileToProcessing(fileName);
+        }
+
+        internal static List<string> PrepareFiles(List<string> fileNames)
+        {
+            for (int i = 0; i < fileNames.Count; i++)
+            {
+                fileNames[i] = CopyFileToProcessing(fileNames[i]);
+            }
+            return fileNames;
+        }
+
+        internal static void ProcessFiles(
+            List<string> fileNames,
+            IProgress<ProgressReport> progressReport,
             Field field = null,
             Script script = null)
         {
-            return Task.Run(() =>
+            for (int i = 0; i < fileNames.Count; i++)
             {
-                for (int i = 0; i < Files.Count; i++)
+                var currentFile = fileNames[i];
+                if (!IsPdf(currentFile))
                 {
-                    var currentFile = Files[i];
-                    if (!IsPdf(currentFile))
-                    {
-                        currentFile = ConvertToPdf(currentFile);
-                    }
-
-                    if (field != null || script != null)
-                    {
-                        ProcessPdf(currentFile, field, script);
-                    }
-                    else
-                    {
-                        MovePdfToOutput(currentFile);
-                    }
-
-                    progress.Report(new ProgressReport
-                    {
-                        Total = Files.Count,
-                        CurrentCount = i + 1
-                    });
+                    currentFile = ConvertToPdf(currentFile);
                 }
-            });
+
+                if (field != null || script != null)
+                {
+                    ProcessPdf(currentFile, field, script);
+                }
+                else
+                {
+                    MovePdfToOutput(currentFile);
+                }
+                progressReport.Report(new ProgressReport
+                {
+                    Total = fileNames.Count,
+                    CurrentCount = i + 1
+                });
+            }
+            ClearProcessing();
         }
 
         private static void AddFieldToPage(
@@ -129,7 +114,7 @@ namespace PdfConversionAndTimeStampTool
         {
             var textField = new TextField(
                 pdfStamper.Writer,
-                new Rectangle(
+                new iTextSharp.text.Rectangle(
                     field.TopLeftX,
                     field.TopLeftY,
                     field.BottomRightX,
@@ -144,7 +129,7 @@ namespace PdfConversionAndTimeStampTool
             Field field, PdfStamper pdfStamper, int numberOfPages)
         {
             var parentField = PdfFormField.CreateTextField(
-                pdfStamper.Writer, false, false, 0);
+                pdfStamper.Writer, multiline:false, password:false, maxLen:0);
             parentField.FieldName = field.Title;
             int pageNumber = field.Pages == Pages.Last ?
                 numberOfPages : FirstPageNumber;
@@ -210,7 +195,7 @@ namespace PdfConversionAndTimeStampTool
         private static string ConvertToPdf(string filename)
         {
             var outputFilename = Path.GetFileNameWithoutExtension(filename)
-                + Resources.PdfFileExtension;
+                + PdfFileExtension;
             var outputPath = Path.Combine(ProcessingPath, outputFilename);
             var wordApplication = new Application();
             wordApplication.Application.AutomationSecurity =
@@ -237,7 +222,7 @@ namespace PdfConversionAndTimeStampTool
         {
             return string.Equals(
                 Path.GetExtension(filename),
-                Resources.PdfFileExtension,
+                PdfFileExtension,
                 StringComparison.InvariantCultureIgnoreCase);
         }
 

@@ -85,7 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Field.cs" />
-    <Compile Include="PdfProcessor.cs">
+    <Compile Include="IPdfConversionAndTimeStampToolView.cs" />
+    <Compile Include="PdfConversionAndTimeStampToolPresenter.cs" />
+    <Compile Include="FileProcessor.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="PdfConversionAndTimeStampToolView.cs">
@@ -98,6 +100,7 @@
     <Compile Include="ProgressReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Script.cs" />
+    <Compile Include="StringExtensions.cs" />
     <EmbeddedResource Include="PdfConversionAndTimeStampToolView.resx">
       <DependentUpon>PdfConversionAndTimeStampToolView.cs</DependentUpon>
     </EmbeddedResource>
