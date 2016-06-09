@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace PdfConversionAndTimeStampTool
@@ -55,6 +56,7 @@ namespace PdfConversionAndTimeStampTool
             view.ToggleEnabled();
             view.ClearProgress();
             view.ShowMessage("Files saved to " + FileProcessor.OutputPath);
+            Process.Start(FileProcessor.OutputPath);
         }
     }
 }
