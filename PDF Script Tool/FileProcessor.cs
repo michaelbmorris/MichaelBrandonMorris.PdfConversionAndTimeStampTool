@@ -9,6 +9,7 @@ using Microsoft.Office.Core;
 using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using static PdfConversionAndTimeStampTool.Properties.Resources;
 using static System.Environment;
@@ -25,32 +26,28 @@ namespace PdfConversionAndTimeStampTool
 
         private const int SecondPageNumber = 2;
 
-        internal static string OutputPath
-        {
-            get
-            {
-                return Path.Combine(
-                    GetFolderPath(SpecialFolder.MyDocuments),
-                    RootFolderName);
-            }
-        }
+        internal static string OutputPath => Path.Combine(
+            GetFolderPath(SpecialFolder.MyDocuments),
+            RootFolderName);
 
-        internal static string ProcessingPath
-        {
-            get
-            {
-                return Path.Combine(
-                    GetFolderPath(SpecialFolder.ApplicationData),
-                    RootFolderName);
-            }
-        }
+        internal static string ProcessingPath => Path.Combine(
+            GetFolderPath(SpecialFolder.ApplicationData),
+            RootFolderName);
 
         internal static void ClearProcessing()
         {
             var processingDirectory = new DirectoryInfo(ProcessingPath);
-            foreach (FileInfo file in processingDirectory.GetFiles())
+            foreach (var file in processingDirectory.GetFiles())
             {
-                file.Delete();
+                try
+                {
+                    file.Delete();
+                }
+                catch (Exception e)
+                { 
+                    Debug.WriteLine(e.Message + e.StackTrace);
+                }
+                
             }
         }
 
@@ -81,7 +78,7 @@ namespace PdfConversionAndTimeStampTool
             Field field = null,
             Script script = null)
         {
-            for (int i = 0; i < fileNames.Count; i++)
+            for (var i = 0; i < fileNames.Count; i++)
             {
                 var currentFile = fileNames[i];
                 if (!IsPdf(currentFile))
@@ -129,9 +126,9 @@ namespace PdfConversionAndTimeStampTool
             Field field, PdfStamper pdfStamper, int numberOfPages)
         {
             var parentField = PdfFormField.CreateTextField(
-                pdfStamper.Writer, multiline:false, password:false, maxLen:0);
+                pdfStamper.Writer, false, false, 0);
             parentField.FieldName = field.Title;
-            int pageNumber = field.Pages == Pages.Last ?
+            var pageNumber = field.Pages == Pages.Last ?
                 numberOfPages : FirstPageNumber;
             if (field.Pages == Pages.First || field.Pages == Pages.Last)
             {
@@ -143,7 +140,7 @@ namespace PdfConversionAndTimeStampTool
             }
             else
             {
-                int increment = field.Pages == Pages.All ?
+                var increment = field.Pages == Pages.All ?
                     EveryPage : EveryOtherPage;
                 if (field.Pages == Pages.Even)
                 {
@@ -186,22 +183,25 @@ namespace PdfConversionAndTimeStampTool
                 case ScriptEvent.WillSave:
                     actionType = PdfWriter.WILL_SAVE;
                     break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
-            pdfStamper.Writer.SetAdditionalAction(
-                actionType, pdfAction);
+            pdfStamper.Writer.SetAdditionalAction(actionType, pdfAction);
         }
 
         private static string ConvertToPdf(string filename)
         {
-            var outputFilename = Path.GetFileNameWithoutExtension(filename)
-                + PdfFileExtension;
+            var outputFilename = Path.GetFileNameWithoutExtension(filename) +
+                PdfFileExtension;
             var outputPath = Path.Combine(ProcessingPath, outputFilename);
             var wordApplication = new Application();
             wordApplication.Application.AutomationSecurity =
                 MsoAutomationSecurity.msoAutomationSecurityForceDisable;
             var wordDocument = wordApplication.Documents.Open(filename);
-            var exportFormat = WdExportFormat.wdExportFormatPDF;
+            const WdExportFormat exportFormat =
+                WdExportFormat.wdExportFormatPDF;
             wordDocument.ExportAsFixedFormat(outputPath, exportFormat);
             wordDocument.Close(false);
             wordApplication.Quit();
@@ -245,9 +245,7 @@ namespace PdfConversionAndTimeStampTool
                     if (field != null)
                     {
                         AddFieldToPdf(
-                            field,
-                            pdfStamper,
-                            pdfReader.NumberOfPages);
+                            field, pdfStamper, pdfReader.NumberOfPages);
                     }
 
                     if (script != null)
