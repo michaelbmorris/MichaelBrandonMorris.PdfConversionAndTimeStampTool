@@ -1,0 +1,11 @@
+﻿<Application x:Class="MichaelBrandonMorris.PdfConversionAndTimeStampTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MichaelBrandonMorris.PdfConversionAndTimeStampTool"
+             xmlns:valueConverters="clr-namespace:MichaelBrandonMorris.ValueConverters;assembly=MichaelBrandonMorris.ValueConverters"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         <local:ViewModel x:Key="ViewModel"/>
+        <valueConverters:BooleanToVisibilityHiddenConverter x:Key="BooleanToVisibilityHiddenConverter" />
+    </Application.Resources>
+</Application>
