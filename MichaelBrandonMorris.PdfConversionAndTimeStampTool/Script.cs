@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources;
+using static
+    MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources;
+using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming;
 
 namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
@@ -14,10 +16,10 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
     internal class Script
     {
         internal static readonly Script TimeStampOnPrintDay = new Script(
-            TimeStampDay, ScriptTiming.WillPrint);
+            TimeStampDay, WillPrint);
 
         internal static readonly Script TimeStampOnPrintMonth = new Script(
-            TimeStampMonth, ScriptTiming.WillPrint);
+            TimeStampMonth, WillPrint);
 
         internal Script(string text, ScriptTiming timing)
         {
@@ -39,10 +41,10 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         {
             return new List<ScriptTiming>
             {
-                ScriptTiming.DidPrint,
-                ScriptTiming.DidSave,
-                ScriptTiming.WillPrint,
-                ScriptTiming.WillSave
+                DidPrint,
+                DidSave,
+                WillPrint,
+                WillSave
             };
         }
     }

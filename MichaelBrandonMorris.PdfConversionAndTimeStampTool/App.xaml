@@ -5,7 +5,8 @@
              xmlns:valueConverters="clr-namespace:MichaelBrandonMorris.ValueConverters;assembly=MichaelBrandonMorris.ValueConverters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         <local:ViewModel x:Key="ViewModel"/>
+        <local:ViewModel x:Key="ViewModel" />
         <valueConverters:BooleanToVisibilityHiddenConverter x:Key="BooleanToVisibilityHiddenConverter" />
+        <valueConverters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
     </Application.Resources>
 </Application>

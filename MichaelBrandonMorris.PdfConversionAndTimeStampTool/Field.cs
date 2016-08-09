@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages;
 
 namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
@@ -15,10 +16,21 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
     internal class Field
     {
         internal static readonly Field TimeStampField = new Field(
-            "Timestamp", 36, 792, 576, 756, FieldPages.All);
+            TimeStampFieldName,
+            TimeStampFieldLeftX,
+            TimeStampFieldTopY,
+            TimeStampFieldRightX,
+            TimeStampFieldBottomY,
+            All);
+
+        private const int TimeStampFieldBottomY = 756;
+        private const int TimeStampFieldLeftX = 36;
+        private const string TimeStampFieldName = "Timestamp";
+        private const int TimeStampFieldRightX = 576;
+        private const int TimeStampFieldTopY = 792;
 
         internal Field(
-            string title,
+            string name,
             int leftX,
             int topY,
             int rightX,
@@ -26,7 +38,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             FieldPages pages,
             IEnumerable<int> customPageNumbers = null)
         {
-            Title = title;
+            Name = name;
             LeftX = leftX;
             TopY = topY;
             RightX = rightX;
@@ -40,7 +52,17 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             get;
         }
 
+        internal IEnumerable<int> CustomPageNumbers
+        {
+            get;
+        }
+
         internal int LeftX
+        {
+            get;
+        }
+
+        internal string Name
         {
             get;
         }
@@ -55,17 +77,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             get;
         }
 
-        internal string Title
-        {
-            get;
-        }
-
         internal int TopY
-        {
-            get;
-        }
-
-        private IEnumerable<int> CustomPageNumbers
         {
             get;
         }
@@ -74,12 +86,12 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         {
             return new List<FieldPages>
             {
-                FieldPages.All,
-                FieldPages.Custom,
-                FieldPages.Even,
-                FieldPages.First,
-                FieldPages.Last,
-                FieldPages.Odd
+                All,
+                Custom,
+                Even,
+                First,
+                Last,
+                Odd
             };
         }
     }

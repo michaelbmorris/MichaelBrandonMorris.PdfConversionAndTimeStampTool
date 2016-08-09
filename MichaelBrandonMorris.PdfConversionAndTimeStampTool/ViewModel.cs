@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 using MichaelBrandonMorris.Extensions.CollectionExtensions;
 using MichaelBrandonMorris.Extensions.PrimitiveExtensions;
 using Microsoft.Win32;
 using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages;
+using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field;
+using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script;
+using ProgressReport = System.Tuple<int, int, string>;
+using Progress = System.IProgress<System.Tuple<int, int, string>>;
+using static System.IO.File;
+using static System.Windows.MessageBox;
+using static System.Windows.MessageBoxResult;
+using static System.Windows.MessageBoxButton;
 
 namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
@@ -27,12 +32,19 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         private int _fieldRightX;
         private string _fieldTitle;
         private int _fieldTopY;
-
+        private bool _isBusy;
         private int _progressPercent;
+        private string _progressText;
         private FieldPages _selectedFieldPages;
         private string _selectedScript;
         private ScriptTiming _selectedTiming;
         private bool _shouldShowCustomPageNumbers;
+
+        private FileProcessor FileProcessor
+        {
+            get;
+            set;
+        }
 
         public ICommand Convert => new RelayCommand(
             ExecuteConvert, CanExecuteAction);
@@ -97,7 +109,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         public IList<FieldPages> FieldPages
         {
             get;
-        } = Field.GetFieldPages();
+        } = GetFieldPages();
 
         public int FieldRightX
         {
@@ -153,6 +165,24 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
+        public bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                if (_isBusy == value)
+                {
+                    return;
+                }
+
+                _isBusy = value;
+                NotifyProeprtyChanged();
+            }
+        }
+
         public int ProgressPercent
         {
             get
@@ -171,10 +201,28 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
+        public string ProgressText
+        {
+            get
+            {
+                return _progressText;
+            }
+            set
+            {
+                if (_progressText == value)
+                {
+                    return;
+                }
+
+                _progressText = value;
+                NotifyProeprtyChanged();
+            }
+        }
+
         public IList<ScriptTiming> ScriptTimings
         {
             get;
-        } = Script.GetScriptTimings();
+        } = GetScriptTimings();
 
         public FieldPages SelectedFieldPages
         {
@@ -265,8 +313,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         public ICommand TimeStampMonth => new RelayCommand(
             ExecuteTimeStampMonth, CanExecuteAction);
 
-        private IProgress<Tuple<int, int, string>> Progress =>
-            new Progress<Tuple<int, int, string>>(HandleProgressReport);
+        private Progress Progress =>
+            new Progress<ProgressReport>(HandleProgressReport);
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -291,22 +339,34 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                 SelectedFieldPages,
                 GetCustomPageNumbers());
 
-            var scriptText = File.ReadAllText(SelectedScript);
+            var scriptText = ReadAllText(SelectedScript);
             var script = new Script(scriptText, SelectedTiming);
 
             ExecuteTask(field, script);
+        }
+
+        public ICommand Cancel => new RelayCommand(ExecuteCancel, CanCancel);
+
+        private void ExecuteCancel()
+        {
+            FileProcessor.Cancel();
+        }
+
+        private bool CanCancel()
+        {
+            return IsBusy;
         }
 
         private void ExecuteSelectFiles()
         {
             if (!SelectedFileNames.IsEmpty())
             {
-                var messageBoxResult = MessageBox.Show(
+                var messageBoxResult = Show(
                     ReplaceFilesMessageBoxText,
                     "Replace Files?",
-                    MessageBoxButton.YesNo);
+                    YesNo);
 
-                if (messageBoxResult == MessageBoxResult.Yes)
+                if (messageBoxResult == Yes)
                 {
                     SelectedFileNames.Clear();
                 }
@@ -315,7 +375,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             var openFileDialog = new OpenFileDialog
             {
                 Multiselect = true,
-                Filter = "Documents (*.doc;*.docx;*.pdf)|*.doc;*.docx;*.pdf"
+                Filter =
+                    "Documents|*.doc;*.docx;*.pdf;*.ppt;*.pptx;*.xls;*.xlsx"
             };
 
             openFileDialog.ShowDialog();
@@ -341,20 +402,35 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         private async void ExecuteTask(
             Field field = null, Script script = null)
         {
+            IsBusy = true;
             var fileNames = from x in SelectedFileNames select x.Item;
-            var fileProcessor = new FileProcessor(
+            FileProcessor = new FileProcessor(
                 fileNames.ToList(), Progress, field, script);
-            await fileProcessor.Execute();
+            try
+            {
+                await FileProcessor.Execute();
+            }
+            catch (OperationCanceledException)
+            {
+                ShowMessage("The operation was cancelled");
+            }
+            
+            IsBusy = false;
+        }
+
+        private void ShowMessage(string message)
+        {
+            
         }
 
         private void ExecuteTimeStampDay()
         {
-            ExecuteTask(Field.TimeStampField, Script.TimeStampOnPrintDay);
+            ExecuteTask(TimeStampField, TimeStampOnPrintDay);
         }
 
         private void ExecuteTimeStampMonth()
         {
-            ExecuteTask(Field.TimeStampField, Script.TimeStampOnPrintMonth);
+            ExecuteTask(TimeStampField, TimeStampOnPrintMonth);
         }
 
         private IEnumerable<int> GetCustomPageNumbers()
@@ -382,9 +458,12 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         }
 
         private void HandleProgressReport(
-            Tuple<int, int, string> progressReport)
+            ProgressReport progressReport)
         {
-            ProgressPercent = progressReport.Item1 * 100 / progressReport.Item2;
+            var current = progressReport.Item1;
+            var total = progressReport.Item2;
+            ProgressPercent = current * 100 / total;
+            ProgressText = $"{current} / {total}";
         }
 
         private void NotifyProeprtyChanged(

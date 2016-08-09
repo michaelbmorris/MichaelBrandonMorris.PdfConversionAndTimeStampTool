@@ -16,7 +16,10 @@
             </MenuItem>
         </Menu>
         <Grid Row="0">
-            <StackPanel>
+            <StackPanel
+                IsEnabled="{Binding IsBusy, 
+                            Converter={StaticResource InverseBooleanConverter}, 
+                            FallbackValue=True}">
                 <DockPanel>
                     <Button Command="{Binding SelectFiles}"
                             Content="Select Files..."
@@ -110,11 +113,20 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-            <ProgressBar Height="10"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         Width="100"
-                         Value="{Binding ProgressPercent}" />
+            <StackPanel Background="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="{Binding IsBusy, 
+                            Converter={StaticResource BooleanToVisibilityHiddenConverter}, 
+                            FallbackValue=Hidden}">
+                <ProgressBar Height="10"
+                             Width="100"
+                             Value="{Binding ProgressPercent}" />
+                <Label Content="{Binding ProgressText}"
+                       HorizontalAlignment="Center"/>
+                <Button Command="{Binding Cancel}"
+                        Content="Cancel" />
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>
