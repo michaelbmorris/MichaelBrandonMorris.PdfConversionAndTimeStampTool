@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Deployment.Application;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -26,6 +29,13 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         private const string ReplaceFilesMessageBoxText =
             "Would you like to replace the already selected files?";
 
+        private const string SelectFilesFilter =
+            "Office Files & PDFs|*.doc;*.docx;*.pdf;*.ppt;*.pptx;*.xls;*.xlsx";
+
+        private static readonly string HelpFile =
+            Path.Combine(Path.Combine("Resources", "Help"), "Help.chm");
+
+        private AboutWindow _aboutWindow;
         private string _customPageNumbers;
         private int _fieldBottomY;
         private int _fieldLeftX;
@@ -33,18 +43,18 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         private string _fieldTitle;
         private int _fieldTopY;
         private bool _isBusy;
+        private string _message;
+        private bool _messageIsVisible;
+        private int _messageZIndex;
         private int _progressPercent;
         private string _progressText;
         private FieldPages _selectedFieldPages;
         private string _selectedScript;
         private ScriptTiming _selectedTiming;
         private bool _shouldShowCustomPageNumbers;
+        private Process _userGuide;
 
-        private FileProcessor FileProcessor
-        {
-            get;
-            set;
-        }
+        public ICommand Cancel => new RelayCommand(ExecuteCancel, CanCancel);
 
         public ICommand Convert => new RelayCommand(
             ExecuteConvert, CanExecuteAction);
@@ -183,6 +193,66 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+            set
+            {
+                if (_message == value)
+                {
+                    return;
+                }
+
+                _message = value;
+                NotifyProeprtyChanged();
+            }
+        }
+
+        public bool MessageIsVisible
+        {
+            get
+            {
+                return _messageIsVisible;
+            }
+            set
+            {
+                if (_messageIsVisible == value)
+                {
+                    return;
+                }
+
+                _messageIsVisible = value;
+                NotifyProeprtyChanged();
+            }
+        }
+
+        public int MessageZIndex
+        {
+            get
+            {
+                return _messageZIndex;
+            }
+            set
+            {
+                if (_messageZIndex == value)
+                {
+                    return;
+                }
+
+                _messageZIndex = value;
+                NotifyProeprtyChanged();
+            }
+        }
+
+        public ICommand OpenAboutWindow
+            => new RelayCommand(ExecuteOpenAboutWindow);
+
+        public ICommand OpenUserGuide => new RelayCommand(
+            ExecuteOpenUserGuide);
+
         public int ProgressPercent
         {
             get
@@ -313,14 +383,84 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         public ICommand TimeStampMonth => new RelayCommand(
             ExecuteTimeStampMonth, CanExecuteAction);
 
+        public string Version
+        {
+            get
+            {
+                string version;
+
+                try
+                {
+                    version =
+                        ApplicationDeployment.CurrentDeployment.CurrentVersion
+                            .ToString();
+                }
+                catch (InvalidDeploymentException)
+                {
+                    version = "Dev";
+                }
+
+                return version;
+            }
+        }
+
+        private AboutWindow AboutWindow
+        {
+            get
+            {
+                if (_aboutWindow == null || !_aboutWindow.IsVisible)
+                {
+                    _aboutWindow = new AboutWindow();
+                }
+
+                return _aboutWindow;
+            }
+        }
+
+        private FileProcessor FileProcessor
+        {
+            get;
+            set;
+        }
+
         private Progress Progress =>
             new Progress<ProgressReport>(HandleProgressReport);
 
+        private Process UserGuide
+        {
+            get
+            {
+                if (_userGuide != null && !_userGuide.HasExited)
+                {
+                    _userGuide.Kill();
+                }
+                _userGuide = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = HelpFile
+                    }
+                };
+
+                return _userGuide;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool CanCancel()
+        {
+            return IsBusy;
+        }
 
         private bool CanExecuteAction()
         {
             return !SelectedFileNames.IsEmpty();
+        }
+
+        private void ExecuteCancel()
+        {
+            FileProcessor.Cancel();
         }
 
         private void ExecuteConvert()
@@ -345,16 +485,24 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             ExecuteTask(field, script);
         }
 
-        public ICommand Cancel => new RelayCommand(ExecuteCancel, CanCancel);
-
-        private void ExecuteCancel()
+        private void ExecuteOpenAboutWindow()
         {
-            FileProcessor.Cancel();
+            AboutWindow.Show();
+            AboutWindow.Activate();
         }
 
-        private bool CanCancel()
+        private void ExecuteOpenUserGuide()
         {
-            return IsBusy;
+            try
+            {
+                UserGuide.Start();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(Path.GetFullPath(HelpFile));
+                Debug.WriteLine($"{e.Message}\n{e.StackTrace}");
+                ShowMessage("User guide could not be opened.");
+            }
         }
 
         private void ExecuteSelectFiles()
@@ -375,8 +523,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             var openFileDialog = new OpenFileDialog
             {
                 Multiselect = true,
-                Filter =
-                    "Documents|*.doc;*.docx;*.pdf;*.ppt;*.pptx;*.xls;*.xlsx"
+                Filter = SelectFilesFilter
             };
 
             openFileDialog.ShowDialog();
@@ -395,7 +542,6 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             };
 
             openFileDialog.ShowDialog();
-
             SelectedScript = openFileDialog.FileName;
         }
 
@@ -403,24 +549,22 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             Field field = null, Script script = null)
         {
             IsBusy = true;
+            HideMessage();
             var fileNames = from x in SelectedFileNames select x.Item;
+
             FileProcessor = new FileProcessor(
                 fileNames.ToList(), Progress, field, script);
+
             try
             {
                 await FileProcessor.Execute();
             }
             catch (OperationCanceledException)
             {
-                ShowMessage("The operation was cancelled");
+                ShowMessage("The operation was cancelled.");
             }
-            
-            IsBusy = false;
-        }
 
-        private void ShowMessage(string message)
-        {
-            
+            IsBusy = false;
         }
 
         private void ExecuteTimeStampDay()
@@ -466,11 +610,25 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             ProgressText = $"{current} / {total}";
         }
 
+        private void HideMessage()
+        {
+            Message = string.Empty;
+            MessageIsVisible = false;
+            MessageZIndex = -1;
+        }
+
         private void NotifyProeprtyChanged(
             [CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(
                 this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void ShowMessage(string message)
+        {
+            Message = message + "\n\nDouble-click to dismiss.";
+            MessageIsVisible = true;
+            MessageZIndex = 1;
         }
     }
 }

@@ -11,32 +11,34 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Help">
-                <MenuItem Header="About" />
-                <MenuItem Header="User Guide" />
+                <MenuItem Command="{Binding OpenAboutWindow}"
+                          Header="About" />
+                <MenuItem Command="{Binding OpenUserGuide}"
+                          Header="User Guide" />
             </MenuItem>
         </Menu>
         <Grid Row="0">
             <StackPanel
                 IsEnabled="{Binding IsBusy, 
-                            Converter={StaticResource InverseBooleanConverter}, 
-                            FallbackValue=True}">
+                    Converter={StaticResource InverseBooleanConverter}, 
+                    FallbackValue=True}">
                 <DockPanel>
                     <Button Command="{Binding SelectFiles}"
                             Content="Select Files..."
                             DockPanel.Dock="Left"
-                            Margin="5 5 5 5" />
-                    <TabControl Margin="5 5 5 5">
+                            Margin="5" />
+                    <TabControl Margin="5">
                         <TabItem Header="General">
                             <DockPanel LastChildFill="False">
                                 <Button Command="{Binding TimeStampDay}"
                                         Content="Time Stamp 24 Hours"
-                                        Margin="5 5 5 5" />
+                                        Margin="5" />
                                 <Button Command="{Binding TimeStampMonth}"
                                         Content="Time Stamp 30 Days"
-                                        Margin="5 5 5 5" />
+                                        Margin="5" />
                                 <Button Command="{Binding Convert}"
                                         Content="Convert to PDF Only"
-                                        Margin="5 5 5 5" />
+                                        Margin="5" />
                             </DockPanel>
                         </TabItem>
                         <TabItem Header="Advanced">
@@ -44,11 +46,11 @@
                                 <DockPanel LastChildFill="False">
                                     <Button Command="{Binding SelectScript}"
                                             Content="Select Script..."
-                                            Margin="5 5 5 5" />
+                                            Margin="5" />
                                     <Label Content="{Binding SelectedScript}" />
                                     <ComboBox DockPanel.Dock="Right"
                                               ItemsSource="{Binding ScriptTimings}"
-                                              Margin="5 5 5 5"
+                                              Margin="5"
                                               SelectedItem="{Binding SelectedTiming}"
                                               SelectedIndex="0" />
                                     <Label Content="Script Timing:"
@@ -56,39 +58,39 @@
                                 </DockPanel>
                                 <DockPanel LastChildFill="False">
                                     <Label Content="Field Title:" />
-                                    <TextBox Margin="5 5 5 5"
+                                    <TextBox Margin="5"
                                              MinWidth="100"
                                              Text="{Binding FieldTitle, 
                                     Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged}" />
                                     <Label Content="Field Left X:" />
-                                    <xctk:IntegerUpDown Margin="5 5 5 5"
+                                    <xctk:IntegerUpDown Margin="5"
                                                         Value="{Binding FieldLeftX,
                                                             Mode=TwoWay}" />
                                     <Label Content="Field Top Y:" />
-                                    <xctk:IntegerUpDown Margin="5 5 5 5"
+                                    <xctk:IntegerUpDown Margin="5"
                                                         Value="{Binding FieldTopY, 
                                                             Mode=TwoWay}" />
                                     <Label Content="Field Right X:" />
-                                    <xctk:IntegerUpDown Margin="5 5 5 5"
+                                    <xctk:IntegerUpDown Margin="5"
                                                         Value="{Binding FieldRightX, 
                                                             Mode=TwoWay}" />
                                     <Label Content="Field Bottom Y:" />
-                                    <xctk:IntegerUpDown Margin="5 5 5 5"
+                                    <xctk:IntegerUpDown Margin="5"
                                                         Value="{Binding FieldBottomY, 
                                                             Mode=TwoWay}" />
                                 </DockPanel>
                                 <DockPanel LastChildFill="False">
                                     <Label Content="Field Pages:" />
                                     <ComboBox ItemsSource="{Binding FieldPages}"
-                                              Margin="5 5 5 5"
+                                              Margin="5"
                                               SelectedItem="{Binding SelectedFieldPages, Mode=TwoWay}"
                                               SelectedIndex="0" />
                                     <Label Content="Page Numbers (Comma Separated):"
                                            Visibility="{Binding ShouldShowCustomPageNumbers, 
                                                 Converter={StaticResource BooleanToVisibilityHiddenConverter}, 
                                                 FallbackValue=Hidden}" />
-                                    <TextBox Margin="5 5 5 5"
+                                    <TextBox Margin="5"
                                              MinWidth="100"
                                              Text="{Binding CustomPageNumbers, Mode=TwoWay}"
                                              Visibility="{Binding ShouldShowCustomPageNumbers, 
@@ -97,7 +99,7 @@
                                     <Button Command="{Binding CustomAction}"
                                             Content="Run Custom Action"
                                             DockPanel.Dock="Right"
-                                            Margin="5 5 5 5" />
+                                            Margin="5" />
                                 </DockPanel>
                             </StackPanel>
                         </TabItem>
@@ -123,10 +125,26 @@
                              Width="100"
                              Value="{Binding ProgressPercent}" />
                 <Label Content="{Binding ProgressText}"
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Center" />
                 <Button Command="{Binding Cancel}"
                         Content="Cancel" />
             </StackPanel>
+            <Border BorderBrush="Black"
+                    BorderThickness="1"
+                    Visibility="{Binding MessageIsVisible, 
+                        Converter={StaticResource BooleanToVisibilityHiddenConverter}, 
+                        FallbackValue=Hidden}"
+                    Panel.ZIndex="{Binding MessageZIndex, 
+                    Mode=TwoWay}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="White"
+                    MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
+                <TextBlock Text="{Binding Path=Message, Mode=TwoWay}"
+                           TextWrapping="Wrap"
+                           MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown"
+                           Margin="5" />
+            </Border>
         </Grid>
     </DockPanel>
 </Window>
