@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Deployment.Application;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -21,6 +20,7 @@ using static System.IO.File;
 using static System.Windows.MessageBox;
 using static System.Windows.MessageBoxResult;
 using static System.Windows.MessageBoxButton;
+using static System.IO.Path;
 
 namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
@@ -33,7 +33,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             "Office Files & PDFs|*.doc;*.docx;*.pdf;*.ppt;*.pptx;*.xls;*.xlsx";
 
         private static readonly string HelpFile =
-            Path.Combine(Path.Combine("Resources", "Help"), "Help.chm");
+            Combine(Combine("Resources", "Help"), "Help.chm");
 
         private AboutWindow _aboutWindow;
         private string _customPageNumbers;
@@ -497,10 +497,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             {
                 UserGuide.Start();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.WriteLine(Path.GetFullPath(HelpFile));
-                Debug.WriteLine($"{e.Message}\n{e.StackTrace}");
                 ShowMessage("User guide could not be opened.");
             }
         }
