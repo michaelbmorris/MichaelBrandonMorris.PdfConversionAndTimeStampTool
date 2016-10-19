@@ -33,6 +33,7 @@ using static Microsoft.Office.Interop.PowerPoint.PpAlertLevel;
 using static iTextSharp.text.pdf.PdfAction;
 using static Microsoft.Office.Core.MsoTriState;
 using static iTextSharp.text.pdf.PdfWriter;
+using System.Diagnostics;
 
 namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
@@ -161,6 +162,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                 CancellationToken);
 
             await task;
+
+            Process.Start(OutputFolderPath);
 
             if (!Log.IsEmpty())
             {
@@ -424,7 +427,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                     pageNumber += 1;
                 }
 
-                for (; pageNumber < numberOfPages; pageNumber += increment)
+                for (; pageNumber <= numberOfPages; pageNumber += increment)
                 {
                     AddFieldToPage(pageNumber, pdfStamper, parentField);
                 }
