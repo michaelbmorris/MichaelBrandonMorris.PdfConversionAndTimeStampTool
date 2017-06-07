@@ -26,14 +26,14 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
     internal class ViewModel : INotifyPropertyChanged
     {
+        private static readonly string HelpFile =
+            Combine(Combine("Resources", "Help"), "Help.chm");
+
         private const string ReplaceFilesMessageBoxText =
             "Would you like to replace the already selected files?";
 
         private const string SelectFilesFilter =
             "Office Files & PDFs|*.doc;*.docx;*.pdf;*.ppt;*.pptx;*.xls;*.xlsx";
-
-        private static readonly string HelpFile =
-            Combine(Combine("Resources", "Help"), "Help.chm");
 
         private AboutWindow _aboutWindow;
         private string _customPageNumbers;
@@ -54,13 +54,110 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         private bool _shouldShowCustomPageNumbers;
         private Process _userGuide;
 
-        public ICommand Cancel => new RelayCommand(ExecuteCancel, CanCancel);
+        public ICommand Cancel
+        {
+            get
+            {
+                return new RelayCommand(ExecuteCancel, CanCancel);
+            }
+        }
 
-        public ICommand Convert => new RelayCommand(
-            ExecuteConvert, CanExecuteAction);
+        public ICommand Convert
+        {
+            get
+            {
+                return new RelayCommand(ExecuteConvert, CanExecuteAction);
+            }
+        }
 
-        public ICommand CustomAction => new RelayCommand(
-            ExecuteCustomAction, CanExecuteAction);
+        public ICommand CustomAction
+        {
+            get
+            {
+                return new RelayCommand(ExecuteCustomAction, CanExecuteAction);
+            }
+        }
+
+        public IList<FieldPages> FieldPages
+        {
+            get;
+        } = GetFieldPages();
+
+        public ICommand OpenAboutWindow
+        {
+            get
+            {
+                return new RelayCommand(ExecuteOpenAboutWindow);
+            }
+        }
+
+        public ICommand OpenUserGuide
+        {
+            get
+            {
+                return new RelayCommand(ExecuteOpenUserGuide);
+            }
+        }
+
+        public IList<ScriptTiming> ScriptTimings
+        {
+            get;
+        } = GetScriptTimings();
+
+        public ICommand SelectFiles
+        {
+            get
+            {
+                return new RelayCommand(ExecuteSelectFiles);
+            }
+        }
+
+        public ICommand SelectScript
+        {
+            get
+            {
+                return new RelayCommand(ExecuteSelectScript);
+            }
+        }
+
+        public ICommand TimeStampDay
+        {
+            get
+            {
+                return new RelayCommand(ExecuteTimeStampDay, CanExecuteAction);
+            }
+        }
+
+        public ICommand TimeStampMonth
+        {
+            get
+            {
+                return new RelayCommand(
+                    ExecuteTimeStampMonth,
+                    CanExecuteAction);
+            }
+        }
+
+        public string Version
+        {
+            get
+            {
+                string version;
+
+                try
+                {
+                    version =
+                        ApplicationDeployment.CurrentDeployment.CurrentVersion
+                            .ToString();
+                }
+                catch (InvalidDeploymentException)
+                {
+                    version = "Dev";
+                }
+
+                return version;
+            }
+        }
 
         public string CustomPageNumbers
         {
@@ -115,11 +212,6 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                 NotifyProeprtyChanged();
             }
         }
-
-        public IList<FieldPages> FieldPages
-        {
-            get;
-        } = GetFieldPages();
 
         public int FieldRightX
         {
@@ -247,12 +339,6 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
-        public ICommand OpenAboutWindow
-            => new RelayCommand(ExecuteOpenAboutWindow);
-
-        public ICommand OpenUserGuide => new RelayCommand(
-            ExecuteOpenUserGuide);
-
         public int ProgressPercent
         {
             get
@@ -288,11 +374,6 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                 NotifyProeprtyChanged();
             }
         }
-
-        public IList<ScriptTiming> ScriptTimings
-        {
-            get;
-        } = GetScriptTimings();
 
         public FieldPages SelectedFieldPages
         {
@@ -355,10 +436,6 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
-        public ICommand SelectFiles => new RelayCommand(ExecuteSelectFiles);
-
-        public ICommand SelectScript => new RelayCommand(ExecuteSelectScript);
-
         public bool ShouldShowCustomPageNumbers
         {
             get
@@ -377,33 +454,6 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
-        public ICommand TimeStampDay => new RelayCommand(
-            ExecuteTimeStampDay, CanExecuteAction);
-
-        public ICommand TimeStampMonth => new RelayCommand(
-            ExecuteTimeStampMonth, CanExecuteAction);
-
-        public string Version
-        {
-            get
-            {
-                string version;
-
-                try
-                {
-                    version =
-                        ApplicationDeployment.CurrentDeployment.CurrentVersion
-                            .ToString();
-                }
-                catch (InvalidDeploymentException)
-                {
-                    version = "Dev";
-                }
-
-                return version;
-            }
-        }
-
         private AboutWindow AboutWindow
         {
             get
@@ -417,14 +467,13 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
         }
 
-        private FileProcessor FileProcessor
+        private Progress Progress
         {
-            get;
-            set;
+            get
+            {
+                return new Progress<ProgressReport>(HandleProgressReport);
+            }
         }
-
-        private Progress Progress =>
-            new Progress<ProgressReport>(HandleProgressReport);
 
         private Process UserGuide
         {
@@ -444,6 +493,12 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 
                 return _userGuide;
             }
+        }
+
+        private FileProcessor FileProcessor
+        {
+            get;
+            set;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -544,14 +599,18 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         }
 
         private async void ExecuteTask(
-            Field field = null, Script script = null)
+            Field field = null,
+            Script script = null)
         {
             IsBusy = true;
             HideMessage();
             var fileNames = from x in SelectedFileNames select x.Item;
 
             FileProcessor = new FileProcessor(
-                fileNames.ToList(), Progress, field, script);
+                fileNames.ToList(),
+                Progress,
+                field,
+                script);
 
             try
             {
@@ -577,8 +636,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 
         private IEnumerable<int> GetCustomPageNumbers()
         {
-            if (SelectedFieldPages != Custom ||
-                CustomPageNumbers.IsNullOrWhiteSpace())
+            if (SelectedFieldPages != Custom
+                || CustomPageNumbers.IsNullOrWhiteSpace())
             {
                 return null;
             }
@@ -619,7 +678,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             [CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(
-                this, new PropertyChangedEventArgs(propertyName));
+                this,
+                new PropertyChangedEventArgs(propertyName));
         }
 
         private void ShowMessage(string message)

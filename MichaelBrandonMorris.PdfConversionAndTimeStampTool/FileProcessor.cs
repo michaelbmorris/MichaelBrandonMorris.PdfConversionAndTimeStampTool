@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
@@ -24,8 +25,8 @@ using PowerPointApplication = Microsoft.Office.Interop.PowerPoint.Application;
 using static System.IO.File;
 using static System.Diagnostics.Debug;
 using ActionTypeMapping = System.Collections.Generic.Dictionary
-    <MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming,
-        iTextSharp.text.pdf.PdfName>;
+<MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming,
+    iTextSharp.text.pdf.PdfName>;
 using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages;
 using static MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming;
 using static iTextSharp.text.pdf.PdfFormField;
@@ -33,30 +34,18 @@ using static Microsoft.Office.Interop.PowerPoint.PpAlertLevel;
 using static iTextSharp.text.pdf.PdfAction;
 using static Microsoft.Office.Core.MsoTriState;
 using static iTextSharp.text.pdf.PdfWriter;
-using System.Diagnostics;
 
 namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 {
     internal class FileProcessor
     {
-        private const int AlternatingPageIncrement = 2;
-        private const string DateTimeFormat = "yyyyMMddTHHmmss";
-        private const int EveryPageIncrement = 1;
-        private const string ExcelExtension = ".xls";
-        private const string ExcelXmlExtension = ".xlsx";
-        private const int FirstPageNumber = 1;
-        private const string FolderName = "PDF Conversion And Time Stamp Tool";
-        private const string PdfExtension = ".pdf";
-        private const string PowerPointExtension = ".ppt";
-        private const string PowerPointXmlExtension = ".pptx";
-        private const string WordExtension = ".doc";
-        private const string WordXmlExtension = ".docx";
-
         private static readonly string OutputFolderPath = Combine(
-            GetFolderPath(MyDocuments), FolderName);
+            GetFolderPath(MyDocuments),
+            FolderName);
 
         private static readonly string ProcessingFolderPath = Combine(
-            GetFolderPath(ApplicationData), FolderName);
+            GetFolderPath(ApplicationData),
+            FolderName);
 
         private static readonly ActionTypeMapping ActionTypeMapping =
             new ActionTypeMapping
@@ -66,6 +55,22 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                 [WillPrint] = WILL_PRINT,
                 [WillSave] = WILL_SAVE
             };
+
+        private const int AlternatingPageIncrement = 2;
+        private const int EveryPageIncrement = 1;
+        private const string ExcelExtension = ".xls";
+        private const string ExcelXmlExtension = ".xlsx";
+        private const int FirstPageNumber = 1;
+        private const string FolderName = "PDF Conversion And Time Stamp Tool";
+
+
+        private const string PdfExtension = ".pdf";
+        private const string PowerPointExtension = ".ppt";
+        private const string PowerPointXmlExtension = ".pptx";
+
+
+        private const string WordExtension = ".doc";
+        private const string WordXmlExtension = ".docx";
 
 
         internal FileProcessor(
@@ -82,8 +87,13 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             CreateDirectory(ProcessingFolderPath);
         }
 
-        private CancellationToken CancellationToken =>
-            CancellationTokenSource.Token;
+        private CancellationToken CancellationToken
+        {
+            get
+            {
+                return CancellationTokenSource.Token;
+            }
+        }
 
         private CancellationTokenSource CancellationTokenSource
         {
@@ -156,7 +166,9 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 
                         Progress.Report(
                             new ProgressReport(
-                                ++count, FileNames.Count, currentFileName));
+                                ++count,
+                                FileNames.Count,
+                                currentFileName));
                     }
                 },
                 CancellationToken);
@@ -168,7 +180,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             if (!Log.IsEmpty())
             {
                 var now = DateTime.Now;
-                var logFileName = $"Log - {now.ToString(DateTimeFormat)}.txt";
+                var logFileName = $"Log - {now:yyyyMMddTHHmmss}.txt";
                 var logFilePath = Combine(OutputFolderPath, logFileName);
                 WriteAllLines(logFilePath, Log);
             }
@@ -183,7 +195,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         }
 
         private static void ConvertExcelToPdf(
-            string fileName, string processingPath)
+            string fileName,
+            string processingPath)
         {
             var excelApplication = new ExcelApplication
             {
@@ -213,7 +226,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         }
 
         private static void ConvertPowerPointToPdf(
-            string fileName, string processingPath)
+            string fileName,
+            string processingPath)
         {
             var powerPointApplication = new PowerPointApplication
             {
@@ -224,7 +238,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
 
             var powerPointPresentation =
                 powerPointApplication.Presentations.Open(
-                    fileName, WithWindow: msoFalse);
+                    fileName,
+                    WithWindow: msoFalse);
 
             if (powerPointPresentation == null)
             {
@@ -235,7 +250,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             try
             {
                 powerPointPresentation.ExportAsFixedFormat(
-                    processingPath, ppFixedFormatTypePDF);
+                    processingPath,
+                    ppFixedFormatTypePDF);
             }
             finally
             {
@@ -247,11 +263,12 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         [SuppressMessage("ReSharper", "ImplicitlyCapturedClosure")]
         private static string ConvertToPdf(string fileName)
         {
-            var processingFileName = GetFileNameWithoutExtension(fileName) +
-                                     PdfExtension;
+            var processingFileName = GetFileNameWithoutExtension(fileName)
+                                     + PdfExtension;
 
             var processingPath = Combine(
-                ProcessingFolderPath, processingFileName);
+                ProcessingFolderPath,
+                processingFileName);
 
             var extension = GetExtension(fileName)?.ToLower();
 
@@ -295,7 +312,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         }
 
         private static void ConvertWordToPdf(
-            string fileName, string processingPath)
+            string fileName,
+            string processingPath)
         {
             var wordApplication = new WordApplication
             {
@@ -316,7 +334,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             try
             {
                 wordDocument.ExportAsFixedFormat(
-                    processingPath, wdExportFormatPDF);
+                    processingPath,
+                    wdExportFormatPDF);
             }
             finally
             {
@@ -339,8 +358,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             if (outputFileName == null)
             {
                 throw new Exception(
-                    $"The name of the file '{fileName}' " +
-                    "is incorrectly formatted.");
+                    $"The name of the file '{fileName}' "
+                    + "is incorrectly formatted.");
             }
 
             return Combine(OutputFolderPath, outputFileName);
@@ -356,14 +375,15 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             }
 
             throw new Exception(
-                $"The name of the file '{fileName}' " +
-                "is incorrectly formatted.");
+                $"The name of the file '{fileName}' "
+                + "is incorrectly formatted.");
         }
 
         private static bool IsPdf(string fileName)
         {
-            return GetExtension(fileName).EqualsOrdinalIgnoreCase(
-                PdfExtension);
+            return GetExtension(fileName)
+                .EqualsOrdinalIgnoreCase(
+                    PdfExtension);
         }
 
         private static void MoveToOutput(string fileName)
@@ -384,7 +404,10 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             PdfFormField parentField)
         {
             var rectangle = new Rectangle(
-                Field.LeftX, Field.TopY, Field.RightX, Field.BottomY);
+                Field.LeftX,
+                Field.TopY,
+                Field.RightX,
+                Field.BottomY);
 
             var textField = new TextField(pdfStamper.Writer, rectangle, null);
             var childField = textField.GetTextField();
@@ -395,7 +418,10 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
         private void AddFieldToPdf(PdfStamper pdfStamper, int numberOfPages)
         {
             var parentField = CreateTextField(
-                pdfStamper.Writer, false, false, 0);
+                pdfStamper.Writer,
+                false,
+                false,
+                0);
 
             parentField.FieldName = Field.Name;
 
@@ -404,8 +430,7 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
                 : FirstPageNumber;
 
             // ReSharper disable once ConvertIfStatementToSwitchStatement
-            if (Field.Pages == First ||
-                Field.Pages == Last)
+            if (Field.Pages == First || Field.Pages == Last)
             {
                 AddFieldToPage(pageNumber, pdfStamper, parentField);
             }
@@ -441,14 +466,16 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             var pdfAction = JavaScript(Script.Text, pdfStamper.Writer);
 
             pdfStamper.Writer.SetAdditionalAction(
-                ActionTypeMapping[Script.Timing], pdfAction);
+                ActionTypeMapping[Script.Timing],
+                pdfAction);
         }
 
         private void ProcessPdf(string fileName)
         {
             using (var pdfReader = new PdfReader(fileName))
             using (var fileStream = new FileStream(
-                GetOutputPath(fileName), FileMode.Create))
+                GetOutputPath(fileName),
+                FileMode.Create))
             using (var pdfStamper = new PdfStamper(pdfReader, fileStream))
             {
                 if (Field != null)

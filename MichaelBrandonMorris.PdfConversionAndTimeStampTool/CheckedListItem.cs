@@ -51,7 +51,8 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
             [CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(
-                this, new PropertyChangedEventArgs(propertyName));
+                this,
+                new PropertyChangedEventArgs(propertyName));
         }
     }
 }

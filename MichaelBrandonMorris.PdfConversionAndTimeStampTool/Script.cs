@@ -16,10 +16,12 @@ namespace MichaelBrandonMorris.PdfConversionAndTimeStampTool
     internal class Script
     {
         internal static readonly Script TimeStampOnPrintDay = new Script(
-            TimeStampDay, WillPrint);
+            TimeStampDay,
+            WillPrint);
 
         internal static readonly Script TimeStampOnPrintMonth = new Script(
-            TimeStampMonth, WillPrint);
+            TimeStampMonth,
+            WillPrint);
 
         internal Script(string text, ScriptTiming timing)
         {
