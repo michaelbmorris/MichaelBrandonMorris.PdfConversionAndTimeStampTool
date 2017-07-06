@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="bf81bf67-6baf-45db-a812-34bae6eb3a1d" Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool Namespace" Url="html/N-MichaelBrandonMorris.PdfConversionAndTimeStampTool.htm">
+    <HelpTOCNode Id="e7896379-54cd-4918-bad4-f6d96e3754e8" Title="AboutWindow Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm">
+      <HelpTOCNode Title="AboutWindow Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+      <HelpTOCNode Title="AboutWindow Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.-ctor.htm" />
+      <HelpTOCNode Title="AboutWindow Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+      <HelpTOCNode Title="AboutWindow Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+      <HelpTOCNode Title="AboutWindow Events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="ee59cba8-ba16-4bd0-b912-a744056b8b4f" Title="App Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm">
+      <HelpTOCNode Title="App Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+      <HelpTOCNode Title="App Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+      <HelpTOCNode Title="App Events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="99a09035-f725-4506-8e3b-b3eb6c98870c" Title="CheckedListItem(T) Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm">
+      <HelpTOCNode Title="CheckedListItem(T) Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+      <HelpTOCNode Title="CheckedListItem(T) Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.-ctor.htm" />
+      <HelpTOCNode Id="076982cf-5135-42e0-9710-0bf8346b74d2" Title="CheckedListItem(T) Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm">
+        <HelpTOCNode Title="_isChecked Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._isChecked.htm" />
+        <HelpTOCNode Title="_item Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._item.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8e6292ca-89fc-4e61-9c79-c512760292aa" Title="CheckedListItem(T) Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm">
+        <HelpTOCNode Title="NotifyPropertyChanged Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.NotifyPropertyChanged.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6d5bc635-7b54-4b09-9705-144809a7bbf3" Title="CheckedListItem(T) Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm">
+        <HelpTOCNode Title="IsChecked Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.IsChecked.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.Item.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7cb975d7-bd61-4f60-972a-4a1c5b7998ed" Title="CheckedListItem(T) Events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm">
+        <HelpTOCNode Title="PropertyChanged Event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.PropertyChanged.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="650750e0-5500-4651-af26-76a740ba9654" Title="Field Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm">
+      <HelpTOCNode Title="Field Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+      <HelpTOCNode Title="Field Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.-ctor.htm" />
+      <HelpTOCNode Id="2a349796-8628-451c-b4d9-619dfb58c14d" Title="Field Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm">
+        <HelpTOCNode Title="TimeStampField Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampField.htm" />
+        <HelpTOCNode Title="TimeStampFieldBottomY Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldBottomY.htm" />
+        <HelpTOCNode Title="TimeStampFieldLeftX Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldLeftX.htm" />
+        <HelpTOCNode Title="TimeStampFieldName Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldName.htm" />
+        <HelpTOCNode Title="TimeStampFieldRightX Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldRightX.htm" />
+        <HelpTOCNode Title="TimeStampFieldTopY Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldTopY.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="62b0a251-66b9-4555-99a8-a3e51bc1a5ab" Title="Field Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm">
+        <HelpTOCNode Title="GetFieldPages Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.GetFieldPages.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="28f31992-670b-4650-92e5-43d1b279b280" Title="Field Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm">
+        <HelpTOCNode Title="BottomY Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.BottomY.htm" />
+        <HelpTOCNode Title="CustomPageNumbers Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.CustomPageNumbers.htm" />
+        <HelpTOCNode Title="LeftX Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.LeftX.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.Name.htm" />
+        <HelpTOCNode Title="Pages Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.Pages.htm" />
+        <HelpTOCNode Title="RightX Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.RightX.htm" />
+        <HelpTOCNode Title="TopY Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TopY.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="FieldPages Enumeration" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+    <HelpTOCNode Id="ae3b7a7f-b4b3-4495-9d87-befaf0e28135" Title="FileProcessor Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm">
+      <HelpTOCNode Title="FileProcessor Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+      <HelpTOCNode Title="FileProcessor Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.-ctor.htm" />
+      <HelpTOCNode Id="4fbebc97-bd71-44c4-98b9-3375ca2eef4d" Title="FileProcessor Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm">
+        <HelpTOCNode Title="ActionTypeMapping Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ActionTypeMapping.htm" />
+        <HelpTOCNode Title="AlternatingPageIncrement Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AlternatingPageIncrement.htm" />
+        <HelpTOCNode Title="EveryPageIncrement Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.EveryPageIncrement.htm" />
+        <HelpTOCNode Title="ExcelExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ExcelExtension.htm" />
+        <HelpTOCNode Title="ExcelXmlExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ExcelXmlExtension.htm" />
+        <HelpTOCNode Title="FirstPageNumber Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FirstPageNumber.htm" />
+        <HelpTOCNode Title="FolderName Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FolderName.htm" />
+        <HelpTOCNode Title="OutputFolderPath Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.OutputFolderPath.htm" />
+        <HelpTOCNode Title="PdfExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PdfExtension.htm" />
+        <HelpTOCNode Title="PowerPointExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PowerPointExtension.htm" />
+        <HelpTOCNode Title="PowerPointXmlExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PowerPointXmlExtension.htm" />
+        <HelpTOCNode Title="ProcessingFolderPath Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ProcessingFolderPath.htm" />
+        <HelpTOCNode Title="WordExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.WordExtension.htm" />
+        <HelpTOCNode Title="WordXmlExtension Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.WordXmlExtension.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="231f4f30-7fb4-47bf-b3c4-57faa60e4297" Title="FileProcessor Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm">
+        <HelpTOCNode Title="AddFieldToPage Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddFieldToPage.htm" />
+        <HelpTOCNode Title="AddFieldToPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddFieldToPdf.htm" />
+        <HelpTOCNode Title="AddScriptToPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddScriptToPdf.htm" />
+        <HelpTOCNode Title="Cancel Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Cancel.htm" />
+        <HelpTOCNode Title="ClearProcessing Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ClearProcessing.htm" />
+        <HelpTOCNode Title="ConvertExcelToPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertExcelToPdf.htm" />
+        <HelpTOCNode Title="ConvertPowerPointToPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertPowerPointToPdf.htm" />
+        <HelpTOCNode Title="ConvertToPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertToPdf.htm" />
+        <HelpTOCNode Title="ConvertWordToPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertWordToPdf.htm" />
+        <HelpTOCNode Title="CopyToProcessing Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CopyToProcessing.htm" />
+        <HelpTOCNode Title="Execute Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Execute.htm" />
+        <HelpTOCNode Title="GetOutputPath Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.GetOutputPath.htm" />
+        <HelpTOCNode Title="GetProcessingPath Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.GetProcessingPath.htm" />
+        <HelpTOCNode Title="IsPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.IsPdf.htm" />
+        <HelpTOCNode Title="MoveToOutput Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.MoveToOutput.htm" />
+        <HelpTOCNode Title="ProcessPdf Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ProcessPdf.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6e001dfb-c6a9-4d8f-91ff-fbb4270c9511" Title="FileProcessor Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm">
+        <HelpTOCNode Title="CancellationToken Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CancellationToken.htm" />
+        <HelpTOCNode Title="CancellationTokenSource Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CancellationTokenSource.htm" />
+        <HelpTOCNode Title="Field Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Field.htm" />
+        <HelpTOCNode Title="FileNames Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FileNames.htm" />
+        <HelpTOCNode Title="Log Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Log.htm" />
+        <HelpTOCNode Title="Progress Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Progress.htm" />
+        <HelpTOCNode Title="Script Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Script.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7dec390e-a633-41db-a7fe-e54f939c3f84" Title="MainWindow Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm">
+      <HelpTOCNode Title="MainWindow Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+      <HelpTOCNode Title="MainWindow Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.-ctor.htm" />
+      <HelpTOCNode Id="dd1fe1f0-b359-49f0-8c28-b8ff685b4b01" Title="MainWindow Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm">
+        <HelpTOCNode Title="UIElement_OnMouseLeftButtonDown Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.UIElement_OnMouseLeftButtonDown.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c86f9118-3e6a-4df4-a44b-4df0dc198af7" Title="Script Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm">
+      <HelpTOCNode Title="Script Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+      <HelpTOCNode Title="Script Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.-ctor.htm" />
+      <HelpTOCNode Id="fff42abf-11d0-49fc-b349-d60d9211e2aa" Title="Script Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm">
+        <HelpTOCNode Title="TimeStampOnPrintDay Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.TimeStampOnPrintDay.htm" />
+        <HelpTOCNode Title="TimeStampOnPrintMonth Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.TimeStampOnPrintMonth.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bbc14a78-41fa-4594-a9b2-e39f80137ae5" Title="Script Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm">
+        <HelpTOCNode Title="GetScriptTimings Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.GetScriptTimings.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6044c9db-6b97-4390-b5af-c450f35a8b29" Title="Script Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm">
+        <HelpTOCNode Title="Text Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.Text.htm" />
+        <HelpTOCNode Title="Timing Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.Timing.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="ScriptTiming Enumeration" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+    <HelpTOCNode Id="05b7a8f9-dd12-4c32-9a0a-9c136c2daf01" Title="ViewModel Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm">
+      <HelpTOCNode Title="ViewModel Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+      <HelpTOCNode Id="db2ee0d4-befd-48e3-8377-76021980ccc3" Title="ViewModel Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm">
+        <HelpTOCNode Title="_aboutWindow Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._aboutWindow.htm" />
+        <HelpTOCNode Title="_customPageNumbers Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._customPageNumbers.htm" />
+        <HelpTOCNode Title="_fieldBottomY Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldBottomY.htm" />
+        <HelpTOCNode Title="_fieldLeftX Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldLeftX.htm" />
+        <HelpTOCNode Title="_fieldRightX Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldRightX.htm" />
+        <HelpTOCNode Title="_fieldTitle Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldTitle.htm" />
+        <HelpTOCNode Title="_fieldTopY Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldTopY.htm" />
+        <HelpTOCNode Title="_isBusy Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._isBusy.htm" />
+        <HelpTOCNode Title="_message Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._message.htm" />
+        <HelpTOCNode Title="_messageIsVisible Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._messageIsVisible.htm" />
+        <HelpTOCNode Title="_messageZIndex Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._messageZIndex.htm" />
+        <HelpTOCNode Title="_progressPercent Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._progressPercent.htm" />
+        <HelpTOCNode Title="_progressText Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._progressText.htm" />
+        <HelpTOCNode Title="_selectedFieldPages Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedFieldPages.htm" />
+        <HelpTOCNode Title="_selectedScript Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedScript.htm" />
+        <HelpTOCNode Title="_selectedTiming Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedTiming.htm" />
+        <HelpTOCNode Title="_shouldShowCustomPageNumbers Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._shouldShowCustomPageNumbers.htm" />
+        <HelpTOCNode Title="_userGuide Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._userGuide.htm" />
+        <HelpTOCNode Title="HelpFile Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HelpFile.htm" />
+        <HelpTOCNode Title="ReplaceFilesMessageBoxText Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ReplaceFilesMessageBoxText.htm" />
+        <HelpTOCNode Title="SelectFilesFilter Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectFilesFilter.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="825a0f8f-ebc3-42bf-9cd8-cb65404c8e99" Title="ViewModel Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm">
+        <HelpTOCNode Title="CanCancel Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CanCancel.htm" />
+        <HelpTOCNode Title="CanExecuteAction Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CanExecuteAction.htm" />
+        <HelpTOCNode Title="ExecuteCancel Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteCancel.htm" />
+        <HelpTOCNode Title="ExecuteConvert Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteConvert.htm" />
+        <HelpTOCNode Title="ExecuteCustomAction Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteCustomAction.htm" />
+        <HelpTOCNode Title="ExecuteOpenAboutWindow Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteOpenAboutWindow.htm" />
+        <HelpTOCNode Title="ExecuteOpenUserGuide Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteOpenUserGuide.htm" />
+        <HelpTOCNode Title="ExecuteSelectFiles Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteSelectFiles.htm" />
+        <HelpTOCNode Title="ExecuteSelectScript Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteSelectScript.htm" />
+        <HelpTOCNode Title="ExecuteTask Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTask.htm" />
+        <HelpTOCNode Title="ExecuteTimeStampDay Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTimeStampDay.htm" />
+        <HelpTOCNode Title="ExecuteTimeStampMonth Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTimeStampMonth.htm" />
+        <HelpTOCNode Title="GetCustomPageNumbers Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.GetCustomPageNumbers.htm" />
+        <HelpTOCNode Title="HandleProgressReport Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HandleProgressReport.htm" />
+        <HelpTOCNode Title="HideMessage Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HideMessage.htm" />
+        <HelpTOCNode Title="NotifyProeprtyChanged Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.NotifyProeprtyChanged.htm" />
+        <HelpTOCNode Title="ShowMessage Method " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ShowMessage.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="42345317-7f76-488a-aed4-f0c44a5f5446" Title="ViewModel Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm">
+        <HelpTOCNode Title="AboutWindow Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.AboutWindow.htm" />
+        <HelpTOCNode Title="Cancel Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Cancel.htm" />
+        <HelpTOCNode Title="Convert Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Convert.htm" />
+        <HelpTOCNode Title="CustomAction Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CustomAction.htm" />
+        <HelpTOCNode Title="CustomPageNumbers Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CustomPageNumbers.htm" />
+        <HelpTOCNode Title="FieldBottomY Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldBottomY.htm" />
+        <HelpTOCNode Title="FieldLeftX Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldLeftX.htm" />
+        <HelpTOCNode Title="FieldPages Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldPages.htm" />
+        <HelpTOCNode Title="FieldRightX Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldRightX.htm" />
+        <HelpTOCNode Title="FieldTitle Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldTitle.htm" />
+        <HelpTOCNode Title="FieldTopY Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldTopY.htm" />
+        <HelpTOCNode Title="FileProcessor Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FileProcessor.htm" />
+        <HelpTOCNode Title="IsBusy Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.IsBusy.htm" />
+        <HelpTOCNode Title="Message Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Message.htm" />
+        <HelpTOCNode Title="MessageIsVisible Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.MessageIsVisible.htm" />
+        <HelpTOCNode Title="MessageZIndex Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.MessageZIndex.htm" />
+        <HelpTOCNode Title="OpenAboutWindow Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.OpenAboutWindow.htm" />
+        <HelpTOCNode Title="OpenUserGuide Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.OpenUserGuide.htm" />
+        <HelpTOCNode Title="Progress Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Progress.htm" />
+        <HelpTOCNode Title="ProgressPercent Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ProgressPercent.htm" />
+        <HelpTOCNode Title="ProgressText Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ProgressText.htm" />
+        <HelpTOCNode Title="ScriptTimings Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ScriptTimings.htm" />
+        <HelpTOCNode Title="SelectedFieldPages Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedFieldPages.htm" />
+        <HelpTOCNode Title="SelectedFileNames Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedFileNames.htm" />
+        <HelpTOCNode Title="SelectedScript Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedScript.htm" />
+        <HelpTOCNode Title="SelectedTiming Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedTiming.htm" />
+        <HelpTOCNode Title="SelectFiles Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectFiles.htm" />
+        <HelpTOCNode Title="SelectScript Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectScript.htm" />
+        <HelpTOCNode Title="ShouldShowCustomPageNumbers Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ShouldShowCustomPageNumbers.htm" />
+        <HelpTOCNode Title="TimeStampDay Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.TimeStampDay.htm" />
+        <HelpTOCNode Title="TimeStampMonth Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.TimeStampMonth.htm" />
+        <HelpTOCNode Title="UserGuide Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.UserGuide.htm" />
+        <HelpTOCNode Title="Version Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Version.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6af93a6a-48ea-4697-9e1c-eb223997f6be" Title="ViewModel Events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm">
+        <HelpTOCNode Title="PropertyChanged Event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.PropertyChanged.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="b027e896-cc10-42da-8a47-d26cacea6fdf" Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties Namespace" Url="html/N-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.htm">
+    <HelpTOCNode Id="6264e0b6-7655-462f-b147-78d30e48a096" Title="Resources Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm">
+      <HelpTOCNode Title="Resources Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+      <HelpTOCNode Title="Resources Constructor " Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.-ctor.htm" />
+      <HelpTOCNode Id="6cdd7532-8e88-4063-afab-78f5005f040e" Title="Resources Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm">
+        <HelpTOCNode Title="resourceCulture Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.resourceCulture.htm" />
+        <HelpTOCNode Title="resourceMan Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.resourceMan.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Resources Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+      <HelpTOCNode Id="f6f2c7a7-2b4c-40fa-99f7-999de95cf255" Title="Resources Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm">
+        <HelpTOCNode Title="Culture Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.Culture.htm" />
+        <HelpTOCNode Title="ResourceManager Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.ResourceManager.htm" />
+        <HelpTOCNode Title="TimeStampDay Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.TimeStampDay.htm" />
+        <HelpTOCNode Title="TimeStampMonth Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.TimeStampMonth.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f8619c74-234e-4bf8-a5c7-04e6498e1238" Title="Settings Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm">
+      <HelpTOCNode Title="Settings Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+      <HelpTOCNode Id="bb0d7880-9817-4916-9381-1ce0afbb8847" Title="Settings Fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm">
+        <HelpTOCNode Title="defaultInstance Field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.defaultInstance.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Settings Methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+      <HelpTOCNode Id="47f04686-4005-4c88-ab1b-cfdfeba3418d" Title="Settings Properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm">
+        <HelpTOCNode Title="Default Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.Default.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Settings Events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

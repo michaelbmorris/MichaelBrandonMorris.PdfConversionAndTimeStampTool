@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="AboutWindow class">
+    <HelpKINode Title="AboutWindow Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="AboutWindow Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="about AboutWindow class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.-ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AboutWindow property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.AboutWindow.htm" />
+  <HelpKINode Title="AboutWindow.AboutWindow constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.-ctor.htm" />
+  <HelpKINode Title="ActionTypeMapping field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ActionTypeMapping.htm" />
+  <HelpKINode Title="AddFieldToPage method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddFieldToPage.htm" />
+  <HelpKINode Title="AddFieldToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddFieldToPdf.htm" />
+  <HelpKINode Title="AddScriptToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddScriptToPdf.htm" />
+  <HelpKINode Title="All enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="All field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.All.htm" />
+  <HelpKINode Title="AlternatingPageIncrement field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AlternatingPageIncrement.htm" />
+  <HelpKINode Title="App class">
+    <HelpKINode Title="App Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="App Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="about App class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BottomY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.BottomY.htm" />
+  <HelpKINode Title="CanCancel method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CanCancel.htm" />
+  <HelpKINode Title="Cancel method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Cancel.htm" />
+  <HelpKINode Title="Cancel property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Cancel.htm" />
+  <HelpKINode Title="CancellationToken property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CancellationToken.htm" />
+  <HelpKINode Title="CancellationTokenSource property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CancellationTokenSource.htm" />
+  <HelpKINode Title="CanExecuteAction method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CanExecuteAction.htm" />
+  <HelpKINode Title="CheckedListItem(Of T) class">
+    <HelpKINode Title="CheckedListItem(T) Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="CheckedListItem(T) Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="about CheckedListItem(Of T) class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.-ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CheckedListItem(Of T).CheckedListItem constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.-ctor.htm" />
+  <HelpKINode Title="CheckedListItem(Of T).IsChecked property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.IsChecked.htm" />
+  <HelpKINode Title="CheckedListItem(Of T).Item property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.Item.htm" />
+  <HelpKINode Title="CheckedListItem(Of T).NotifyPropertyChanged method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.NotifyPropertyChanged.htm" />
+  <HelpKINode Title="CheckedListItem(Of T).PropertyChanged event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.PropertyChanged.htm" />
+  <HelpKINode Title="CheckedListItem(Of T)._isChecked field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._isChecked.htm" />
+  <HelpKINode Title="CheckedListItem(Of T)._item field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._item.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt; class">
+    <HelpKINode Title="CheckedListItem(T) Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="CheckedListItem(T) Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="about CheckedListItem&lt;T&gt; class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.-ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CheckedListItem&lt;T&gt;.CheckedListItem constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.-ctor.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt;.IsChecked property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.IsChecked.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt;.Item property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.Item.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt;.NotifyPropertyChanged method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.NotifyPropertyChanged.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt;.PropertyChanged event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.PropertyChanged.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt;._isChecked field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._isChecked.htm" />
+  <HelpKINode Title="CheckedListItem&lt;T&gt;._item field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._item.htm" />
+  <HelpKINode Title="ClearProcessing method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ClearProcessing.htm" />
+  <HelpKINode Title="Convert property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Convert.htm" />
+  <HelpKINode Title="ConvertExcelToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertExcelToPdf.htm" />
+  <HelpKINode Title="ConvertPowerPointToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertPowerPointToPdf.htm" />
+  <HelpKINode Title="ConvertToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertToPdf.htm" />
+  <HelpKINode Title="ConvertWordToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertWordToPdf.htm" />
+  <HelpKINode Title="CopyToProcessing method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CopyToProcessing.htm" />
+  <HelpKINode Title="Culture property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.Culture.htm" />
+  <HelpKINode Title="Custom enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="Custom field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Custom.htm" />
+  <HelpKINode Title="CustomAction property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CustomAction.htm" />
+  <HelpKINode Title="CustomPageNumbers property">
+    <HelpKINode Title="CustomPageNumbers Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CustomPageNumbers.htm" />
+    <HelpKINode Title="CustomPageNumbers Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.CustomPageNumbers.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Default property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.Default.htm" />
+  <HelpKINode Title="defaultInstance field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.defaultInstance.htm" />
+  <HelpKINode Title="DidPrint enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+  <HelpKINode Title="DidPrint field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.DidPrint.htm" />
+  <HelpKINode Title="DidSave enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+  <HelpKINode Title="DidSave field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.DidSave.htm" />
+  <HelpKINode Title="Even enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="Even field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Even.htm" />
+  <HelpKINode Title="EveryPageIncrement field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.EveryPageIncrement.htm" />
+  <HelpKINode Title="ExcelExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ExcelExtension.htm" />
+  <HelpKINode Title="ExcelXmlExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ExcelXmlExtension.htm" />
+  <HelpKINode Title="Execute method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Execute.htm" />
+  <HelpKINode Title="ExecuteCancel method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteCancel.htm" />
+  <HelpKINode Title="ExecuteConvert method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteConvert.htm" />
+  <HelpKINode Title="ExecuteCustomAction method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteCustomAction.htm" />
+  <HelpKINode Title="ExecuteOpenAboutWindow method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteOpenAboutWindow.htm" />
+  <HelpKINode Title="ExecuteOpenUserGuide method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteOpenUserGuide.htm" />
+  <HelpKINode Title="ExecuteSelectFiles method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteSelectFiles.htm" />
+  <HelpKINode Title="ExecuteSelectScript method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteSelectScript.htm" />
+  <HelpKINode Title="ExecuteTask method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTask.htm" />
+  <HelpKINode Title="ExecuteTimeStampDay method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTimeStampDay.htm" />
+  <HelpKINode Title="ExecuteTimeStampMonth method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTimeStampMonth.htm" />
+  <HelpKINode Title="Field class">
+    <HelpKINode Title="Field Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="Field Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="about Field class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Field property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Field.htm" />
+  <HelpKINode Title="Field.BottomY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.BottomY.htm" />
+  <HelpKINode Title="Field.CustomPageNumbers property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.CustomPageNumbers.htm" />
+  <HelpKINode Title="Field.Field constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.-ctor.htm" />
+  <HelpKINode Title="Field.GetFieldPages method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.GetFieldPages.htm" />
+  <HelpKINode Title="Field.LeftX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.LeftX.htm" />
+  <HelpKINode Title="Field.Name property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.Name.htm" />
+  <HelpKINode Title="Field.Pages property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.Pages.htm" />
+  <HelpKINode Title="Field.RightX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.RightX.htm" />
+  <HelpKINode Title="Field.TimeStampField field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampField.htm" />
+  <HelpKINode Title="Field.TimeStampFieldBottomY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldBottomY.htm" />
+  <HelpKINode Title="Field.TimeStampFieldLeftX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldLeftX.htm" />
+  <HelpKINode Title="Field.TimeStampFieldName field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldName.htm" />
+  <HelpKINode Title="Field.TimeStampFieldRightX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldRightX.htm" />
+  <HelpKINode Title="Field.TimeStampFieldTopY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldTopY.htm" />
+  <HelpKINode Title="Field.TopY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TopY.htm" />
+  <HelpKINode Title="FieldBottomY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldBottomY.htm" />
+  <HelpKINode Title="FieldLeftX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldLeftX.htm" />
+  <HelpKINode Title="FieldPages enumeration" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="FieldPages property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldPages.htm" />
+  <HelpKINode Title="FieldPages.All field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.All.htm" />
+  <HelpKINode Title="FieldPages.Custom field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Custom.htm" />
+  <HelpKINode Title="FieldPages.Even field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Even.htm" />
+  <HelpKINode Title="FieldPages.First field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.First.htm" />
+  <HelpKINode Title="FieldPages.Last field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Last.htm" />
+  <HelpKINode Title="FieldPages.Odd field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Odd.htm" />
+  <HelpKINode Title="FieldRightX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldRightX.htm" />
+  <HelpKINode Title="FieldTitle property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldTitle.htm" />
+  <HelpKINode Title="FieldTopY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldTopY.htm" />
+  <HelpKINode Title="FileNames property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FileNames.htm" />
+  <HelpKINode Title="FileProcessor class">
+    <HelpKINode Title="FileProcessor Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="FileProcessor Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="about FileProcessor class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FileProcessor property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FileProcessor.htm" />
+  <HelpKINode Title="FileProcessor.ActionTypeMapping field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ActionTypeMapping.htm" />
+  <HelpKINode Title="FileProcessor.AddFieldToPage method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddFieldToPage.htm" />
+  <HelpKINode Title="FileProcessor.AddFieldToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddFieldToPdf.htm" />
+  <HelpKINode Title="FileProcessor.AddScriptToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AddScriptToPdf.htm" />
+  <HelpKINode Title="FileProcessor.AlternatingPageIncrement field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.AlternatingPageIncrement.htm" />
+  <HelpKINode Title="FileProcessor.Cancel method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Cancel.htm" />
+  <HelpKINode Title="FileProcessor.CancellationToken property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CancellationToken.htm" />
+  <HelpKINode Title="FileProcessor.CancellationTokenSource property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CancellationTokenSource.htm" />
+  <HelpKINode Title="FileProcessor.ClearProcessing method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ClearProcessing.htm" />
+  <HelpKINode Title="FileProcessor.ConvertExcelToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertExcelToPdf.htm" />
+  <HelpKINode Title="FileProcessor.ConvertPowerPointToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertPowerPointToPdf.htm" />
+  <HelpKINode Title="FileProcessor.ConvertToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertToPdf.htm" />
+  <HelpKINode Title="FileProcessor.ConvertWordToPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ConvertWordToPdf.htm" />
+  <HelpKINode Title="FileProcessor.CopyToProcessing method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.CopyToProcessing.htm" />
+  <HelpKINode Title="FileProcessor.EveryPageIncrement field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.EveryPageIncrement.htm" />
+  <HelpKINode Title="FileProcessor.ExcelExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ExcelExtension.htm" />
+  <HelpKINode Title="FileProcessor.ExcelXmlExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ExcelXmlExtension.htm" />
+  <HelpKINode Title="FileProcessor.Execute method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Execute.htm" />
+  <HelpKINode Title="FileProcessor.Field property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Field.htm" />
+  <HelpKINode Title="FileProcessor.FileNames property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FileNames.htm" />
+  <HelpKINode Title="FileProcessor.FileProcessor constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.-ctor.htm" />
+  <HelpKINode Title="FileProcessor.FirstPageNumber field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FirstPageNumber.htm" />
+  <HelpKINode Title="FileProcessor.FolderName field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FolderName.htm" />
+  <HelpKINode Title="FileProcessor.GetOutputPath method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.GetOutputPath.htm" />
+  <HelpKINode Title="FileProcessor.GetProcessingPath method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.GetProcessingPath.htm" />
+  <HelpKINode Title="FileProcessor.IsPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.IsPdf.htm" />
+  <HelpKINode Title="FileProcessor.Log property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Log.htm" />
+  <HelpKINode Title="FileProcessor.MoveToOutput method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.MoveToOutput.htm" />
+  <HelpKINode Title="FileProcessor.OutputFolderPath field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.OutputFolderPath.htm" />
+  <HelpKINode Title="FileProcessor.PdfExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PdfExtension.htm" />
+  <HelpKINode Title="FileProcessor.PowerPointExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PowerPointExtension.htm" />
+  <HelpKINode Title="FileProcessor.PowerPointXmlExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PowerPointXmlExtension.htm" />
+  <HelpKINode Title="FileProcessor.ProcessingFolderPath field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ProcessingFolderPath.htm" />
+  <HelpKINode Title="FileProcessor.ProcessPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ProcessPdf.htm" />
+  <HelpKINode Title="FileProcessor.Progress property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Progress.htm" />
+  <HelpKINode Title="FileProcessor.Script property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Script.htm" />
+  <HelpKINode Title="FileProcessor.WordExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.WordExtension.htm" />
+  <HelpKINode Title="FileProcessor.WordXmlExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.WordXmlExtension.htm" />
+  <HelpKINode Title="First enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="First field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.First.htm" />
+  <HelpKINode Title="FirstPageNumber field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FirstPageNumber.htm" />
+  <HelpKINode Title="FolderName field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.FolderName.htm" />
+  <HelpKINode Title="GetCustomPageNumbers method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.GetCustomPageNumbers.htm" />
+  <HelpKINode Title="GetFieldPages method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.GetFieldPages.htm" />
+  <HelpKINode Title="GetOutputPath method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.GetOutputPath.htm" />
+  <HelpKINode Title="GetProcessingPath method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.GetProcessingPath.htm" />
+  <HelpKINode Title="GetScriptTimings method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.GetScriptTimings.htm" />
+  <HelpKINode Title="HandleProgressReport method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HandleProgressReport.htm" />
+  <HelpKINode Title="HelpFile field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HelpFile.htm" />
+  <HelpKINode Title="HideMessage method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HideMessage.htm" />
+  <HelpKINode Title="IsBusy property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.IsBusy.htm" />
+  <HelpKINode Title="IsChecked property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.IsChecked.htm" />
+  <HelpKINode Title="IsPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.IsPdf.htm" />
+  <HelpKINode Title="Item property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.Item.htm" />
+  <HelpKINode Title="Last enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="Last field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Last.htm" />
+  <HelpKINode Title="LeftX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.LeftX.htm" />
+  <HelpKINode Title="Log property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Log.htm" />
+  <HelpKINode Title="MainWindow class">
+    <HelpKINode Title="MainWindow Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+    <HelpKINode Title="MainWindow Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+    <HelpKINode Title="about MainWindow class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.-ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MainWindow.MainWindow constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.-ctor.htm" />
+  <HelpKINode Title="MainWindow.UIElement_OnMouseLeftButtonDown method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.UIElement_OnMouseLeftButtonDown.htm" />
+  <HelpKINode Title="Message property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Message.htm" />
+  <HelpKINode Title="MessageIsVisible property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.MessageIsVisible.htm" />
+  <HelpKINode Title="MessageZIndex property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.MessageZIndex.htm" />
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool namespace" Url="html/N-MichaelBrandonMorris.PdfConversionAndTimeStampTool.htm" />
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow class">
+    <HelpKINode Title="AboutWindow Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+    <HelpKINode Title="AboutWindow Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.AboutWindow.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.App class">
+    <HelpKINode Title="App Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+    <HelpKINode Title="App Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.App.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem(Of T) class">
+    <HelpKINode Title="CheckedListItem(T) Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="CheckedListItem(T) Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem&lt;T&gt; class">
+    <HelpKINode Title="CheckedListItem(T) Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+    <HelpKINode Title="CheckedListItem(T) Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field class">
+    <HelpKINode Title="Field Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+    <HelpKINode Title="Field Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages enumeration" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor class">
+    <HelpKINode Title="FileProcessor Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+    <HelpKINode Title="FileProcessor Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow class">
+    <HelpKINode Title="MainWindow Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+    <HelpKINode Title="MainWindow Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties namespace" Url="html/N-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.htm" />
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources class">
+    <HelpKINode Title="Resources Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="Resources Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings class">
+    <HelpKINode Title="Settings Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="Settings Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script class">
+    <HelpKINode Title="Script Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="Script Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming enumeration" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+  <HelpKINode Title="MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel class">
+    <HelpKINode Title="ViewModel Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="ViewModel Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="MoveToOutput method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.MoveToOutput.htm" />
+  <HelpKINode Title="Name property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.Name.htm" />
+  <HelpKINode Title="NotifyProeprtyChanged method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.NotifyProeprtyChanged.htm" />
+  <HelpKINode Title="NotifyPropertyChanged method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.NotifyPropertyChanged.htm" />
+  <HelpKINode Title="Odd enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.htm" />
+  <HelpKINode Title="Odd field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FieldPages.Odd.htm" />
+  <HelpKINode Title="OpenAboutWindow property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.OpenAboutWindow.htm" />
+  <HelpKINode Title="OpenUserGuide property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.OpenUserGuide.htm" />
+  <HelpKINode Title="OutputFolderPath field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.OutputFolderPath.htm" />
+  <HelpKINode Title="Pages property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.Pages.htm" />
+  <HelpKINode Title="PdfExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PdfExtension.htm" />
+  <HelpKINode Title="PowerPointExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PowerPointExtension.htm" />
+  <HelpKINode Title="PowerPointXmlExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.PowerPointXmlExtension.htm" />
+  <HelpKINode Title="ProcessingFolderPath field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ProcessingFolderPath.htm" />
+  <HelpKINode Title="ProcessPdf method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.ProcessPdf.htm" />
+  <HelpKINode Title="Progress property">
+    <HelpKINode Title="Progress Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Progress.htm" />
+    <HelpKINode Title="Progress Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Progress.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ProgressPercent property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ProgressPercent.htm" />
+  <HelpKINode Title="ProgressText property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ProgressText.htm" />
+  <HelpKINode Title="PropertyChanged event">
+    <HelpKINode Title="PropertyChanged Event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.PropertyChanged.htm" />
+    <HelpKINode Title="PropertyChanged Event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1.PropertyChanged.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ReplaceFilesMessageBoxText field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ReplaceFilesMessageBoxText.htm" />
+  <HelpKINode Title="resourceCulture field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.resourceCulture.htm" />
+  <HelpKINode Title="resourceMan field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.resourceMan.htm" />
+  <HelpKINode Title="ResourceManager property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.ResourceManager.htm" />
+  <HelpKINode Title="Resources class">
+    <HelpKINode Title="Resources Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="Resources Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="about Resources class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Resources.Culture property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.Culture.htm" />
+  <HelpKINode Title="Resources.resourceCulture field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.resourceCulture.htm" />
+  <HelpKINode Title="Resources.resourceMan field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.resourceMan.htm" />
+  <HelpKINode Title="Resources.ResourceManager property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.ResourceManager.htm" />
+  <HelpKINode Title="Resources.Resources constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.-ctor.htm" />
+  <HelpKINode Title="Resources.TimeStampDay property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.TimeStampDay.htm" />
+  <HelpKINode Title="Resources.TimeStampMonth property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.TimeStampMonth.htm" />
+  <HelpKINode Title="RightX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.RightX.htm" />
+  <HelpKINode Title="Script class">
+    <HelpKINode Title="Script Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="Script Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="about Script class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.-ctor.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Script property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.Script.htm" />
+  <HelpKINode Title="Script.GetScriptTimings method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.GetScriptTimings.htm" />
+  <HelpKINode Title="Script.Script constructor" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.-ctor.htm" />
+  <HelpKINode Title="Script.Text property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.Text.htm" />
+  <HelpKINode Title="Script.TimeStampOnPrintDay field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.TimeStampOnPrintDay.htm" />
+  <HelpKINode Title="Script.TimeStampOnPrintMonth field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.TimeStampOnPrintMonth.htm" />
+  <HelpKINode Title="Script.Timing property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.Timing.htm" />
+  <HelpKINode Title="ScriptTiming enumeration" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+  <HelpKINode Title="ScriptTiming.DidPrint field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.DidPrint.htm" />
+  <HelpKINode Title="ScriptTiming.DidSave field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.DidSave.htm" />
+  <HelpKINode Title="ScriptTiming.WillPrint field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.WillPrint.htm" />
+  <HelpKINode Title="ScriptTiming.WillSave field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.WillSave.htm" />
+  <HelpKINode Title="ScriptTimings property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ScriptTimings.htm" />
+  <HelpKINode Title="SelectedFieldPages property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedFieldPages.htm" />
+  <HelpKINode Title="SelectedFileNames property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedFileNames.htm" />
+  <HelpKINode Title="SelectedScript property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedScript.htm" />
+  <HelpKINode Title="SelectedTiming property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedTiming.htm" />
+  <HelpKINode Title="SelectFiles property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectFiles.htm" />
+  <HelpKINode Title="SelectFilesFilter field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectFilesFilter.htm" />
+  <HelpKINode Title="SelectScript property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectScript.htm" />
+  <HelpKINode Title="Settings class">
+    <HelpKINode Title="Settings Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="Settings Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="about Settings class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Settings.Default property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.Default.htm" />
+  <HelpKINode Title="Settings.defaultInstance field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Settings.defaultInstance.htm" />
+  <HelpKINode Title="ShouldShowCustomPageNumbers property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ShouldShowCustomPageNumbers.htm" />
+  <HelpKINode Title="ShowMessage method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ShowMessage.htm" />
+  <HelpKINode Title="Text property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.Text.htm" />
+  <HelpKINode Title="TimeStampDay property">
+    <HelpKINode Title="TimeStampDay Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.TimeStampDay.htm" />
+    <HelpKINode Title="TimeStampDay Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.TimeStampDay.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TimeStampField field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampField.htm" />
+  <HelpKINode Title="TimeStampFieldBottomY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldBottomY.htm" />
+  <HelpKINode Title="TimeStampFieldLeftX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldLeftX.htm" />
+  <HelpKINode Title="TimeStampFieldName field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldName.htm" />
+  <HelpKINode Title="TimeStampFieldRightX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldRightX.htm" />
+  <HelpKINode Title="TimeStampFieldTopY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TimeStampFieldTopY.htm" />
+  <HelpKINode Title="TimeStampMonth property">
+    <HelpKINode Title="TimeStampMonth Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Properties.Resources.TimeStampMonth.htm" />
+    <HelpKINode Title="TimeStampMonth Property " Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.TimeStampMonth.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TimeStampOnPrintDay field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.TimeStampOnPrintDay.htm" />
+  <HelpKINode Title="TimeStampOnPrintMonth field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.TimeStampOnPrintMonth.htm" />
+  <HelpKINode Title="Timing property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Script.Timing.htm" />
+  <HelpKINode Title="TopY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.Field.TopY.htm" />
+  <HelpKINode Title="UIElement_OnMouseLeftButtonDown method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.MainWindow.UIElement_OnMouseLeftButtonDown.htm" />
+  <HelpKINode Title="UserGuide property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.UserGuide.htm" />
+  <HelpKINode Title="Version property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Version.htm" />
+  <HelpKINode Title="ViewModel class">
+    <HelpKINode Title="ViewModel Class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="ViewModel Members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="about ViewModel class" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="fields" Url="html/Fields.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ViewModel.AboutWindow property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.AboutWindow.htm" />
+  <HelpKINode Title="ViewModel.CanCancel method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CanCancel.htm" />
+  <HelpKINode Title="ViewModel.Cancel property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Cancel.htm" />
+  <HelpKINode Title="ViewModel.CanExecuteAction method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CanExecuteAction.htm" />
+  <HelpKINode Title="ViewModel.Convert property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Convert.htm" />
+  <HelpKINode Title="ViewModel.CustomAction property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CustomAction.htm" />
+  <HelpKINode Title="ViewModel.CustomPageNumbers property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.CustomPageNumbers.htm" />
+  <HelpKINode Title="ViewModel.ExecuteCancel method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteCancel.htm" />
+  <HelpKINode Title="ViewModel.ExecuteConvert method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteConvert.htm" />
+  <HelpKINode Title="ViewModel.ExecuteCustomAction method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteCustomAction.htm" />
+  <HelpKINode Title="ViewModel.ExecuteOpenAboutWindow method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteOpenAboutWindow.htm" />
+  <HelpKINode Title="ViewModel.ExecuteOpenUserGuide method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteOpenUserGuide.htm" />
+  <HelpKINode Title="ViewModel.ExecuteSelectFiles method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteSelectFiles.htm" />
+  <HelpKINode Title="ViewModel.ExecuteSelectScript method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteSelectScript.htm" />
+  <HelpKINode Title="ViewModel.ExecuteTask method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTask.htm" />
+  <HelpKINode Title="ViewModel.ExecuteTimeStampDay method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTimeStampDay.htm" />
+  <HelpKINode Title="ViewModel.ExecuteTimeStampMonth method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ExecuteTimeStampMonth.htm" />
+  <HelpKINode Title="ViewModel.FieldBottomY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldBottomY.htm" />
+  <HelpKINode Title="ViewModel.FieldLeftX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldLeftX.htm" />
+  <HelpKINode Title="ViewModel.FieldPages property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldPages.htm" />
+  <HelpKINode Title="ViewModel.FieldRightX property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldRightX.htm" />
+  <HelpKINode Title="ViewModel.FieldTitle property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldTitle.htm" />
+  <HelpKINode Title="ViewModel.FieldTopY property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FieldTopY.htm" />
+  <HelpKINode Title="ViewModel.FileProcessor property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.FileProcessor.htm" />
+  <HelpKINode Title="ViewModel.GetCustomPageNumbers method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.GetCustomPageNumbers.htm" />
+  <HelpKINode Title="ViewModel.HandleProgressReport method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HandleProgressReport.htm" />
+  <HelpKINode Title="ViewModel.HelpFile field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HelpFile.htm" />
+  <HelpKINode Title="ViewModel.HideMessage method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.HideMessage.htm" />
+  <HelpKINode Title="ViewModel.IsBusy property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.IsBusy.htm" />
+  <HelpKINode Title="ViewModel.Message property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Message.htm" />
+  <HelpKINode Title="ViewModel.MessageIsVisible property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.MessageIsVisible.htm" />
+  <HelpKINode Title="ViewModel.MessageZIndex property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.MessageZIndex.htm" />
+  <HelpKINode Title="ViewModel.NotifyProeprtyChanged method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.NotifyProeprtyChanged.htm" />
+  <HelpKINode Title="ViewModel.OpenAboutWindow property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.OpenAboutWindow.htm" />
+  <HelpKINode Title="ViewModel.OpenUserGuide property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.OpenUserGuide.htm" />
+  <HelpKINode Title="ViewModel.Progress property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Progress.htm" />
+  <HelpKINode Title="ViewModel.ProgressPercent property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ProgressPercent.htm" />
+  <HelpKINode Title="ViewModel.ProgressText property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ProgressText.htm" />
+  <HelpKINode Title="ViewModel.PropertyChanged event" Url="html/E-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.PropertyChanged.htm" />
+  <HelpKINode Title="ViewModel.ReplaceFilesMessageBoxText field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ReplaceFilesMessageBoxText.htm" />
+  <HelpKINode Title="ViewModel.ScriptTimings property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ScriptTimings.htm" />
+  <HelpKINode Title="ViewModel.SelectedFieldPages property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedFieldPages.htm" />
+  <HelpKINode Title="ViewModel.SelectedFileNames property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedFileNames.htm" />
+  <HelpKINode Title="ViewModel.SelectedScript property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedScript.htm" />
+  <HelpKINode Title="ViewModel.SelectedTiming property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectedTiming.htm" />
+  <HelpKINode Title="ViewModel.SelectFiles property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectFiles.htm" />
+  <HelpKINode Title="ViewModel.SelectFilesFilter field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectFilesFilter.htm" />
+  <HelpKINode Title="ViewModel.SelectScript property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.SelectScript.htm" />
+  <HelpKINode Title="ViewModel.ShouldShowCustomPageNumbers property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ShouldShowCustomPageNumbers.htm" />
+  <HelpKINode Title="ViewModel.ShowMessage method" Url="html/M-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.ShowMessage.htm" />
+  <HelpKINode Title="ViewModel.TimeStampDay property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.TimeStampDay.htm" />
+  <HelpKINode Title="ViewModel.TimeStampMonth property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.TimeStampMonth.htm" />
+  <HelpKINode Title="ViewModel.UserGuide property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.UserGuide.htm" />
+  <HelpKINode Title="ViewModel.Version property" Url="html/P-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel.Version.htm" />
+  <HelpKINode Title="ViewModel._aboutWindow field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._aboutWindow.htm" />
+  <HelpKINode Title="ViewModel._customPageNumbers field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._customPageNumbers.htm" />
+  <HelpKINode Title="ViewModel._fieldBottomY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldBottomY.htm" />
+  <HelpKINode Title="ViewModel._fieldLeftX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldLeftX.htm" />
+  <HelpKINode Title="ViewModel._fieldRightX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldRightX.htm" />
+  <HelpKINode Title="ViewModel._fieldTitle field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldTitle.htm" />
+  <HelpKINode Title="ViewModel._fieldTopY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldTopY.htm" />
+  <HelpKINode Title="ViewModel._isBusy field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._isBusy.htm" />
+  <HelpKINode Title="ViewModel._message field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._message.htm" />
+  <HelpKINode Title="ViewModel._messageIsVisible field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._messageIsVisible.htm" />
+  <HelpKINode Title="ViewModel._messageZIndex field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._messageZIndex.htm" />
+  <HelpKINode Title="ViewModel._progressPercent field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._progressPercent.htm" />
+  <HelpKINode Title="ViewModel._progressText field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._progressText.htm" />
+  <HelpKINode Title="ViewModel._selectedFieldPages field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedFieldPages.htm" />
+  <HelpKINode Title="ViewModel._selectedScript field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedScript.htm" />
+  <HelpKINode Title="ViewModel._selectedTiming field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedTiming.htm" />
+  <HelpKINode Title="ViewModel._shouldShowCustomPageNumbers field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._shouldShowCustomPageNumbers.htm" />
+  <HelpKINode Title="ViewModel._userGuide field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._userGuide.htm" />
+  <HelpKINode Title="WillPrint enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+  <HelpKINode Title="WillPrint field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.WillPrint.htm" />
+  <HelpKINode Title="WillSave enumeration member" Url="html/T-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.htm" />
+  <HelpKINode Title="WillSave field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ScriptTiming.WillSave.htm" />
+  <HelpKINode Title="WordExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.WordExtension.htm" />
+  <HelpKINode Title="WordXmlExtension field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.FileProcessor.WordXmlExtension.htm" />
+  <HelpKINode Title="_aboutWindow field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._aboutWindow.htm" />
+  <HelpKINode Title="_customPageNumbers field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._customPageNumbers.htm" />
+  <HelpKINode Title="_fieldBottomY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldBottomY.htm" />
+  <HelpKINode Title="_fieldLeftX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldLeftX.htm" />
+  <HelpKINode Title="_fieldRightX field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldRightX.htm" />
+  <HelpKINode Title="_fieldTitle field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldTitle.htm" />
+  <HelpKINode Title="_fieldTopY field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._fieldTopY.htm" />
+  <HelpKINode Title="_isBusy field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._isBusy.htm" />
+  <HelpKINode Title="_isChecked field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._isChecked.htm" />
+  <HelpKINode Title="_item field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.CheckedListItem-1._item.htm" />
+  <HelpKINode Title="_message field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._message.htm" />
+  <HelpKINode Title="_messageIsVisible field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._messageIsVisible.htm" />
+  <HelpKINode Title="_messageZIndex field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._messageZIndex.htm" />
+  <HelpKINode Title="_progressPercent field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._progressPercent.htm" />
+  <HelpKINode Title="_progressText field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._progressText.htm" />
+  <HelpKINode Title="_selectedFieldPages field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedFieldPages.htm" />
+  <HelpKINode Title="_selectedScript field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedScript.htm" />
+  <HelpKINode Title="_selectedTiming field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._selectedTiming.htm" />
+  <HelpKINode Title="_shouldShowCustomPageNumbers field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._shouldShowCustomPageNumbers.htm" />
+  <HelpKINode Title="_userGuide field" Url="html/F-MichaelBrandonMorris.PdfConversionAndTimeStampTool.ViewModel._userGuide.htm" />
+</HelpKI>

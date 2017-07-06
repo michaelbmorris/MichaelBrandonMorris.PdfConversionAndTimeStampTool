@@ -9,8 +9,8 @@ using System.Windows;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Michael Brandon Morris")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © Michael Brandon Morris 2016")]
+[assembly: AssemblyProduct("MichaelBrandonMorris.PdfConversionAndTimeStampTool")]
+[assembly: AssemblyCopyright("Copyright © Michael Brandon Morris 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,5 +49,4 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.*")]
