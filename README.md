@@ -1,2 +1,2 @@
-# MichaelBrandonMorris.PdfConversionAndTimeStampTool
+# MichaelBrandonMorris.PdfTool
 C# WPF application to convert documents to PDF and optionally apply a timestamp-on-print function.
