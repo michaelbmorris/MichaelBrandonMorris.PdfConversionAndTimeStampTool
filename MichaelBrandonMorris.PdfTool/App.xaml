@@ -1,0 +1,12 @@
+﻿<Application x:Class="MichaelBrandonMorris.PdfTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:valueConverters="clr-namespace:MichaelBrandonMorris.ValueConverters;assembly=MichaelBrandonMorris.ValueConverters"
+             xmlns:pdfTool="clr-namespace:MichaelBrandonMorris.PdfTool"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <pdfTool:ViewModel x:Key="ViewModel" />
+        <valueConverters:BooleanToVisibilityHiddenConverter x:Key="BooleanToVisibilityHiddenConverter" />
+        <valueConverters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </Application.Resources>
+</Application>
